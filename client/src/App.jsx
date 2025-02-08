@@ -1,5 +1,6 @@
 import Navbar from "./components/layouts/Navbar";
 import Header from "./components/layouts/Header";
+import Object from "./pages/Object";
 import MainTemplate from "./templates/MainTemplate";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <MainTemplate>
       <Header />
       <Navbar />
+      <Object />
     </MainTemplate>
   );
 }
