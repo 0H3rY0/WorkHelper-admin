@@ -8,7 +8,6 @@ const ObjectFilter = ({ id = 0, setObjectFilters }) => {
     });
   };
 
-  //   const [selectedFilters, setSelectedFilters] = useState({});
   const [selectedValue, setSelectedValue] = useState("nazwa");
   const [textInputValue, setTextInputValue] = useState("");
   const [isSwitch, setIsSwitch] = useState(false);
@@ -22,7 +21,16 @@ const ObjectFilter = ({ id = 0, setObjectFilters }) => {
   };
 
   const onTextInputChange = (e) => {
-    setTextInputValue(e.target.value);
+    if (isSwitch) {
+      setObjectFilters((prev) =>
+        prev.map((item) =>
+          item.id === id
+            ? { ...item, name: { [selectedValue]: e.target.value } }
+            : item
+        )
+      );
+      setTextInputValue(e.target.value);
+    }
   };
 
   if (isSwitch) {
@@ -32,21 +40,6 @@ const ObjectFilter = ({ id = 0, setObjectFilters }) => {
 
     console.log(finalFilter);
   }
-
-  //   const onInputChange = (e) => {
-  //     setSelectedFilters((prev) => {
-  //       const newFilter = {
-  //         [e.target.name]: e.target.value,
-  //       };
-  //       return newFilter;
-  //     });
-  //   };
-
-  //   const selectedFilters = {
-  //     ulica: "",
-  //     nazwa: "",
-  //     miejscowosc: "",
-  //   };
 
   return (
     <form className="w-full flex justify-center gap-4 mt-4" id={id}>
@@ -74,7 +67,12 @@ const ObjectFilter = ({ id = 0, setObjectFilters }) => {
         </label>
       </div>
 
-      <input type="text" className="input w-1/5" onChange={onTextInputChange} />
+      <input
+        type="text"
+        className="input w-1/5"
+        value={textInputValue}
+        onChange={onTextInputChange}
+      />
 
       <button
         type="button"

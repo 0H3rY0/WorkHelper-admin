@@ -13,6 +13,11 @@ const Object = () => {
     setObjectFilters((prev) => [...prev, newFilter]);
   };
 
+  const getAllFilters = () => {
+    console.log(objectFilters);
+    objectFilters.map((item) => console.log(item.name));
+  };
+
   return (
     <div className="w-full flex flex-col items-start p-14 ">
       <h2 className="font-semibold text-2xl text-slate-700 flex gap-2">
@@ -42,7 +47,9 @@ const Object = () => {
         <h2 className="flex gap-2">
           Dane <FaDatabase size={32} />
         </h2>
-        <button className="button">Pokaz</button>
+        <button className="button" onClick={() => getAllFilters()}>
+          Pokaz
+        </button>
       </div>
 
       {/* Tabela */}
