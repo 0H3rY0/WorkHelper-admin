@@ -94,7 +94,7 @@ body {
 .table td {
   padding: 12px 16px;
   border-top: 1px solid #444;
-  text-align: left;
+  /* text-align: left; */
 }
 
 .table tr:hover {

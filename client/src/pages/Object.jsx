@@ -4,18 +4,32 @@ import { FaDatabase } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid"; // Importujemy uuid
 import ObjectFilter from "../components/ObjectFilter";
 import { useState } from "react";
+import axios from "axios";
 
 const Object = () => {
   const [objectFilters, setObjectFilters] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
   const addObjectFilter = () => {
     const newFilter = { id: uuidv4(), name: "new object" };
     setObjectFilters((prev) => [...prev, newFilter]);
   };
 
-  const getAllFilters = () => {
-    console.log(objectFilters);
-    objectFilters.map((item) => console.log(item.name));
+  const getAllFilters = async () => {
+    const filters = objectFilters
+      .map((item) => item.name)
+      .reduce((acc, item) => {
+        return { ...acc, ...item };
+      });
+
+    console.log(filters);
+
+    const response = await axios.post("http://localhost:3000/objects", {
+      filters,
+    });
+
+    setFilteredData(response.data);
+    console.log(response.data);
   };
 
   return (
@@ -52,7 +66,6 @@ const Object = () => {
         </button>
       </div>
 
-      {/* Tabela */}
       <table className="table mt-7">
         <thead>
           <tr>
@@ -63,30 +76,22 @@ const Object = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Jan Kowalski</td>
-            <td>28</td>
-            <td>Warszawa</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Anna Nowak</td>
-            <td>34</td>
-            <td>Kraków</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Piotr Zieliński</td>
-            <td>22</td>
-            <td>Wrocław</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Maria Wiśniewska</td>
-            <td>40</td>
-            <td>Gdańsk</td>
-          </tr>
+          {filteredData.length > 0 ? (
+            filteredData.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.nazwa}</td>
+                <td>{item.adres}</td>
+                <td>{item.miejscowosc}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4" className="text-center ">
+                No results
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
