@@ -8,7 +8,7 @@ const Navbar = () => {
       className="row-span-2 bg-gray-700 p-6 hidden md:block text-xl 
     text-slate-300 font-semibold "
     >
-      <div className="flex flex-col justify-start gap-8 mt-10">
+      <div className="flex flex-col justify-start gap-8 mt-5">
         <p className="flex items-center gap-2 cursor-pointer hover:text-slate-400">
           <BiObjectsVerticalBottom size={32} /> Obiekty
         </p>
