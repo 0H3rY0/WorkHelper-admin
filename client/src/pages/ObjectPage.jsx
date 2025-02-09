@@ -90,7 +90,7 @@ const ObjectPage = () => {
         <tbody>
           {filteredData.length > 0 ? (
             filteredData.map((item) => (
-              <tr key={item.id}>
+              <tr key={item.id} onClick={() => navigate(`object/${item.id}`)}>
                 {objectColumns.map((col, index) => (
                   <td key={index} data-label={col}>
                     {item[col]}
