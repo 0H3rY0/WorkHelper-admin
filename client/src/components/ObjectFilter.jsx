@@ -9,7 +9,7 @@ const ObjectFilter = ({ id = 0, setObjectFilters, objectColumns }) => {
     });
   };
 
-  const [selectedValue, setSelectedValue] = useState("nazwa");
+  const [selectedValue, setSelectedValue] = useState("id");
   const [textInputValue, setTextInputValue] = useState("");
   const [isSwitch, setIsSwitch] = useState(false);
 

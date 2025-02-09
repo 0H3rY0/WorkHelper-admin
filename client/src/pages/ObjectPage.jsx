@@ -5,11 +5,13 @@ import { v4 as uuidv4 } from "uuid";
 import ObjectFilter from "../components/ObjectFilter";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const ObjectPage = () => {
   const [objectFilters, setObjectFilters] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [objectColumns, setObjectColumns] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getColumns = async () => {
@@ -31,8 +33,6 @@ const ObjectPage = () => {
       .reduce((acc, item) => {
         return { ...acc, ...item };
       });
-
-    console.log(filters);
 
     const response = await axios.post("http://localhost:3000/objects", {
       filters,
@@ -90,7 +90,7 @@ const ObjectPage = () => {
         <tbody>
           {filteredData.length > 0 ? (
             filteredData.map((item) => (
-              <tr key={item.id}>
+              <tr key={item.id} onClick={() => navigate(`object/${item.id}`)}>
                 {Object.values(item).map((value, index) => (
                   <td key={index}>{value}</td>
                 ))}

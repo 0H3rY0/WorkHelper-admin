@@ -1,6 +1,7 @@
 import { BiObjectsVerticalBottom } from "react-icons/bi";
 import { RiUserSearchLine } from "react-icons/ri";
 import DevicesNavigation from "../ui/DevicesNavigation";
+import { NavLink } from "react-router";
 
 const Navbar = () => {
   return (
@@ -9,9 +10,15 @@ const Navbar = () => {
     text-slate-300 font-semibold "
     >
       <div className="flex flex-col justify-start gap-8 mt-5">
-        <p className="flex items-center gap-2 cursor-pointer hover:text-slate-400">
-          <BiObjectsVerticalBottom size={32} /> Obiekty
-        </p>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? "text-slate-400" : "")}
+        >
+          <p className="flex items-center gap-2 cursor-pointer hover:text-slate-400">
+            <BiObjectsVerticalBottom size={32} /> Obiekty
+          </p>
+        </NavLink>
+
         <p className="flex items-center gap-2 cursor-pointer hover:text-slate-400">
           <RiUserSearchLine size={32} /> Urzytkownicy
         </p>
