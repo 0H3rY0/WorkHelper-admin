@@ -61,4 +61,19 @@ app.get("/columns", (req, res) => {
 
 // -----------------------------------------------------------------
 
+// downloading single object
+app.get("/object/:id", (req, res) => {
+  const { id } = req.params;
+
+  const sql = "SELECT * FROM obiekty WHERE id = ?";
+
+  db.query(sql, id, (err, result) => {
+    if (err) {
+      console.error("error: " + err);
+    }
+
+    res.json(result);
+  });
+});
+
 app.listen(3000, () => console.log("app listen on port 3000"));
