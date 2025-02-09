@@ -1,7 +1,7 @@
 import { FaFilter } from "react-icons/fa6";
 import { CiCirclePlus } from "react-icons/ci";
 import { FaDatabase } from "react-icons/fa";
-import { v4 as uuidv4 } from "uuid"; // Importujemy uuid
+import { v4 as uuidv4 } from "uuid";
 import ObjectFilter from "../components/ObjectFilter";
 import { useState } from "react";
 import axios from "axios";
@@ -29,7 +29,6 @@ const Object = () => {
     });
 
     setFilteredData(response.data);
-    console.log(response.data);
   };
 
   return (
@@ -81,7 +80,7 @@ const Object = () => {
               <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.nazwa}</td>
-                <td>{item.adres}</td>
+                <td>{item.ulica}</td>
                 <td>{item.miejscowosc}</td>
               </tr>
             ))

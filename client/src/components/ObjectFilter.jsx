@@ -17,29 +17,57 @@ const ObjectFilter = ({ id = 0, setObjectFilters }) => {
   };
 
   const onSwitch = () => {
-    setIsSwitch((prev) => !prev);
+    setIsSwitch((prevIsSwitch) => !prevIsSwitch); // Najpierw zmieniamy stan przełącznika
+
+    setObjectFilters((prev) =>
+      prev.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              name: {
+                ...item.name, // Zachowaj istniejące wartości
+                [selectedValue]: {
+                  ...(item.name?.[selectedValue] || {}),
+                  zawiera: !isSwitch, // Korzystamy z poprzedniej wartości isSwitch
+                },
+              },
+            }
+          : item
+      )
+    );
   };
 
   const onTextInputChange = (e) => {
-    if (isSwitch) {
-      setObjectFilters((prev) =>
-        prev.map((item) =>
-          item.id === id
-            ? { ...item, name: { [selectedValue]: e.target.value } }
-            : item
-        )
-      );
-      setTextInputValue(e.target.value);
-    }
+    setObjectFilters((prev) =>
+      prev.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              name: {
+                [selectedValue]: {
+                  text: e.target.value,
+                  zawiera: isSwitch,
+                },
+              },
+            }
+          : item
+      )
+    );
+    setTextInputValue(e.target.value);
   };
 
-  if (isSwitch) {
-    const finalFilter = {
-      [selectedValue]: textInputValue,
-    };
+  // filters: {
+  //   nazwa: { text: "teatr", zawiera: false },
+  //   miejscowosc: { text: "Warszawa", zawiera: true },
+  // },
 
-    console.log(finalFilter);
-  }
+  // if (isSwitch) {
+  // const finalFilter = {
+  //   [selectedValue]: { text: textInputValue, zawiera: isSwitch },
+  // };
+
+  // console.log(finalFilter);
+  // }
 
   return (
     <form className="w-full flex justify-center gap-4 mt-4" id={id}>

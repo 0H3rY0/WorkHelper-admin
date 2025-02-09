@@ -8,16 +8,30 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/objects", (req, res) => {
-  const { filters } = req.body; // Pobieramy obiekt filtrów z ciała zapytania
-
+  const { filters } = req.body;
   let sql = "SELECT * FROM obiekty";
   let params = [];
 
-  // Przykładowe sprawdzenie filtrów, możesz dostosować do swojego kodu
-  if (filters) {
-    const { nazwa, ulica, miejscowosc } = filters;
-    sql += " WHERE nazwa LIKE ? OR adres LIKE ? OR miejscowosc LIKE ?";
-    params = [`%${nazwa}%`, `%${ulica}%`, `%${miejscowosc}%`];
+  if (filters && Object.keys(filters).length > 0) {
+    const conditions = Object.keys(filters)
+      .map((key) => {
+        const filter = filters[key];
+        if (typeof filter === "object" && filter.text !== undefined) {
+          return filter.zawiera
+            ? `${key} LIKE ?` // Jeśli zawiera: true → używamy LIKE
+            : `${key} NOT LIKE ?`; // Jeśli zawiera: false → używamy NOT LIKE
+        }
+        return `${key} LIKE ?`; // Domyślnie LIKE dla normalnych wartości
+      })
+      .join(" AND "); // Łączymy operatorem AND, aby wszystkie warunki musiały być spełnione
+
+    sql += ` WHERE ${conditions}`;
+
+    params = Object.values(filters).map((filter) =>
+      typeof filter === "object" && filter.text !== undefined
+        ? `%${filter.text}%`
+        : `%${filter}%`
+    );
   }
 
   db.query(sql, params, (err, results) => {
