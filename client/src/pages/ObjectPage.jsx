@@ -6,6 +6,8 @@ import ObjectFilter from "../components/ObjectFilter";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { FaSortAlphaUp } from "react-icons/fa";
+import { FaSortAlphaDownAlt } from "react-icons/fa";
 
 const ObjectPage = () => {
   const [objectFilters, setObjectFilters] = useState([]);
@@ -83,7 +85,15 @@ const ObjectPage = () => {
         <thead>
           <tr>
             {objectColumns.map((item) => (
-              <th key={item}>{item}</th>
+              <th key={item}>
+                <div className="flex items-center gap-2">
+                  <p>{item}</p>{" "}
+                  <FaSortAlphaUp
+                    className="text-slate-400 hover:text-slate-500 hover:scale-110 scale-transition"
+                    size={18}
+                  />
+                </div>
+              </th>
             ))}
           </tr>
         </thead>
