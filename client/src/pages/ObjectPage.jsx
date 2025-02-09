@@ -71,7 +71,10 @@ const ObjectPage = () => {
         <h2 className="flex gap-2">
           Dane <FaDatabase size={32} />
         </h2>
-        <button className="button" onClick={() => getAllFilters()}>
+        <button
+          className="button bg-custom-blue text-white"
+          onClick={() => getAllFilters()}
+        >
           Pokaz
         </button>
       </div>

@@ -40,8 +40,8 @@ body {
 /* button gray */
 
 .button {
-  background-color: #3b4e63;
-  color: #ffffff;
+  /* background-color: #3b4e63; */
+  /* color: #ffffff; */
   border: 2px solid transparent;
   border-radius: 8px;
   padding: 10px 20px;

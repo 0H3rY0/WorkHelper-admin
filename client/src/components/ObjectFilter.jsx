@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { MdDeleteForever } from "react-icons/md";
 
 const ObjectFilter = ({ id = 0, setObjectFilters, objectColumns }) => {
   const handleRemoveObjectFilter = (e) => {
@@ -94,9 +95,9 @@ const ObjectFilter = ({ id = 0, setObjectFilters, objectColumns }) => {
       <button
         type="button"
         onClick={handleRemoveObjectFilter}
-        className="mt-4 text-red-500"
+        className="button text-white bg-custom-gray"
       >
-        Usuń
+        <MdDeleteForever size={32} />
       </button>
     </form>
   );
