@@ -1,7 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const ObjectFilter = ({ id = 0, setObjectFilters }) => {
+const ObjectFilter = ({ id = 0, setObjectFilters, objectColumns }) => {
   const handleRemoveObjectFilter = (e) => {
     e.preventDefault();
     setObjectFilters((prev) => {
@@ -57,25 +56,14 @@ const ObjectFilter = ({ id = 0, setObjectFilters }) => {
     setTextInputValue(e.target.value);
   };
 
-  // filters: {
-  //   nazwa: { text: "teatr", zawiera: false },
-  //   miejscowosc: { text: "Warszawa", zawiera: true },
-  // },
-
-  // if (isSwitch) {
-  // const finalFilter = {
-  //   [selectedValue]: { text: textInputValue, zawiera: isSwitch },
-  // };
-
-  // console.log(finalFilter);
-  // }
-
   return (
     <form className="w-full flex justify-center gap-4 mt-4" id={id}>
-      <select name="" id="" className="input w-1/5" onChange={onSelectValue}>
-        <option value="nazwa">nazwa</option>
-        <option value="ulica">ulica</option>
-        <option value="miejscowosc">miejscowosc</option>
+      <select className="input w-1/5" onChange={onSelectValue}>
+        {objectColumns.map((item) => (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        ))}
       </select>
 
       <div className="flex flex-col justify-center items-center">

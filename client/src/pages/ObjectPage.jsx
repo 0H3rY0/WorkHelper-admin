@@ -53,6 +53,7 @@ const ObjectPage = () => {
               key={item.id}
               id={item.id}
               setObjectFilters={setObjectFilters}
+              objectColumns={objectColumns}
             />
           );
         })}
