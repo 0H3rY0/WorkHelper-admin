@@ -7,7 +7,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { FaSortAlphaUp } from "react-icons/fa";
-import { FaSortAlphaDownAlt } from "react-icons/fa";
+import { FaSortAlphaDown } from "react-icons/fa";
+import { FaSort } from "react-icons/fa";
 
 const ObjectPage = () => {
   const [objectFilters, setObjectFilters] = useState([]);
@@ -20,34 +21,30 @@ const ObjectPage = () => {
     direction: "asc",
   });
 
-  const sortDataByChoosenRecord = (column) => {
-    let newDirection = "asc";
-
-    if (sortConfig.column === column) {
-      newDirection = sortConfig.direction === "asc" ? "desc" : "asc";
-    }
-
-    setSortConfig({
-      column: column,
-      direction: newDirection,
+  const sortDataByChoosenRecord = (chosenColumn) => {
+    // Zmieniamy kierunek sortowania dla tej samej kolumny
+    setSortConfig((prevSortConfig) => {
+      const newDirection =
+        prevSortConfig.column === chosenColumn &&
+        prevSortConfig.direction === "asc"
+          ? "desc"
+          : "asc"; // Zmieniamy kierunek sortowania
+      return {
+        column: chosenColumn,
+        direction: newDirection,
+      };
     });
 
-    const sortedData = [...filteredData];
-
-    sortedData.sort((a, b) => {
-      const aValue = a[column];
-      const bValue = b[column];
-
-      if (typeof aValue === "string") {
-        return newDirection === "asc"
-          ? aValue.localeCompare(bValue)
-          : bValue.localeCompare(aValue);
+    // Logika sortowania danych (przykład)
+    const sortedData = [...filteredData].sort((a, b) => {
+      if (sortConfig.direction === "asc") {
+        return a[chosenColumn] > b[chosenColumn] ? 1 : -1;
       } else {
-        return newDirection === "asc" ? aValue - bValue : bValue - aValue;
+        return a[chosenColumn] < b[chosenColumn] ? 1 : -1;
       }
     });
 
-    setFilteredData(sortedData);
+    setFilteredData(sortedData); // Zaktualizowanie danych
   };
 
   useEffect(() => {
@@ -123,11 +120,29 @@ const ObjectPage = () => {
               <th key={item}>
                 <div className="flex items-center gap-2">
                   <p>{item}</p>
-                  <FaSortAlphaUp
-                    onClick={() => sortDataByChoosenRecord(item)}
-                    className="text-slate-400 hover:text-slate-500 hover:scale-110 scale-transition"
-                    size={18}
-                  />
+
+                  {/* Pokazujemy tylko jedną ikonę w zależności od sortowania */}
+                  {sortConfig.column === item ? (
+                    sortConfig.direction === "asc" ? (
+                      <FaSortAlphaUp
+                        onClick={() => sortDataByChoosenRecord(item)}
+                        className="text-slate-400 hover:text-slate-500 hover:scale-110 scale-transition"
+                        size={18}
+                      />
+                    ) : (
+                      <FaSortAlphaDown
+                        onClick={() => sortDataByChoosenRecord(item)}
+                        className="text-slate-400 hover:text-slate-500 hover:scale-110 scale-transition"
+                        size={18}
+                      />
+                    )
+                  ) : (
+                    <FaSort
+                      onClick={() => sortDataByChoosenRecord(item)}
+                      className="text-slate-400 hover:text-slate-500 hover:scale-110 scale-transition"
+                      size={18}
+                    />
+                  )}
                 </div>
               </th>
             ))}
