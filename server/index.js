@@ -7,6 +7,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// downloading object with filters
+
 app.post("/objects", (req, res) => {
   const { filters } = req.body;
   let sql = "SELECT * FROM obiekty";
@@ -17,13 +19,11 @@ app.post("/objects", (req, res) => {
       .map((key) => {
         const filter = filters[key];
         if (typeof filter === "object" && filter.text !== undefined) {
-          return filter.zawiera
-            ? `${key} LIKE ?` // Jeśli zawiera: true → używamy LIKE
-            : `${key} NOT LIKE ?`; // Jeśli zawiera: false → używamy NOT LIKE
+          return filter.zawiera ? `${key} LIKE ?` : `${key} NOT LIKE ?`;
         }
-        return `${key} LIKE ?`; // Domyślnie LIKE dla normalnych wartości
+        return `${key} LIKE ?`;
       })
-      .join(" AND "); // Łączymy operatorem AND, aby wszystkie warunki musiały być spełnione
+      .join(" AND ");
 
     sql += ` WHERE ${conditions}`;
 
@@ -41,5 +41,24 @@ app.post("/objects", (req, res) => {
     res.json(results);
   });
 });
+
+// ---------------------------------------------------------------
+
+// downloading culmns in objects
+
+app.get("/columns", (req, res) => {
+  const sql =
+    "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'obiekty' AND TABLE_SCHEMA = 'workhelper'";
+
+  db.query(sql, (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    const columnNames = results.map((row) => row.COLUMN_NAME);
+    res.json(columnNames);
+  });
+});
+
+// -----------------------------------------------------------------
 
 app.listen(3000, () => console.log("app listen on port 3000"));

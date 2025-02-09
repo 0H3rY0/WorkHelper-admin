@@ -3,12 +3,22 @@ import { CiCirclePlus } from "react-icons/ci";
 import { FaDatabase } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 import ObjectFilter from "../components/ObjectFilter";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
-const Object = () => {
+const ObjectPage = () => {
   const [objectFilters, setObjectFilters] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [objectColumns, setObjectColumns] = useState([]);
+
+  useEffect(() => {
+    const getColumns = async () => {
+      const response = await axios.get("http://localhost:3000/columns");
+      setObjectColumns(response.data);
+    };
+
+    getColumns();
+  }, []);
 
   const addObjectFilter = () => {
     const newFilter = { id: uuidv4(), name: "new object" };
@@ -68,25 +78,23 @@ const Object = () => {
       <table className="table mt-7">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Nazwa</th>
-            <th>Ulica</th>
-            <th>Miejscowosc</th>
+            {objectColumns.map((item) => (
+              <th key={item}>{item}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
           {filteredData.length > 0 ? (
             filteredData.map((item) => (
               <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.nazwa}</td>
-                <td>{item.ulica}</td>
-                <td>{item.miejscowosc}</td>
+                {Object.values(item).map((value, index) => (
+                  <td key={index}>{value}</td>
+                ))}
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan="4" className="text-center ">
+              <td colSpan="4" className="text-center">
                 No results
               </td>
             </tr>
@@ -97,4 +105,4 @@ const Object = () => {
   );
 };
 
-export default Object;
+export default ObjectPage;
