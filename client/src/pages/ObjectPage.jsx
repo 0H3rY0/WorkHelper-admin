@@ -15,6 +15,41 @@ const ObjectPage = () => {
   const [objectColumns, setObjectColumns] = useState([]);
   const navigate = useNavigate();
 
+  const [sortConfig, setSortConfig] = useState({
+    column: null,
+    direction: "asc",
+  });
+
+  const sortDataByChoosenRecord = (column) => {
+    let newDirection = "asc";
+
+    if (sortConfig.column === column) {
+      newDirection = sortConfig.direction === "asc" ? "desc" : "asc";
+    }
+
+    setSortConfig({
+      column: column,
+      direction: newDirection,
+    });
+
+    const sortedData = [...filteredData];
+
+    sortedData.sort((a, b) => {
+      const aValue = a[column];
+      const bValue = b[column];
+
+      if (typeof aValue === "string") {
+        return newDirection === "asc"
+          ? aValue.localeCompare(bValue)
+          : bValue.localeCompare(aValue);
+      } else {
+        return newDirection === "asc" ? aValue - bValue : bValue - aValue;
+      }
+    });
+
+    setFilteredData(sortedData);
+  };
+
   useEffect(() => {
     const getColumns = async () => {
       const response = await axios.get("http://localhost:3000/columns");
@@ -87,8 +122,9 @@ const ObjectPage = () => {
             {objectColumns.map((item) => (
               <th key={item}>
                 <div className="flex items-center gap-2">
-                  <p>{item}</p>{" "}
+                  <p>{item}</p>
                   <FaSortAlphaUp
+                    onClick={() => sortDataByChoosenRecord(item)}
                     className="text-slate-400 hover:text-slate-500 hover:scale-110 scale-transition"
                     size={18}
                   />
