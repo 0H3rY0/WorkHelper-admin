@@ -58,8 +58,11 @@ const ObjectFilter = ({ id = 0, setObjectFilters, objectColumns }) => {
   };
 
   return (
-    <form className="w-full flex justify-center gap-4 mt-4" id={id}>
-      <select className="input w-1/5" onChange={onSelectValue}>
+    <form
+      className="w-full flex md:flex-row flex-col items-center justify-center md:gap-4 gap-2  mt-4 md:mb-0 mb-10"
+      id={id}
+    >
+      <select className="input md:w-1/5 w-full" onChange={onSelectValue}>
         {objectColumns.map((item) => (
           <option key={item} value={item}>
             {item}
@@ -87,7 +90,7 @@ const ObjectFilter = ({ id = 0, setObjectFilters, objectColumns }) => {
 
       <input
         type="text"
-        className="input w-1/5"
+        className="input md:w-1/5 w-full"
         value={textInputValue}
         onChange={onTextInputChange}
       />
@@ -95,7 +98,7 @@ const ObjectFilter = ({ id = 0, setObjectFilters, objectColumns }) => {
       <button
         type="button"
         onClick={handleRemoveObjectFilter}
-        className="button text-white bg-custom-gray"
+        className="button text-white bg-custom-gray md:w-1/12 md:min-w-20 w-1/2 flex items-center justify-center"
       >
         <MdDeleteForever size={32} />
       </button>
