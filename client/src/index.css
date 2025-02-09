@@ -102,6 +102,67 @@ body {
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .table,
+  .table thead,
+  .table tbody,
+  .table th,
+  .table td,
+  .table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .table thead {
+    display: none; /* Ukrywamy nagłówek na telefonach */
+  }
+
+  .table tr {
+    background-color: #2d2d2d;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+  }
+
+  .table td:last-child {
+    border-bottom: none;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #bbb;
+  }
+
+  .no-results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #bbb;
+    background-color: #2d2d2d;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .no-results td {
+    display: block;
+    width: 100%;
+  }
+}
+
 /* scale transition  */
 
 .scale-transition {

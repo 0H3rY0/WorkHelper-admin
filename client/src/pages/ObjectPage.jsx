@@ -42,7 +42,7 @@ const ObjectPage = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-start p-14 ">
+    <div className="w-full flex flex-col items-start md:p-14 p-5 ">
       <h2 className="font-semibold text-2xl text-slate-700 flex gap-2">
         Filtry <FaFilter size={32} />
       </h2>
@@ -90,17 +90,17 @@ const ObjectPage = () => {
         <tbody>
           {filteredData.length > 0 ? (
             filteredData.map((item) => (
-              <tr key={item.id} onClick={() => navigate(`object/${item.id}`)}>
-                {Object.values(item).map((value, index) => (
-                  <td key={index}>{value}</td>
+              <tr key={item.id}>
+                {objectColumns.map((col, index) => (
+                  <td key={index} data-label={col}>
+                    {item[col]}
+                  </td>
                 ))}
               </tr>
             ))
           ) : (
-            <tr>
-              <td colSpan="4" className="text-center">
-                No results
-              </td>
+            <tr className="sm:text-center no-results">
+              <td colSpan="100%">No results</td>
             </tr>
           )}
         </tbody>
