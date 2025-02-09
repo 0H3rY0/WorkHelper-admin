@@ -18,7 +18,7 @@ const ObjectFilter = ({ id = 0, setObjectFilters, objectColumns }) => {
   };
 
   const onSwitch = () => {
-    setIsSwitch((prevIsSwitch) => !prevIsSwitch); // Najpierw zmieniamy stan przełącznika
+    setIsSwitch((prevIsSwitch) => !prevIsSwitch);
 
     setObjectFilters((prev) =>
       prev.map((item) =>
@@ -26,10 +26,10 @@ const ObjectFilter = ({ id = 0, setObjectFilters, objectColumns }) => {
           ? {
               ...item,
               name: {
-                ...item.name, // Zachowaj istniejące wartości
+                ...item.name,
                 [selectedValue]: {
                   ...(item.name?.[selectedValue] || {}),
-                  zawiera: !isSwitch, // Korzystamy z poprzedniej wartości isSwitch
+                  zawiera: !isSwitch,
                 },
               },
             }

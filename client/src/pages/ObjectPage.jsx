@@ -22,20 +22,18 @@ const ObjectPage = () => {
   });
 
   const sortDataByChoosenRecord = (chosenColumn) => {
-    // Zmieniamy kierunek sortowania dla tej samej kolumny
     setSortConfig((prevSortConfig) => {
       const newDirection =
         prevSortConfig.column === chosenColumn &&
         prevSortConfig.direction === "asc"
           ? "desc"
-          : "asc"; // Zmieniamy kierunek sortowania
+          : "asc";
       return {
         column: chosenColumn,
         direction: newDirection,
       };
     });
 
-    // Logika sortowania danych (przykład)
     const sortedData = [...filteredData].sort((a, b) => {
       if (sortConfig.direction === "asc") {
         return a[chosenColumn] > b[chosenColumn] ? 1 : -1;
@@ -44,7 +42,7 @@ const ObjectPage = () => {
       }
     });
 
-    setFilteredData(sortedData); // Zaktualizowanie danych
+    setFilteredData(sortedData);
   };
 
   useEffect(() => {
@@ -62,17 +60,21 @@ const ObjectPage = () => {
   };
 
   const getAllFilters = async () => {
-    const filters = objectFilters
-      .map((item) => item.name)
-      .reduce((acc, item) => {
-        return { ...acc, ...item };
+    const filters = objectFilters?.length
+      ? objectFilters
+          .map((item) => item.name)
+          .reduce((acc, item) => ({ ...acc, ...item }), {})
+      : {};
+
+    try {
+      const response = await axios.post("http://localhost:3000/objects", {
+        filters,
       });
 
-    const response = await axios.post("http://localhost:3000/objects", {
-      filters,
-    });
-
-    setFilteredData(response.data);
+      setFilteredData(response.data);
+    } catch (error) {
+      console.error("Błąd podczas pobierania danych:", error);
+    }
   };
 
   return (
