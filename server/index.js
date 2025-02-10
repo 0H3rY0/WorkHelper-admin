@@ -75,5 +75,22 @@ app.get("/object/:id", (req, res) => {
     res.json(result);
   });
 });
+// ------------------------------------------------------------------------
+
+// downloading users for single page object
+app.get("/object/users/:id", (req, res) => {
+  const { id } = req.params;
+
+  const sql =
+    "SELECT u.* FROM obiekty o JOIN obiekty_uzytkownicy ou ON o.id = ou.obiekt_id JOIN uzytkownicy u ON ou.uzytkownik_id = u.id WHERE o.id = ?";
+
+  db.query(sql, id, (err, result) => {
+    if (err) {
+      console.error("error: " + err);
+    }
+
+    res.json(result);
+  });
+});
 
 app.listen(3000, () => console.log("app listen on port 3000"));
