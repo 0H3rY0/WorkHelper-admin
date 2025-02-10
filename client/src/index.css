@@ -4,7 +4,7 @@
 
 html,
 body {
-  overflow-x: hidden; /* Zablokowanie przewijania poziomego na całej stronie */
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -89,8 +89,7 @@ body {
   color: #fff;
   border-radius: 8px;
   overflow: hidden;
-  table-layout: fixed; /* Zapewnia równe szerokości kolumn */
-  /* overflow: hidden; */
+  table-layout: fixed;
 }
 
 .table th,
@@ -99,7 +98,7 @@ body {
   border: 1px solid #444;
   text-align: center;
   font-size: 10px;
-  word-wrap: break-word; /* Łamanie długich tekstów */
+  word-wrap: break-word;
   overflow: hidden;
 }
 
@@ -107,8 +106,8 @@ body {
   background-color: #444;
   font-weight: 600;
   border-bottom: 2px solid #555;
-  white-space: normal; /* Pozwala na łamanie linii */
-  word-break: break-word; /* Dzieli długie słowa */
+  white-space: normal;
+  word-break: break-word;
 }
 
 .table tr:hover {
@@ -128,7 +127,7 @@ body {
   }
 
   .table thead {
-    display: none; /* Ukrywamy nagłówek na telefonach */
+    display: none;
   }
 
   .table tr {
@@ -177,13 +176,10 @@ body {
   }
 }
 
-/* scale transition  */
-
 .scale-transition {
-  transition: transform 0.3s ease; /* Płynne przejście transformacji */
+  transition: transform 0.3s ease;
 }
 
-/* Efekt powiększenia (scale) po najechaniu */
 .scale-transition:hover {
-  transform: scale(1.1); /* Powiększenie o 10% */
+  transform: scale(1.1);
 }
