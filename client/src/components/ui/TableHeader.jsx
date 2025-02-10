@@ -6,7 +6,7 @@ const TableHeader = ({ objectColumns, sortConfig, onSort }) => {
       <tr>
         {objectColumns.map((col) => (
           <th key={col}>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <p>{col}</p>
               <SortIcon
                 isActive={sortConfig.column === col}

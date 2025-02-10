@@ -10,7 +10,7 @@ const Navbar = () => {
     <>
       {/* navbar container */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-gray-700 p-6 text-xl text-slate-300 font-semibold transition-transform duration-300 z-40
+        className={`fixed top-0 left-0 h-full w-56 bg-gray-700 p-6 text-xl text-slate-300 font-semibold transition-transform duration-300 z-40
         ${
           isNavbarActive ? "translate-x-0" : "-translate-x-full"
         } md:relative md:translate-x-0 md:block`}

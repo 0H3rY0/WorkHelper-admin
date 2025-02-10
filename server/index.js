@@ -48,7 +48,7 @@ app.post("/objects", (req, res) => {
 
 app.get("/columns", (req, res) => {
   const sql =
-    "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'obiekty' AND TABLE_SCHEMA = 'workhelper'";
+    "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'obiekty' AND TABLE_SCHEMA = 'workhelper4'";
 
   db.query(sql, (err, results) => {
     if (err) {

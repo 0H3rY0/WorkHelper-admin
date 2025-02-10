@@ -5,19 +5,17 @@ import { useParams } from "react-router";
 const SingleObjectPage = () => {
   const { id } = useParams();
   const [objectData, setObjectData] = useState({});
-  const [objectUsers, setObjectUsers] = useState([]);
+  // const [objectUsers, setObjectUsers] = useState([]);
 
   useEffect(() => {
     const getSingleObject = async () => {
       const response = await axios.get(`http://localhost:3000/object/${id}`);
-      const usersResponse = await axios.get(
-        `http://localhost:3000/object/users/${id}`
-      );
+      // const usersResponse = await axios.get(
+      //   `http://localhost:3000/object/users/${id}`
+      // );
 
-      console.log(usersResponse.data);
-      setObjectUsers(usersResponse.data);
+      // setObjectUsers(usersResponse.data);
       setObjectData(response.data[0]);
-      console.log(response.data);
     };
 
     getSingleObject();
@@ -35,7 +33,7 @@ const SingleObjectPage = () => {
 
       <h2 className="text-2xl font-bold">Users: </h2>
 
-      {objectData ? (
+      {/* {objectData ? (
         objectUsers.map((item) =>
           Object.values(item).map((value, index) => (
             <div key={index}>{value}</div>
@@ -43,7 +41,7 @@ const SingleObjectPage = () => {
         )
       ) : (
         <p>No data</p>
-      )}
+      )} */}
     </div>
   );
 };

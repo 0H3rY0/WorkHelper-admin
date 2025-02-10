@@ -39,11 +39,14 @@ const ObjectDataTable = ({ objectColumns, setFilteredData, filteredData }) => {
 
   return (
     <table className="table mt-7">
-      <TableHeader
-        objectColumns={objectColumns}
-        sortConfig={sortConfig}
-        onSort={sortDataByChoosenRecord}
-      />
+      {filteredData.length > 0 ? (
+        <TableHeader
+          objectColumns={objectColumns}
+          sortConfig={sortConfig}
+          onSort={sortDataByChoosenRecord}
+        />
+      ) : null}
+
       <tbody>
         {filteredData.length > 0 ? (
           filteredData.map((item) => (
