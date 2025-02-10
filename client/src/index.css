@@ -87,7 +87,8 @@ body {
   border-collapse: collapse;
   background-color: #2d2d2d;
   color: #fff;
-  border-radius: 8px;
+  /* border-radius: 8px; */
+  /* border-bottom: 0px; */
   overflow: hidden;
   table-layout: fixed;
 }

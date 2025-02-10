@@ -8,6 +8,8 @@ const ObjectPage = () => {
   const [objectFilters, setObjectFilters] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [objectColumns, setObjectColumns] = useState([]);
+  const [originalData, setOriginalData] = useState([]); // Pełne dane
+  const [rowLimit, setRowLimit] = useState(5); // Domyślny limit wierszy
 
   useEffect(() => {
     const getColumns = async () => {
@@ -30,14 +32,21 @@ const ObjectPage = () => {
         filters,
       });
 
-      setFilteredData(response.data);
+      setOriginalData(response.data); // Zapisujemy pełne dane
+      setFilteredData(response.data.slice(0, rowLimit)); // Ograniczamy do domyślnego limitu
     } catch (error) {
       console.error("Błąd podczas pobierania danych:", error);
     }
   };
 
+  const changeFilteredDataRowsLimit = (e) => {
+    const limit = Number(e.target.value);
+    setRowLimit(limit);
+    setFilteredData(originalData.slice(0, limit));
+  };
+
   return (
-    <div className="w-full flex flex-col items-start ">
+    <div className="w-full flex flex-col items-start">
       <ObjectsFilterSection
         objectFilters={objectFilters}
         setObjectFilters={setObjectFilters}
@@ -48,12 +57,26 @@ const ObjectPage = () => {
         <h2 className="flex gap-2">
           Dane <FaDatabase size={32} />
         </h2>
-        <button
-          className="button bg-custom-blue text-white"
-          onClick={() => getAllFilters()}
-        >
-          Pokaz
-        </button>
+        <div className="flex items-center justify-start gap-10">
+          <div className="flex items-center justify-center gap-2 text-[1rem]">
+            <select
+              className="bg-white hover:bg-slate-400 shadow-xl rounded-lg p-2 hover:scale-110 scale-transition"
+              onChange={changeFilteredDataRowsLimit}
+              value={rowLimit}
+            >
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={50}>20</option>
+            </select>
+            <p>Liczba wyświetleń</p>
+          </div>
+          <button
+            className="button bg-custom-blue text-white"
+            onClick={() => getAllFilters()}
+          >
+            Pokaż
+          </button>
+        </div>
       </div>
 
       <ObjectDataTable
@@ -61,6 +84,7 @@ const ObjectPage = () => {
         setFilteredData={setFilteredData}
         filteredData={filteredData}
       />
+      {/* <div className="w-full bg-dark-gray text-white p-4 text-end">liczba</div> */}
     </div>
   );
 };
