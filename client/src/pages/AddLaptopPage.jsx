@@ -28,6 +28,10 @@ const AddLaptopPage = () => {
               ))}
             </div>
           ))}
+
+          <button className="button bg-custom-blue text-white mt-10">
+            Add
+          </button>
         </div>
       </div>
     </div>
