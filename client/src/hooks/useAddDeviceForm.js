@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const useAddDeviceForm = (initialState, endpoint) => {
   const [formState, setFormState] = useState(initialState);
@@ -21,6 +22,7 @@ const useAddDeviceForm = (initialState, endpoint) => {
       console.log(response);
       setFormState(initialState);
       setError("");
+      toast.success("Dane zostały zapisane!", { position: "top-right" });
     } catch (error) {
       console.error(error.response?.data?.error || "Wystąpił błąd");
       setError(error.response?.data?.error || "Wystąpił błąd");
