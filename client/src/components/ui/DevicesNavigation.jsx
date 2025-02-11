@@ -46,27 +46,68 @@ const DevicesNavigation = () => {
           </li>
         </NavLink>
 
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <BsCameraVideoFill size={16} /> Kamery
-        </li>
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <RiRouterFill size={16} /> Router
-        </li>
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <FaFloppyDisk size={16} /> NVR
-        </li>
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <IoAlarmSharp size={16} /> Alartm
-        </li>
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <MdOutlineSettingsInputAntenna size={16} /> Anteny
-        </li>
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <GrCloudSoftware size={16} /> Oprogramowanie
-        </li>
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <FaBoxOpen size={16} /> Pozostale
-        </li>
+        <NavLink
+          to="camera/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <BsCameraVideoFill size={16} /> Kamery
+          </li>
+        </NavLink>
+
+        <NavLink
+          to="router/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <RiRouterFill size={16} /> Router
+          </li>
+        </NavLink>
+
+        <NavLink
+          to="NVR/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <FaFloppyDisk size={16} /> NVR
+          </li>
+        </NavLink>
+
+        <NavLink
+          to="alarm/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <IoAlarmSharp size={16} /> Alarm
+          </li>
+        </NavLink>
+
+        <NavLink
+          to="antenna/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <MdOutlineSettingsInputAntenna size={16} /> Anteny
+          </li>
+        </NavLink>
+
+        <NavLink
+          to="software/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <GrCloudSoftware size={16} /> Oprogramowanie
+          </li>
+        </NavLink>
+
+        <NavLink
+          to="remaining/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <FaBoxOpen size={16} /> Pozostale
+          </li>
+        </NavLink>
       </ul>
     </div>
   );
