@@ -29,7 +29,7 @@ const AddSoftwarePage = () => {
     <div className="w-full p-7 flex flex-col items-start justify-start">
       <div className="w-full">
         <h2 className="h2 flex items-center gap-2 mb-10 text-xl md:text-2xl">
-          Add Laptop <IoMdAdd size={32} />
+          Add Oprogramowanie <IoMdAdd size={32} />
         </h2>
         <AddDeviceForm
           handleSubmitForm={handleSubmit}

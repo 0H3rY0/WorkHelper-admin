@@ -1,17 +1,15 @@
+// import { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
+// import axios from "axios";
 import AddDeviceForm from "../components/AddDeviceForm";
 import useAddDeviceForm from "../hooks/useAddDeviceForm";
-import { cameraFields } from "../utils/deviceFormFilds/cameraFields";
+import { remainingFields } from "../utils/deviceFormFilds/remainingFields";
 
-const AddLaptopPage = () => {
-  const initialCameraState = {
-    nr_seryjny: "",
-    mac: "",
-    model: "",
-    podzial_uprawnien: 0,
-    portHTTP: "",
-    portDANE: "",
-    ipWewnetrzne: "",
+const AddRemainingPage = () => {
+  const initialPozostaleState = {
+    nazwa: "",
+    opis: "",
+    zasadaDzialania: "",
     uwagi: "",
     notatki: "",
     dataOD: "",
@@ -19,19 +17,19 @@ const AddLaptopPage = () => {
   };
 
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
-    initialCameraState,
-    "http://localhost:3000/api/camera/add"
+    initialPozostaleState,
+    "http://localhost:3000/api/laptop/add"
   );
 
   return (
     <div className="w-full p-7 flex flex-col items-start justify-start">
       <div className="w-full">
         <h2 className="h2 flex items-center gap-2 mb-10 text-xl md:text-2xl">
-          Add Kamera <IoMdAdd size={32} />
+          Add Pozostale <IoMdAdd size={32} />
         </h2>
         <AddDeviceForm
           handleSubmitForm={handleSubmit}
-          fields={cameraFields}
+          fields={remainingFields}
           onInputChange={handleChange}
           DeviceState={formState}
         />
@@ -43,4 +41,4 @@ const AddLaptopPage = () => {
   );
 };
 
-export default AddLaptopPage;
+export default AddRemainingPage;
