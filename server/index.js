@@ -5,6 +5,13 @@ const cors = require("cors");
 const obiektyRoutes = require("./routes/objectsRoutes");
 const laptopRoutes = require("./routes/laptopRoutes");
 const PCRoutes = require("./routes/PCRoutes");
+const cameraRoutes = require("./routes/cameraRoutes");
+const alarmRoutes = require("./routes/alarmRoutes");
+const antennaRoutes = require("./routes/antennaRoutes");
+const NVRRoutes = require("./routes/NVRRoutes");
+const remainingRoutes = require("./routes/remainingRoutes");
+const routerRoutes = require("./routes/routerRoutes");
+const softwareRoutes = require("./routes/softwareRoutes");
 
 const app = express();
 
@@ -14,5 +21,12 @@ app.use(express.json());
 app.use("/api", obiektyRoutes);
 app.use("/api", laptopRoutes);
 app.use("/api", PCRoutes);
+app.use("/api", cameraRoutes);
+app.use("/api", alarmRoutes);
+app.use("/api", antennaRoutes);
+app.use("/api", NVRRoutes);
+app.use("/api", remainingRoutes);
+app.use("/api", routerRoutes);
+app.use("/api", softwareRoutes);
 
 app.listen(3000, () => console.log("App listening on port 3000"));

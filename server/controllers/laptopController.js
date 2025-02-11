@@ -47,7 +47,6 @@ const addLaptop = (req, res) => {
     data_do || null,
   ];
 
-  // Wykonujemy zapytanie SQL
   db.query(sql, values, (err, result) => {
     if (err) {
       return res.status(500).json({ error: err.message });

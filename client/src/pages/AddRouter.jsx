@@ -25,7 +25,7 @@ const AddRouterPage = () => {
 
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialRouterState,
-    "http://localhost:3000/api/laptop/add"
+    "http://localhost:3000/api/router/add"
   );
 
   return (

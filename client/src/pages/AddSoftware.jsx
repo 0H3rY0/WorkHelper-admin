@@ -22,7 +22,7 @@ const AddSoftwarePage = () => {
 
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialSoftwareState,
-    "http://localhost:3000/api/laptop/add"
+    "http://localhost:3000/api/software/add"
   );
 
   return (

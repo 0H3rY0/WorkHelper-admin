@@ -18,7 +18,7 @@ const AddRemainingPage = () => {
 
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialPozostaleState,
-    "http://localhost:3000/api/laptop/add"
+    "http://localhost:3000/api/remaining/add"
   );
 
   return (

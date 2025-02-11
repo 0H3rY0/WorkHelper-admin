@@ -21,7 +21,7 @@ const AddLaptopPage = () => {
 
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialAlarmState,
-    "http://localhost:3000/api/laptop/add"
+    "http://localhost:3000/api/alarm/add"
   );
 
   return (

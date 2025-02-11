@@ -28,7 +28,7 @@ const AddNVRPage = () => {
 
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialNVRState,
-    "http://localhost:3000/api/laptop/add"
+    "http://localhost:3000/api/nvr/add"
   );
 
   return (
