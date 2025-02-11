@@ -5,6 +5,12 @@ import { FaLaptop } from "react-icons/fa";
 import { PiComputerTowerFill } from "react-icons/pi";
 import { BsCameraVideoFill } from "react-icons/bs";
 import { useState } from "react";
+import { RiRouterFill } from "react-icons/ri";
+import { FaFloppyDisk } from "react-icons/fa6";
+import { IoAlarmSharp } from "react-icons/io5";
+import { MdOutlineSettingsInputAntenna } from "react-icons/md";
+import { GrCloudSoftware } from "react-icons/gr";
+import { FaBoxOpen } from "react-icons/fa";
 
 const DevicesNavigation = () => {
   const [openList, setOpenList] = useState(false);
@@ -29,6 +35,24 @@ const DevicesNavigation = () => {
         </li>
         <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
           <BsCameraVideoFill size={16} /> Kamery
+        </li>
+        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+          <RiRouterFill size={16} /> Router
+        </li>
+        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+          <FaFloppyDisk size={16} /> NVR
+        </li>
+        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+          <IoAlarmSharp size={16} /> Alartm
+        </li>
+        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+          <MdOutlineSettingsInputAntenna size={16} /> Anteny
+        </li>
+        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+          <GrCloudSoftware size={16} /> Oprogramowanie
+        </li>
+        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+          <FaBoxOpen size={16} /> Pozostale
         </li>
       </ul>
     </div>
