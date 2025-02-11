@@ -4,6 +4,7 @@ import ObjectPage from "./pages/ObjectPage";
 import MainTemplate from "./templates/MainTemplate";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SingleObjectPage from "./pages/SingleObjectPage";
+import AddLaptopPage from "./pages/AddLaptopPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ObjectPage />} />
           <Route path="object/:id" element={<SingleObjectPage />} />
+          <Route path="laptop/add" element={<AddLaptopPage />} />
         </Routes>
       </MainTemplate>
     </BrowserRouter>

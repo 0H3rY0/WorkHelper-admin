@@ -11,6 +11,7 @@ import { IoAlarmSharp } from "react-icons/io5";
 import { MdOutlineSettingsInputAntenna } from "react-icons/md";
 import { GrCloudSoftware } from "react-icons/gr";
 import { FaBoxOpen } from "react-icons/fa";
+import { NavLink } from "react-router";
 
 const DevicesNavigation = () => {
   const [openList, setOpenList] = useState(false);
@@ -27,9 +28,15 @@ const DevicesNavigation = () => {
       <ul
         className={`${openList ? "block" : "hidden"} flex flex-col gap-1 mt-2`}
       >
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <FaLaptop size={16} /> Laptopy
-        </li>
+        <NavLink
+          to="laptop/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <FaLaptop size={16} /> Laptopy
+          </li>
+        </NavLink>
+
         <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
           <PiComputerTowerFill size={16} /> PC
         </li>
