@@ -13,9 +13,11 @@ const ObjectPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
   useEffect(() => {
     const getColumns = async () => {
-      const response = await axios.get("http://localhost:3000/api/columns");
+      const response = await axios.get(`${BACKEND_URL}/api/columns`);
       setObjectColumns(response.data);
     };
 
@@ -30,7 +32,7 @@ const ObjectPage = () => {
       : {};
 
     try {
-      const response = await axios.post("http://localhost:3000/api/objects", {
+      const response = await axios.post(`${BACKEND_URL}/api/objects`, {
         filters,
       });
 

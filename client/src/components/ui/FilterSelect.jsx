@@ -1,4 +1,4 @@
-const FilterSelect = ({ objectColumns, onChange }) => {
+const FilterSelect = ({ objectColumns = [], onChange }) => {
   return (
     <select className="input md:w-1/5 w-full" onChange={onChange}>
       {objectColumns.map((item) => (

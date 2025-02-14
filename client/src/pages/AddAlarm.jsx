@@ -19,9 +19,11 @@ const AddLaptopPage = () => {
     dataDO: "",
   };
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialAlarmState,
-    "http://localhost:3000/api/alarm/add"
+    `${BACKEND_URL}/api/alarm/add`
   );
 
   return (

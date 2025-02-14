@@ -20,9 +20,11 @@ const AddSoftwarePage = () => {
     dataDO: "",
   };
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialSoftwareState,
-    "http://localhost:3000/api/software/add"
+    `${BACKEND_URL}/api/software/add`
   );
 
   return (

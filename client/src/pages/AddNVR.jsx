@@ -26,9 +26,11 @@ const AddNVRPage = () => {
     dataDO: "",
   };
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialNVRState,
-    "http://localhost:3000/api/nvr/add"
+    `${BACKEND_URL}/api/nvr/add`
   );
 
   return (

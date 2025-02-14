@@ -24,9 +24,11 @@ const AddLaptopPage = () => {
     data_do: "",
   };
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialPCState,
-    "http://localhost:3000/api/PC/add"
+    `${BACKEND_URL}/api/PC/add`
   );
 
   return (
