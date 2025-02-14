@@ -98,7 +98,7 @@ const ObjectPage = () => {
         objectColumns={objectColumns}
       />
 
-      <div className="w-full font-semibold text-2xl text-slate-700 flex gap-2 mt-20 justify-between items-center px-7">
+      <div className="w-full font-semibold text-2xl text-slate-700 flex sm:flex-row flex-col gap-2 mt-20 sm:justify-between sm:items-center px-7">
         <h2 className="flex gap-2">
           Dane <FaDatabase size={32} />
         </h2>
