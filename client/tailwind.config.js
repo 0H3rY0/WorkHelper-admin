@@ -6,6 +6,7 @@ export default {
       colors: {
         "custom-blue": "#3b4e63",
         "custom-gray": "#575757",
+        "dark-gray": "#2d2d2d",
       },
     },
   },

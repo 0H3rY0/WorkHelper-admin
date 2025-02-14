@@ -1,0 +1,58 @@
+export const laptopFields = [
+  { id: "nrSeryjny", label: "Nr Seryjny", type: "text", name: "nr_seryjny" },
+  { id: "model", label: "Model", type: "text", name: "model" },
+  {
+    id: "system",
+    label: "System Operacyjny",
+    type: "text",
+    name: "system_operacyjny",
+  },
+  {
+    id: "uprawnienia",
+    label: "Uprawnienia",
+    type: "checkbox",
+    name: "podzial_uprawnien",
+  },
+  {
+    id: "rodzajDysku",
+    label: "Rodzaj Dysku",
+    type: "text",
+    name: "rodzaj_dysku",
+  },
+  {
+    id: "dataWymianyDysku",
+    label: "Data Wymiany Dysku",
+    type: "date",
+    name: "data_wymiany_dysku",
+  },
+  { id: "ram", label: "RAM", type: "number", name: "ram" },
+  {
+    id: "kartaGraficzna",
+    label: "Karta Graficzna (zintegrowana)",
+    type: "checkbox",
+    name: "karta_graficzna",
+  },
+  {
+    id: "plytaGlowna",
+    label: "Płyta Główna",
+    type: "text",
+    name: "plyta_glowna",
+  },
+  { id: "zasilacz", label: "Zasilacz", type: "text", name: "zasilacz" },
+  {
+    id: "programZdalny",
+    label: "Program Zdalny",
+    type: "text",
+    name: "program_zdalny",
+  },
+  {
+    id: "idProgramu",
+    label: "ID Programu",
+    type: "text",
+    name: "id_programu",
+  },
+  { id: "uwagi", label: "Uwagi", type: "text", name: "uwagi" },
+  { id: "notatki", label: "Notatki", type: "text", name: "notatki" },
+  { id: "dataDo", label: "Data do", type: "date", name: "data_do" },
+  { id: "dataOd", label: "Data od", type: "date", name: "data_od" },
+];
