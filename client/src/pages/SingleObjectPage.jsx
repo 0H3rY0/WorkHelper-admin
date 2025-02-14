@@ -7,11 +7,11 @@ const SingleObjectPage = () => {
   const [objectData, setObjectData] = useState({});
   // const [objectUsers, setObjectUsers] = useState([]);
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
   useEffect(() => {
     const getSingleObject = async () => {
-      const response = await axios.get(
-        `http://localhost:3000/api/object/${id}`
-      );
+      const response = await axios.get(`${BACKEND_URL}/api/object/${id}`);
       // const usersResponse = await axios.get(
       //   `http://localhost:3000/object/users/${id}`
       // );
