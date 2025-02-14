@@ -1,0 +1,31 @@
+export const routerFields = [
+  { id: "nrSeryjny", label: "Nr Seryjny", type: "text", name: "nr_seryjny" },
+  { id: "model", label: "Model", type: "text", name: "model" },
+  { id: "macWAN", label: "MAC WAN", type: "text", name: "macWAN" },
+  { id: "ipwew", label: "IP Wewnetrzne", type: "text", name: "ipwew" },
+  { id: "ipzew", label: "IP Zewnętrzne", type: "text", name: "ipzew" },
+  {
+    id: "uprawnienia",
+    label: "Uprawnienia",
+    type: "checkbox",
+    name: "podzial_uprawnien",
+  },
+  { id: "portHTTP", label: "Port HTTP", type: "number", name: "portHTTP" },
+  { id: "portDANE", label: "Port DANE", type: "number", name: "portDANE" },
+  {
+    id: "VPNklien",
+    label: "VPN Klient",
+    type: "checkbox",
+    name: "VPNklien",
+  },
+  {
+    id: "VPNzazadzanie",
+    label: "VPN Zarządzanie",
+    type: "checkbox",
+    name: "VPNzazadzanie",
+  },
+  { id: "uwagi", label: "Uwagi", type: "text", name: "uwagi" },
+  { id: "notatki", label: "Notatki", type: "text", name: "notatki" },
+  { id: "dataOD", label: "Data OD", type: "date", name: "dataOD" },
+  { id: "dataDO", label: "Data DO", type: "date", name: "dataDO" },
+];

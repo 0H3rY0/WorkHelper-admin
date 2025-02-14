@@ -15,7 +15,7 @@ const ObjectPage = () => {
 
   useEffect(() => {
     const getColumns = async () => {
-      const response = await axios.get("http://localhost:3000/columns");
+      const response = await axios.get("http://localhost:3000/api/columns");
       setObjectColumns(response.data);
     };
 
@@ -30,7 +30,7 @@ const ObjectPage = () => {
       : {};
 
     try {
-      const response = await axios.post("http://localhost:3000/objects", {
+      const response = await axios.post("http://localhost:3000/api/objects", {
         filters,
       });
 

@@ -9,7 +9,9 @@ const SingleObjectPage = () => {
 
   useEffect(() => {
     const getSingleObject = async () => {
-      const response = await axios.get(`http://localhost:3000/object/${id}`);
+      const response = await axios.get(
+        `http://localhost:3000/api/object/${id}`
+      );
       // const usersResponse = await axios.get(
       //   `http://localhost:3000/object/users/${id}`
       // );

@@ -11,6 +11,7 @@ import { IoAlarmSharp } from "react-icons/io5";
 import { MdOutlineSettingsInputAntenna } from "react-icons/md";
 import { GrCloudSoftware } from "react-icons/gr";
 import { FaBoxOpen } from "react-icons/fa";
+import { NavLink } from "react-router";
 
 const DevicesNavigation = () => {
   const [openList, setOpenList] = useState(false);
@@ -27,33 +28,86 @@ const DevicesNavigation = () => {
       <ul
         className={`${openList ? "block" : "hidden"} flex flex-col gap-1 mt-2`}
       >
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <FaLaptop size={16} /> Laptopy
-        </li>
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <PiComputerTowerFill size={16} /> PC
-        </li>
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <BsCameraVideoFill size={16} /> Kamery
-        </li>
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <RiRouterFill size={16} /> Router
-        </li>
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <FaFloppyDisk size={16} /> NVR
-        </li>
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <IoAlarmSharp size={16} /> Alartm
-        </li>
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <MdOutlineSettingsInputAntenna size={16} /> Anteny
-        </li>
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <GrCloudSoftware size={16} /> Oprogramowanie
-        </li>
-        <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
-          <FaBoxOpen size={16} /> Pozostale
-        </li>
+        <NavLink
+          to="laptop/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <FaLaptop size={16} /> Laptopy
+          </li>
+        </NavLink>
+
+        <NavLink
+          to="PC/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <PiComputerTowerFill size={16} /> PC
+          </li>
+        </NavLink>
+
+        <NavLink
+          to="camera/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <BsCameraVideoFill size={16} /> Kamery
+          </li>
+        </NavLink>
+
+        <NavLink
+          to="router/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <RiRouterFill size={16} /> Router
+          </li>
+        </NavLink>
+
+        <NavLink
+          to="NVR/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <FaFloppyDisk size={16} /> NVR
+          </li>
+        </NavLink>
+
+        <NavLink
+          to="alarm/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <IoAlarmSharp size={16} /> Alarm
+          </li>
+        </NavLink>
+
+        <NavLink
+          to="antenna/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <MdOutlineSettingsInputAntenna size={16} /> Anteny
+          </li>
+        </NavLink>
+
+        <NavLink
+          to="software/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <GrCloudSoftware size={16} /> Oprogramowanie
+          </li>
+        </NavLink>
+
+        <NavLink
+          to="remaining/add"
+          className={({ isActive }) => (isActive ? "text-slate-500" : "")}
+        >
+          <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
+            <FaBoxOpen size={16} /> Pozostale
+          </li>
+        </NavLink>
       </ul>
     </div>
   );
