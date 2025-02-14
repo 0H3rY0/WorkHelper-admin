@@ -1,6 +1,7 @@
-// controllers/obiektyController.js
-
 const db = require("../config/db");
+require("dotenv").config();
+
+const DATABASE_NAME = process.env.DB_NAME;
 
 const getObjects = (req, res) => {
   const { filters } = req.body;
@@ -36,8 +37,7 @@ const getObjects = (req, res) => {
 };
 
 const getColumns = (req, res) => {
-  const sql =
-    "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'obiekty' AND TABLE_SCHEMA = 'workhelper4'";
+  const sql = `SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'obiekty' AND TABLE_SCHEMA = '${DATABASE_NAME}'`;
 
   db.query(sql, (err, results) => {
     if (err) {

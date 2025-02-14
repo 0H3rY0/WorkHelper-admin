@@ -16,9 +16,11 @@ const AddRemainingPage = () => {
     dataDO: "",
   };
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialPozostaleState,
-    "http://localhost:3000/api/remaining/add"
+    `${BACKEND_URL}/api/remaining/add`
   );
 
   return (

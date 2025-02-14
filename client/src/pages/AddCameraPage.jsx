@@ -18,9 +18,11 @@ const AddLaptopPage = () => {
     dataDO: "",
   };
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialCameraState,
-    "http://localhost:3000/api/camera/add"
+    `${BACKEND_URL}/api/camera/add`
   );
 
   return (
