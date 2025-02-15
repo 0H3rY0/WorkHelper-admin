@@ -57,7 +57,7 @@ const ObjectPage = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-start">
+    <div className="w-full flex flex-col items-start p-14">
       <ObjectsFilterSection
         objectFilters={objectFilters}
         setObjectFilters={setObjectFilters}

@@ -15,7 +15,7 @@ const ObjectsFilterSection = ({
 
   return (
     <>
-      <h2 className="font-semibold text-2xl text-slate-700 flex gap-2 p-7">
+      <h2 className="font-semibold text-2xl text-slate-700 flex gap-2 ">
         Filtry <FaFilter size={32} />
       </h2>
       <div className="w-full flex flex-col  justify-center mt-5">
