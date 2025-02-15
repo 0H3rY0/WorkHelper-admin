@@ -12,13 +12,14 @@ const ObjectPage = () => {
     objectFilters,
     setObjectFilters,
     setFilteredData,
-    filteredData,
+    paginatedData,
     rowLimit,
     getAllFilters,
     changeFilteredDataRowsLimit,
     currentPage,
     setCurrentPage,
     totalPages,
+    searchTableRecord,
   } = useFilters(BACKEND_URL);
 
   const [objectColumns, setObjectColumns] = useState([]);
@@ -70,11 +71,12 @@ const ObjectPage = () => {
         setObjectFilters={setObjectFilters}
         rowLimit={rowLimit}
         changeFilteredDataRowsLimit={changeFilteredDataRowsLimit}
+        searchTableRecord={searchTableRecord}
       />
 
       <ObjectDataTable
         objectColumns={objectColumns}
-        filteredData={filteredData}
+        filteredData={paginatedData}
         setFilteredData={setFilteredData}
       />
 

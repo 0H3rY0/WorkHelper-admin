@@ -1,6 +1,11 @@
 import { FaDatabase } from "react-icons/fa";
 
-const Filters = ({ getAllFilters, rowLimit, changeFilteredDataRowsLimit }) => {
+const Filters = ({
+  getAllFilters,
+  rowLimit,
+  changeFilteredDataRowsLimit,
+  searchTableRecord,
+}) => {
   return (
     <div className="w-full font-semibold text-2xl text-slate-700 flex md:flex-row flex-col mt-20 md:justify-between md:items-center items-start">
       <h2 className="flex gap-2">
@@ -12,6 +17,7 @@ const Filters = ({ getAllFilters, rowLimit, changeFilteredDataRowsLimit }) => {
             className="bg-white hover:bg-slate-400 shadow-xl rounded-lg p-2 hover:scale-110 scale-transition"
             onChange={(e) => changeFilteredDataRowsLimit(e)}
             value={rowLimit}
+            name="rowLimit"
           >
             <option value={5}>5</option>
             <option value={10}>10</option>
@@ -19,7 +25,12 @@ const Filters = ({ getAllFilters, rowLimit, changeFilteredDataRowsLimit }) => {
           </select>
           <p>Liczba wyświetleń</p>
         </div>
-        <input type="text" placeholder="Wyszukaj" />
+        <input
+          type="text"
+          placeholder="Wyszukaj"
+          onChange={searchTableRecord}
+          name="search"
+        />
         <button
           className="button bg-custom-blue text-white"
           onClick={getAllFilters}
