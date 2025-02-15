@@ -1,9 +1,9 @@
 import Navbar from "./components/layouts/Navbar";
 import Header from "./components/layouts/Header";
-import ObjectPage from "./pages/ObjectPage";
+import ObjectPage from "./pages/object/ObjectPage";
 import MainTemplate from "./templates/MainTemplate";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SingleObjectPage from "./pages/SingleObjectPage";
+import SingleObjectPage from "./pages/object/SingleObjectPage";
 import AddLaptopPage from "./pages/AddLaptopPage";
 import { ToastContainer } from "react-toastify";
 import AddPCPage from "./pages/AddPCPage";
@@ -14,6 +14,7 @@ import AddAntenna from "./pages/AddAntenna";
 import AddCameraPage from "./pages/AddCameraPage";
 import AddNVR from "./pages/AddNVR";
 import AddRouter from "./pages/AddRouter";
+import AddObject from "./pages/object/AddObject";
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
           <Routes>
             <Route path="/" element={<ObjectPage />} />
             <Route path="object/:id" element={<SingleObjectPage />} />
+            <Route path="object/add" element={<AddObject />} />
+
             <Route path="laptop/add" element={<AddLaptopPage />} />
             <Route path="PC/add" element={<AddPCPage />} />
             <Route path="camera/add" element={<AddCameraPage />} />

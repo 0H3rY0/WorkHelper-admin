@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import useFilters from "../hooks/useFilters";
-import ObjectsFilterSection from "../components/ObjectsFilterSection";
-import ObjectDataTable from "../components/ObjectDataTable";
-import Filters from "../components/Filters";
-import Pagination from "../components/Pagination";
+import useFilters from "../../hooks/useFilters";
+import ObjectsFilterSection from "../../components/ObjectsFilterSection";
+import ObjectDataTable from "../../components/ObjectDataTable";
+import Filters from "../../components/Filters";
+import Pagination from "../../components/Pagination";
 import axios from "axios";
 
 const ObjectPage = () => {
