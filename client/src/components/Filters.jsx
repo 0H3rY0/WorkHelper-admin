@@ -2,12 +2,12 @@ import { FaDatabase } from "react-icons/fa";
 
 const Filters = ({ getAllFilters, rowLimit, changeFilteredDataRowsLimit }) => {
   return (
-    <div className="w-full font-semibold text-2xl text-slate-700 flex sm:flex-row flex-col gap-2 mt-20 sm:justify-between sm:items-center">
+    <div className="w-full font-semibold text-2xl text-slate-700 flex md:flex-row flex-col mt-20 md:justify-between md:items-center items-start">
       <h2 className="flex gap-2">
         Dane <FaDatabase size={32} />
       </h2>
-      <div className="flex items-center justify-start gap-10">
-        <div className="flex items-center justify-center gap-2 text-[1rem]">
+      <div className="flex md:flex-row flex-col md:items-center justify-start md:gap-10 gap-3 md:mt-0 mt-6">
+        <div className="flex items-center md:justify-center justify-start gap-2 text-[1rem]">
           <select
             className="bg-white hover:bg-slate-400 shadow-xl rounded-lg p-2 hover:scale-110 scale-transition"
             onChange={(e) => changeFilteredDataRowsLimit(e)}
@@ -19,6 +19,7 @@ const Filters = ({ getAllFilters, rowLimit, changeFilteredDataRowsLimit }) => {
           </select>
           <p>Liczba wyświetleń</p>
         </div>
+        <input type="text" placeholder="Wyszukaj" />
         <button
           className="button bg-custom-blue text-white"
           onClick={getAllFilters}
