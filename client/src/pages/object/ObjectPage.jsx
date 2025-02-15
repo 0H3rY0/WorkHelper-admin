@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import useFilters from "../hooks/useFilters";
-import ObjectsFilterSection from "../components/ObjectsFilterSection";
-import ObjectDataTable from "../components/ObjectDataTable";
-import Filters from "../components/Filters";
-import Pagination from "../components/Pagination";
+import useFilters from "../../hooks/useFilters";
+import ObjectsFilterSection from "../../components/ObjectsFilterSection";
+import ObjectDataTable from "../../components/ObjectDataTable";
+import Filters from "../../components/Filters";
+import Pagination from "../../components/Pagination";
 import axios from "axios";
 
 const ObjectPage = () => {
@@ -12,13 +12,14 @@ const ObjectPage = () => {
     objectFilters,
     setObjectFilters,
     setFilteredData,
-    filteredData,
+    paginatedData,
     rowLimit,
     getAllFilters,
     changeFilteredDataRowsLimit,
     currentPage,
     setCurrentPage,
     totalPages,
+    searchTableRecord,
   } = useFilters(BACKEND_URL);
 
   const [objectColumns, setObjectColumns] = useState([]);
@@ -57,7 +58,7 @@ const ObjectPage = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-start">
+    <div className="w-full flex flex-col items-start md:p-14 p-3">
       <ObjectsFilterSection
         objectFilters={objectFilters}
         setObjectFilters={setObjectFilters}
@@ -70,11 +71,12 @@ const ObjectPage = () => {
         setObjectFilters={setObjectFilters}
         rowLimit={rowLimit}
         changeFilteredDataRowsLimit={changeFilteredDataRowsLimit}
+        searchTableRecord={searchTableRecord}
       />
 
       <ObjectDataTable
         objectColumns={objectColumns}
-        filteredData={filteredData}
+        filteredData={paginatedData}
         setFilteredData={setFilteredData}
       />
 

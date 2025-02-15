@@ -75,9 +75,67 @@ const getUsersForObject = (req, res) => {
   });
 };
 
+const addObject = (req, res) => {
+  const {
+    nazwa,
+    kod_pocztowy,
+    miejscowosc,
+    ul,
+    nr_budynku,
+    nr_lokalu,
+    pietro,
+    kod_domofonu,
+    szerokosc_g,
+    dlugosc_g,
+    dataOD,
+    dataDO,
+    klient_wlasny,
+    przekazany_p,
+    uwagi,
+  } = req.body;
+
+  const sql = `
+    INSERT INTO obiekty (
+      nazwa, kod_pocztowy, miejscowosc, ul, nr_budynku, nr_lokalu, pietro,
+      kod_domofonu, szerokosc_g, dlugosc_g, dataOD, dataDO, klient_wlasny,
+      przekazany_p, uwagi
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `;
+
+  const values = [
+    nazwa,
+    kod_pocztowy,
+    miejscowosc,
+    ul,
+    nr_budynku,
+    nr_lokalu || null,
+    pietro || null,
+    kod_domofonu || null,
+    szerokosc_g || null,
+    dlugosc_g || null,
+    dataOD || null,
+    dataDO || null,
+    klient_wlasny || false,
+    przekazany_p || null,
+    uwagi || null,
+  ];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
+    res.status(201).json({
+      message: "Object added successfully",
+      objectId: result.insertId,
+    });
+  });
+};
+
 module.exports = {
   getObjects,
   getColumns,
   getObjectById,
   getUsersForObject,
+  addObject,
 };

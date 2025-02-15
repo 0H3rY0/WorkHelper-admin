@@ -4,48 +4,78 @@ import axios from "axios";
 const useFilters = (BACKEND_URL) => {
   const [objectFilters, setObjectFilters] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [paginatedData, setPaginatedData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
   const [rowLimit, setRowLimit] = useState(5);
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isSearching, setIsSearching] = useState(false);
 
   const getAllFilters = async () => {
-    const filters = objectFilters?.length
-      ? objectFilters
-          .map((item) => item.name)
-          .reduce((acc, item) => ({ ...acc, ...item }), {})
-      : {};
-
     try {
+      const filters = objectFilters.length
+        ? objectFilters.reduce((acc, item) => ({ ...acc, ...item.name }), {})
+        : {};
+
       const response = await axios.post(`${BACKEND_URL}/api/objects`, {
         filters,
       });
+
       setOriginalData(response.data);
+      setFilteredData(response.data);
+      setIsSearching(false);
+      setCurrentPage(1);
     } catch (error) {
       console.error("Błąd podczas pobierania danych:", error);
     }
   };
 
   const changeFilteredDataRowsLimit = (e) => {
-    console.log("wykonuje");
     const limit = Number(e.target.value);
     setRowLimit(limit);
     setCurrentPage(1);
   };
 
-  useEffect(() => {
-    const totalPages = Math.max(1, Math.ceil(originalData.length / rowLimit));
-    setTotalPages(totalPages);
+  const searchTableRecord = (e) => {
+    const searchValue = e.target.value.toLowerCase().trim();
 
+    if (!searchValue) {
+      setFilteredData(originalData);
+      setIsSearching(false);
+      setCurrentPage(1);
+      return;
+    }
+
+    setIsSearching(true);
+
+    const newData = originalData.filter((item) =>
+      Object.values(item).some((val) =>
+        String(val).toLowerCase().includes(searchValue)
+      )
+    );
+
+    setFilteredData(newData);
+    setCurrentPage(1);
+  };
+
+  useEffect(() => {
+    const dataSource = isSearching ? filteredData : originalData;
+    setTotalPages(Math.max(1, Math.ceil(dataSource.length / rowLimit)));
+  }, [originalData, filteredData, rowLimit, isSearching]);
+
+  useEffect(() => {
+    const dataSource = filteredData;
     const startIndex = (currentPage - 1) * rowLimit;
     const endIndex = startIndex + rowLimit;
-    setFilteredData(originalData.slice(startIndex, endIndex));
-  }, [originalData, rowLimit, currentPage]);
+
+    const paginatedData = dataSource.slice(startIndex, endIndex);
+    setPaginatedData(paginatedData);
+  }, [filteredData, rowLimit, currentPage]);
 
   return {
     objectFilters,
     setObjectFilters,
-    filteredData,
+    paginatedData,
     setFilteredData,
     originalData,
     setOriginalData,
@@ -55,6 +85,7 @@ const useFilters = (BACKEND_URL) => {
     currentPage,
     setCurrentPage,
     totalPages,
+    searchTableRecord,
   };
 };
 
