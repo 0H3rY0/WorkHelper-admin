@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { data, useParams } from "react-router";
-import { objectFileds } from "../../utils/deviceFormFilds/objectFields";
+// import { objectFileds } from "../../utils/deviceFormFilds/objectFields";
+import { objectViewConfig } from "../../utils/showFields.config/object.view.config";
 import { GrOverview } from "react-icons/gr";
 import { Link } from "react-router";
 import { IoMdArrowRoundBack } from "react-icons/io";
@@ -95,7 +96,7 @@ const SingleObjectPage = () => {
       </div>
 
       <ul className="w-full flex flex-col md:gap-6 gap-8">
-        {objectFileds.map((item) => (
+        {objectViewConfig.map((item) => (
           <li
             key={item.id}
             className="w-full flex flex-col items-start justify-center"

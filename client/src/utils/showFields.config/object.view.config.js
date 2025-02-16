@@ -1,0 +1,18 @@
+export const objectViewConfig = [
+  { label: "Id", type: "number", name: "id" },
+  { label: "Nazwa", type: "text", name: "nazwa" },
+  { label: "Kod Pocztowy", type: "text", name: "kod_pocztowy" },
+  { label: "Miejscowość", type: "text", name: "miejscowosc" },
+  { label: "Ulica", type: "text", name: "ul" },
+  { label: "Numer Budynku", type: "text", name: "nr_budynku" },
+  { label: "Numer Lokalu", type: "text", name: "nr_lokalu" },
+  { label: "Piętro", type: "text", name: "pietro" },
+  { label: "Kod Domofonu", type: "text", name: "kod_domofonu" },
+  { label: "Szerokość Geograficzna", type: "number", name: "szerokosc_g" },
+  { label: "Długość Geograficzna", type: "number", name: "dlugosc_g" },
+  { label: "Data OD", type: "date", name: "dataOD" },
+  { label: "Data DO", type: "date", name: "dataDO" },
+  { label: "Klient Własny", type: "checkbox", name: "klient_wlasny" },
+  { label: "Przekazany Personel", type: "text", name: "przekazany_p" },
+  { label: "Uwagi", type: "text", name: "uwagi" },
+];
