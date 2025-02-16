@@ -5,11 +5,12 @@ import { objectFileds } from "../../utils/deviceFormFilds/objectFields";
 import { GrOverview } from "react-icons/gr";
 import { Link } from "react-router";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import CheckAgreementModal from "../../components/modals/CheckAgreementModal";
+import { toast } from "react-toastify";
 
 const SingleObjectPage = () => {
   const { id } = useParams();
   const [objectData, setObjectData] = useState({});
-  // const [objectState, setObjectState] = useState({});
   const [editMode, setEditMode] = useState(null);
   const inputRefs = useRef({});
 
@@ -18,7 +19,6 @@ const SingleObjectPage = () => {
   useEffect(() => {
     const getSingleObject = async () => {
       const response = await axios.get(`${BACKEND_URL}/api/object/${id}`);
-      // setObjectState(response.data[0]);
       setObjectData(response.data[0]);
     };
 
@@ -26,7 +26,8 @@ const SingleObjectPage = () => {
   }, [id]);
 
   const handleCheckObjectState = (e) => {
-    const name = e.target.dataset.name;
+    const name = e.currentTarget.dataset.name;
+    console.log(name);
     setEditMode(name);
 
     if (inputRefs.current[name]) {
@@ -44,6 +45,27 @@ const SingleObjectPage = () => {
     }));
 
     console.log(objectData);
+  };
+
+  const handleEditField = async () => {
+    const newObjectData = {
+      id,
+      ...objectData,
+    };
+
+    try {
+      const response = await axios.post(
+        `${BACKEND_URL}/api/object/edit`,
+        newObjectData
+      );
+
+      console.log(response);
+
+      setEditMode(null);
+      toast.success("Operacja zakonczona sukcesem!");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -83,14 +105,44 @@ const SingleObjectPage = () => {
                 onChange={handleChangeObjectState}
               />
 
-              <p
+              {}
+
+              <div
                 data-name={item.name}
-                className="md:mr-14 mr-0 underline tracking-widest cursor-pointer hover:scale-125 scale-transition
-                hover:text-slate-600 underline-offset-4"
+                className="md:mr-14 mr-0 underline tracking-widest cursor-pointer
+                 underline-offset-4 flex gap-5"
                 onClick={handleCheckObjectState}
               >
-                {editMode === item.name ? "Save" : "Edit"}
-              </p>
+                {editMode === item.name ? (
+                  <>
+                    <CheckAgreementModal
+                      text={`Czy jesetes pewny ze chcesz edytowac pole ${
+                        item.label
+                      } wartoscia ${objectData[item.name]} ?`}
+                      btnText={"Edit"}
+                      func={handleEditField}
+                    >
+                      <p className="hover:scale-125 scale-transition underline underline-offset-4 hover:text-slate-600">
+                        Save
+                      </p>
+                    </CheckAgreementModal>
+
+                    <p
+                      className="hover:scale-125 scale-transition hover:text-slate-600"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setEditMode(null);
+                      }}
+                    >
+                      Cancel
+                    </p>
+                  </>
+                ) : (
+                  <p className="hover:scale-125 scale-transition hover:text-slate-600">
+                    Edit
+                  </p>
+                )}
+              </div>
             </div>
           </li>
         ))}
