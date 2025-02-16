@@ -6,12 +6,15 @@ import { GrOverview } from "react-icons/gr";
 import { Link } from "react-router";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import CheckAgreementModal from "../../components/modals/CheckAgreementModal";
+import DeleteModal from "../../components/modals/DeleteModal";
 import { toast } from "react-toastify";
 
 const SingleObjectPage = () => {
   const { id } = useParams();
   const [objectData, setObjectData] = useState({});
   const [editMode, setEditMode] = useState(null);
+
+  const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   const inputRefs = useRef({});
 
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -64,11 +67,11 @@ const SingleObjectPage = () => {
   };
 
   const handleDeleteObject = () => {
-    const todayDate = new Date().toISOString().split("T")[0];
+    console.log(date);
 
     try {
       const response = axios.post(`${BACKEND_URL}/api/object/delete`, {
-        todayDate,
+        date,
         id,
       });
 
@@ -157,12 +160,18 @@ const SingleObjectPage = () => {
           </li>
         ))}
       </ul>
-      <button
+      <DeleteModal
+        text={"Czy jestes pewny ze chcesz usunac ten obiekt z data:"}
+        date={new Date().toISOString().split("T")[0]}
+        func={handleDeleteObject}
+        func2={setDate}
+      ></DeleteModal>
+      {/* <button
         className="button bg-red-500 text-white mt-16 min-w-44 hover:bg-red-400 hover:border-red-400"
         onClick={handleDeleteObject}
       >
         Usun
-      </button>
+      </button> */}
     </div>
   );
 };

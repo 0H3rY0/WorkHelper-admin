@@ -214,10 +214,9 @@ const editObject = async (req, res) => {
 };
 
 const deleteObject = (req, res) => {
-  const { todayDate, id } = req.body;
-  console.log(todayDate, id);
+  const { date, id } = req.body;
 
-  if (!id || !todayDate) {
+  if (!id || !date) {
     return res
       .status(400)
       .json({ success: false, message: "id or date not provided" });
@@ -225,15 +224,13 @@ const deleteObject = (req, res) => {
 
   const sql = `UPDATE obiekty SET dataDO = ? WHERE id = ?`;
 
-  db.query(sql, [todayDate, id], (err, result) => {
+  db.query(sql, [date, id], (err, result) => {
     if (err) {
-      return res
-        .status(500)
-        .json({
-          success: false,
-          message: "Error with deleteObject",
-          error: err,
-        });
+      return res.status(500).json({
+        success: false,
+        message: "Error with deleteObject",
+        error: err,
+      });
     }
 
     res.json({ success: true, message: "Object deleted successfully" });
