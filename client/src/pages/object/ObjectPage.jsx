@@ -44,7 +44,7 @@ const ObjectPage = () => {
       pageNumbers.push(
         <button
           key={i}
-          className={`px-3 py-1 m-1 rounded-full ${
+          className={`px-3 py-1 m-1 rounded-full  ${
             i === currentPage ? "bg-custom-blue text-white" : "bg-gray-200"
           }`}
           onClick={() => setCurrentPage(i)}

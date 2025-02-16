@@ -19,33 +19,6 @@ body {
   background-color: #e2e8f0;
 }
 
-/* intput in object */
-
-.input {
-  background-color: #575757;
-  color: #fff;
-  border: 2px solid #646464;
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-size: 16px;
-  transition: all 0.3s ease;
-}
-
-.input:focus {
-  outline: none;
-  border-color: #23e771;
-  box-shadow: 0 0 8px rgba(75, 158, 175, 0.5);
-}
-
-.input::placeholder {
-  color: #b3b3b3;
-  opacity: 1;
-}
-
-.input:hover {
-  border-color: #666;
-}
-
 /* button gray */
 
 .button {
@@ -63,7 +36,7 @@ body {
 }
 
 .button:hover {
-  background-color: #475d74;
+  /* background-color: #475d74  */
   border-color: #4b5563;
   transform: scale(1.1);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -207,6 +180,33 @@ label {
 
 /* input styling */
 
+/* intput in object */
+
+.input {
+  background-color: #575757;
+  color: #fff;
+  border: 2px solid #646464;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #23e771;
+  box-shadow: 0 0 8px rgba(75, 158, 175, 0.5);
+}
+
+.input::placeholder {
+  color: #b3b3b3;
+  opacity: 1;
+}
+
+.input:hover {
+  border-color: #666;
+}
+
 input {
   background-color: #2d2d2d;
   color: #ffffff;
@@ -249,6 +249,12 @@ input[type="checkbox"]:checked::before {
   border: 2px solid #ffffff;
 }
 
+input:focus {
+  /* border-color: #ffffff; */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.6); /* Zmień na jaśniejszy cień */
+  transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
 input[type="checkbox"]:focus {
   outline: none;
   box-shadow: none;
@@ -259,7 +265,26 @@ input::placeholder {
   color: #575757;
 }
 
-input:not([type="checkbox"]):focus {
-  border-color: #ffffff;
-  box-shadow: 0 0 5px rgba(59, 78, 99, 0.7);
+/* modal styling */
+.modal-overlay {
+  position: fixed; /* fixed */
+  top: 0; /* inset-0: top 0 */
+  right: 0; /* inset-0: right 0 */
+  bottom: 0; /* inset-0: bottom 0 */
+  left: 0; /* inset-0: left 0 */
+  background-color: rgba(0, 0, 0, 0.5); /* bg-black/50 */
+}
+
+.modal-content {
+  position: fixed; /* fixed */
+  left: 50%; /* left-1/2 */
+  top: 50%; /* top-1/2 */
+  transform: translate(-50%, -50%); /* -translate-x-1/2 -translate-y-1/2 */
+  width: 100%; /* w-full */
+  max-width: 32rem; /* max-w-md (28rem = 448px) */
+  border-radius: 0.375rem; /* rounded-md (6px) */
+  background-color: white; /* bg-white */
+  padding: 2rem; /* p-8 (8 units = 32px) */
+  color: #1f2937; /* text-gray-900 */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* shadow */
 }

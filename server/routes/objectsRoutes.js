@@ -7,6 +7,8 @@ const {
   getObjectById,
   getUsersForObject,
   addObject,
+  editObject,
+  deleteObject,
 } = require("../controllers/objectsController");
 
 const router = express.Router();
@@ -17,5 +19,7 @@ router.get("/object/:id", getObjectById);
 router.get("/object/users/:id", getUsersForObject);
 
 router.post("/object/add", addObject);
+router.post("/object/edit", editObject);
+router.post("/object/delete", deleteObject);
 
 module.exports = router;

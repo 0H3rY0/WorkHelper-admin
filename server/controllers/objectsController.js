@@ -132,10 +132,117 @@ const addObject = (req, res) => {
   });
 };
 
+const editObject = async (req, res) => {
+  const {
+    id,
+    nazwa,
+    kod_pocztowy,
+    miejscowosc,
+    ul,
+    nr_budynku,
+    nr_lokalu,
+    pietro,
+    kod_domofonu,
+    szerokosc_g,
+    dlugosc_g,
+    dataOD,
+    dataDO,
+    klient_wlasny,
+    przekazany_p,
+    uwagi,
+  } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ message: "Brak ID obiektu do aktualizacji" });
+  }
+
+  try {
+    const sql = `
+      UPDATE obiekty
+      SET 
+          nazwa = ?,
+          kod_pocztowy = ?,
+          miejscowosc = ?,
+          ul = ?,
+          nr_budynku = ?,
+          nr_lokalu = ?,
+          pietro = ?,
+          kod_domofonu = ?,
+          szerokosc_g = ?,
+          dlugosc_g = ?,
+          dataOD = ?,
+          dataDO = ?,
+          klient_wlasny = ?,
+          przekazany_p = ?,
+          uwagi = ?
+      WHERE id = ?
+    `;
+
+    const values = [
+      nazwa,
+      kod_pocztowy,
+      miejscowosc,
+      ul,
+      nr_budynku,
+      nr_lokalu,
+      pietro,
+      kod_domofonu,
+      szerokosc_g,
+      dlugosc_g,
+      dataOD,
+      dataDO,
+      klient_wlasny,
+      przekazany_p,
+      uwagi,
+      id,
+    ];
+
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+
+      res.status(201).json({
+        message: "Object added successfully",
+        objectId: result.insertId,
+      });
+    });
+  } catch (error) {
+    console.error("Błąd podczas aktualizacji obiektu:", error);
+    res.status(500).json({ message: "Błąd serwera" });
+  }
+};
+
+const deleteObject = (req, res) => {
+  const { date, id } = req.body;
+
+  if (!id || !date) {
+    return res
+      .status(400)
+      .json({ success: false, message: "id or date not provided" });
+  }
+
+  const sql = `UPDATE obiekty SET dataDO = ? WHERE id = ?`;
+
+  db.query(sql, [date, id], (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "Error with deleteObject",
+        error: err,
+      });
+    }
+
+    res.json({ success: true, message: "Object deleted successfully" });
+  });
+};
+
 module.exports = {
   getObjects,
   getColumns,
   getObjectById,
   getUsersForObject,
   addObject,
+  editObject,
+  deleteObject,
 };

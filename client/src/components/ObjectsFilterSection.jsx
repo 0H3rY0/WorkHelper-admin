@@ -22,7 +22,7 @@ const ObjectsFilterSection = ({
           Filtry <FaFilter size={32} />
         </h2>
         <Link to="object/add">
-          <button className="button bg-custom-blue text-white flex items-center gap-2">
+          <button className="button bg-custom-blue text-white flex items-center gap-2 hover:bg-custom-blue-light">
             Add Objekt <MdAddToPhotos />
           </button>
         </Link>
