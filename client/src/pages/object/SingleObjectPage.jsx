@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router";
+import { data, useParams } from "react-router";
 import { objectFileds } from "../../utils/deviceFormFilds/objectFields";
 import { GrOverview } from "react-icons/gr";
 import { Link } from "react-router";
@@ -54,17 +54,27 @@ const SingleObjectPage = () => {
     };
 
     try {
-      const response = await axios.post(
-        `${BACKEND_URL}/api/object/edit`,
-        newObjectData
-      );
-
-      console.log(response);
+      await axios.post(`${BACKEND_URL}/api/object/edit`, newObjectData);
 
       setEditMode(null);
       toast.success("Operacja zakonczona sukcesem!");
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  const handleDeleteObject = () => {
+    const todayDate = new Date().toISOString().split("T")[0];
+
+    try {
+      const response = axios.post(`${BACKEND_URL}/api/object/delete`, {
+        todayDate,
+        id,
+      });
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -147,7 +157,10 @@ const SingleObjectPage = () => {
           </li>
         ))}
       </ul>
-      <button className="button bg-red-500 text-white mt-16 min-w-44 hover:bg-red-400 hover:border-red-400">
+      <button
+        className="button bg-red-500 text-white mt-16 min-w-44 hover:bg-red-400 hover:border-red-400"
+        onClick={handleDeleteObject}
+      >
         Usun
       </button>
     </div>

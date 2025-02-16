@@ -213,6 +213,33 @@ const editObject = async (req, res) => {
   }
 };
 
+const deleteObject = (req, res) => {
+  const { todayDate, id } = req.body;
+  console.log(todayDate, id);
+
+  if (!id || !todayDate) {
+    return res
+      .status(400)
+      .json({ success: false, message: "id or date not provided" });
+  }
+
+  const sql = `UPDATE obiekty SET dataDO = ? WHERE id = ?`;
+
+  db.query(sql, [todayDate, id], (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({
+          success: false,
+          message: "Error with deleteObject",
+          error: err,
+        });
+    }
+
+    res.json({ success: true, message: "Object deleted successfully" });
+  });
+};
+
 module.exports = {
   getObjects,
   getColumns,
@@ -220,4 +247,5 @@ module.exports = {
   getUsersForObject,
   addObject,
   editObject,
+  deleteObject,
 };
