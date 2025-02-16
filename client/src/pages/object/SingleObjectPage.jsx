@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { data, useParams } from "react-router";
-// import { objectFileds } from "../../utils/deviceFormFilds/objectFields";
+import { useParams } from "react-router";
 import { objectViewConfig } from "../../utils/showFields.config/object.view.config";
 import { GrOverview } from "react-icons/gr";
 import { Link } from "react-router";
@@ -119,8 +118,6 @@ const SingleObjectPage = () => {
                 onChange={handleChangeObjectState}
               />
 
-              {}
-
               <div
                 data-name={item.name}
                 className="md:mr-14 mr-0 underline tracking-widest cursor-pointer
@@ -167,12 +164,6 @@ const SingleObjectPage = () => {
         func={handleDeleteObject}
         func2={setDate}
       ></DeleteModal>
-      {/* <button
-        className="button bg-red-500 text-white mt-16 min-w-44 hover:bg-red-400 hover:border-red-400"
-        onClick={handleDeleteObject}
-      >
-        Usun
-      </button> */}
     </div>
   );
 };
