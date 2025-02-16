@@ -39,7 +39,7 @@ const AddObject = () => {
             Add Obiekt <IoMdAdd size={32} />
           </h2>
           <Link to={"/"}>
-            <button className="button bg-custom-blue text-white flex items-center gap-2">
+            <button className="button bg-custom-blue text-white flex items-center gap-2 hover:bg-custom-blue-light">
               <IoMdArrowRoundBack /> Wroc
             </button>
           </Link>

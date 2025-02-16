@@ -32,7 +32,7 @@ const AddDeviceForm = ({
 
       <button
         type="submit"
-        className="button bg-custom-blue text-white mt-10 w-1/6 min-w-32"
+        className="button bg-custom-blue text-white mt-10 w-1/6 min-w-32 hover:bg-custom-blue-light"
       >
         Add
       </button>

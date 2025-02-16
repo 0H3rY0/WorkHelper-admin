@@ -32,7 +32,7 @@ const Filters = ({
           name="search"
         />
         <button
-          className="button bg-custom-blue text-white"
+          className="button bg-custom-blue text-white hover:bg-custom-blue-light"
           onClick={getAllFilters}
         >
           Pokaż
