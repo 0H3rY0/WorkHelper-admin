@@ -8,23 +8,26 @@ const CheckAgreementModal = ({ children, text, btnText, func }) => {
         <Dialog.Overlay className="modal-overlay">
           <Dialog.Content className="modal-content">
             <Dialog.Title>
-              <h1 className="text-xl font-semibold mb-5">{text}</h1>
+              <p className="text-xl font-semibold mb-5">{text}</p>
             </Dialog.Title>
-            <Dialog.Description>
-              <div className="w-full flex justify-end items-center gap-4">
-                <button
-                  className="button bg-red-500 hover:bg-red-400 text-white hover:border-red-400"
-                  onClick={func}
-                >
-                  {btnText}
-                </button>
-                <Dialog.Close>
-                  <button className="button bg-custom-blue hover:bg-custom-blue-light text-white">
-                    Cancel
-                  </button>
-                </Dialog.Close>
-              </div>
-            </Dialog.Description>
+
+            <div className="w-full flex justify-end items-center gap-4">
+              <Dialog.Description>
+                {/* Opis modalnego okna (jeśli potrzebny) */}
+              </Dialog.Description>
+
+              <button
+                className="button bg-red-500 hover:bg-red-400 text-white hover:border-red-400"
+                onClick={func}
+              >
+                {btnText}
+              </button>
+              <Dialog.Close>
+                <div className="button bg-custom-blue hover:bg-custom-blue-light text-white">
+                  Cancel
+                </div>
+              </Dialog.Close>
+            </div>
           </Dialog.Content>
         </Dialog.Overlay>
       </Dialog.Portal>
