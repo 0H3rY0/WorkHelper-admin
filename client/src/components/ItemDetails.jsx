@@ -41,9 +41,13 @@ const ItemDetails = ({ tableName, itemId, fieldConfig }) => {
           <div className="w-full flex items-center justify-between text-xl">
             <input
               name={field.name}
-              defaultValue={itemData[field.name]}
+              defaultValue={
+                field.type === "date" && itemData[field.name]
+                  ? new Date(itemData[field.name]).toISOString().split("T")[0]
+                  : itemData[field.name] || ""
+              }
               className="w-full border-none bg-transparent p-0 m-0 text-inherit outline-none focus:outline-none focus:ring-0 
-                focus:border-none focus:shadow-none appearance-none min-h-0 text-lg"
+    focus:border-none focus:shadow-none appearance-none min-h-0 text-lg"
               ref={(el) => (inputRefs.current[field.name] = el)}
               readOnly={editMode !== field.name}
               onChange={handleChangeItemState}

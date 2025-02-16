@@ -3,7 +3,7 @@ import Header from "./components/layouts/Header";
 import ObjectPage from "./pages/object/ObjectPage";
 import MainTemplate from "./templates/MainTemplate";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SingleObjectPage from "./pages/object/SingleObjectPage";
+// import SingleObjectPage from "./pages/object/SingleObjectPage";
 import AddLaptopPage from "./pages/AddLaptopPage";
 import { ToastContainer } from "react-toastify";
 import AddPCPage from "./pages/AddPCPage";
