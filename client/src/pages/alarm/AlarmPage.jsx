@@ -8,7 +8,7 @@ import axios from "axios";
 import SelectColumns from "../../components/SelectColumns";
 import { ColumnsProvider } from "../../context/ColumnsContext";
 
-const ObjectPage = () => {
+const AlarmPage = () => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const {
     objectFilters,
@@ -28,7 +28,7 @@ const ObjectPage = () => {
 
   useEffect(() => {
     const getColumns = async () => {
-      const response = await axios.get(`${BACKEND_URL}/api/columns`);
+      const response = await axios.get(`${BACKEND_URL}/api/alarm/columns`);
       setObjectColumns(response.data);
     };
 
@@ -65,7 +65,7 @@ const ObjectPage = () => {
         objectFilters={objectFilters}
         setObjectFilters={setObjectFilters}
         objectColumns={objectColumns}
-        tableName={"obiekt"}
+        tableName={"alarm"}
       />
 
       <ColumnsProvider>
@@ -96,4 +96,4 @@ const ObjectPage = () => {
   );
 };
 
-export default ObjectPage;
+export default AlarmPage;

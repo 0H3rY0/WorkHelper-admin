@@ -1,4 +1,7 @@
 const db = require("../config/db");
+require("dotenv").config();
+
+const DATABASE_NAME = process.env.DB_NAME;
 
 const addAlarm = (req, res) => {
   const {
@@ -46,4 +49,16 @@ const addAlarm = (req, res) => {
   });
 };
 
-module.exports = { addAlarm };
+const getColumns = (req, res) => {
+  const sql = `SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'alarmy' AND TABLE_SCHEMA = '${DATABASE_NAME}'`;
+
+  db.query(sql, (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    const columnNames = results.map((row) => row.COLUMN_NAME);
+    res.json(columnNames);
+  });
+};
+
+module.exports = { addAlarm, getColumns };

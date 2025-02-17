@@ -9,6 +9,7 @@ const ObjectsFilterSection = ({
   objectFilters,
   setObjectFilters,
   objectColumns,
+  tableName,
 }) => {
   const addObjectFilter = () => {
     const newFilter = { id: uuidv4(), name: "new object" };
@@ -23,7 +24,7 @@ const ObjectsFilterSection = ({
         </h2>
         <Link to="object/add">
           <button className="button bg-custom-blue text-white flex items-center gap-2 hover:bg-custom-blue-light">
-            Add Objekt <MdAddToPhotos />
+            Add {tableName} <MdAddToPhotos />
           </button>
         </Link>
       </div>

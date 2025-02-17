@@ -16,6 +16,7 @@ import AddNVR from "./pages/AddNVR";
 import AddRouter from "./pages/AddRouter";
 import AddObject from "./pages/object/AddObject";
 import SingleItemPage from "./pages/SingleItemPage";
+import AlarmPage from "./pages/alarm/AlarmPage";
 
 function App() {
   return (
@@ -37,7 +38,10 @@ function App() {
             <Route path="camera/add" element={<AddCameraPage />} />
             <Route path="router/add" element={<AddRouter />} />
             <Route path="NVR/add" element={<AddNVR />} />
+
+            <Route path="/alarm" element={<AlarmPage />} />
             <Route path="alarm/add" element={<AddAlarm />} />
+
             <Route path="antenna/add" element={<AddAntenna />} />
             <Route path="software/add" element={<AddSoftware />} />
             <Route path="remaining/add" element={<AddRemaining />} />
