@@ -2,13 +2,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import TableHeader from "./ui/TableHeader";
 import TableRow from "./ui/TableRow";
+import { useColumnsContext } from "../context/ColumnsContext";
 
-const ObjectDataTable = ({ objectColumns, setFilteredData, filteredData }) => {
+const ObjectDataTable = ({ setFilteredData, filteredData }) => {
   const navigate = useNavigate();
   const [sortConfig, setSortConfig] = useState({
     column: null,
     direction: "asc",
   });
+
+  const { columns } = useColumnsContext();
+  console.log("kolumny: ", columns);
 
   const sortDataByChoosenRecord = (chosenColumn) => {
     setSortConfig((prevSortConfig) => {
@@ -41,7 +45,7 @@ const ObjectDataTable = ({ objectColumns, setFilteredData, filteredData }) => {
     <table className="table mt-7">
       {filteredData.length > 0 ? (
         <TableHeader
-          objectColumns={objectColumns}
+          objectColumns={columns}
           sortConfig={sortConfig}
           onSort={sortDataByChoosenRecord}
         />
@@ -53,7 +57,7 @@ const ObjectDataTable = ({ objectColumns, setFilteredData, filteredData }) => {
             <TableRow
               key={item.id}
               item={item}
-              objectColumns={objectColumns}
+              objectColumns={columns}
               onRowClick={(id) => navigate(`object/${id}`)}
             />
           ))

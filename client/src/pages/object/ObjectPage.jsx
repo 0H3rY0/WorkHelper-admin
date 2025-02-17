@@ -5,6 +5,8 @@ import ObjectDataTable from "../../components/ObjectDataTable";
 import Filters from "../../components/Filters";
 import Pagination from "../../components/Pagination";
 import axios from "axios";
+import SelectColumns from "../../components/SelectColumns";
+import { ColumnsProvider } from "../../context/ColumnsContext";
 
 const ObjectPage = () => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -65,20 +67,23 @@ const ObjectPage = () => {
         objectColumns={objectColumns}
       />
 
-      <Filters
-        getAllFilters={getAllFilters}
-        objectFilters={objectFilters}
-        setObjectFilters={setObjectFilters}
-        rowLimit={rowLimit}
-        changeFilteredDataRowsLimit={changeFilteredDataRowsLimit}
-        searchTableRecord={searchTableRecord}
-      />
+      <ColumnsProvider>
+        <SelectColumns />
 
-      <ObjectDataTable
-        objectColumns={objectColumns}
-        filteredData={paginatedData}
-        setFilteredData={setFilteredData}
-      />
+        <Filters
+          getAllFilters={getAllFilters}
+          objectFilters={objectFilters}
+          setObjectFilters={setObjectFilters}
+          rowLimit={rowLimit}
+          changeFilteredDataRowsLimit={changeFilteredDataRowsLimit}
+          searchTableRecord={searchTableRecord}
+        />
+
+        <ObjectDataTable
+          filteredData={paginatedData}
+          setFilteredData={setFilteredData}
+        />
+      </ColumnsProvider>
 
       <Pagination
         currentPage={currentPage}
