@@ -58,7 +58,7 @@ const ObjectDataTable = ({ setFilteredData, filteredData, tableName }) => {
               item={item}
               objectColumns={columns}
               // onRowClick={(id) => navigate(`object/${id}`)}
-              onRowClick={(id) => navigate(`object/${id}`)}
+              onRowClick={(id) => navigate(`/${tableName}/${id}`)}
             />
           ))
         ) : (

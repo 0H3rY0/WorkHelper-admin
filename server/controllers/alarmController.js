@@ -107,4 +107,110 @@ const getAlarmById = (req, res) => {
   });
 };
 
-module.exports = { addAlarm, getColumns, getTableRecords, getAlarmById };
+const deleteAlarmy = (req, res) => {
+  const { date, id } = req.body;
+
+  if (!id || !date) {
+    return res
+      .status(400)
+      .json({ success: false, message: "id or date not provided" });
+  }
+
+  const sql = `UPDATE alarmy SET dataDO = ? WHERE id = ?`;
+
+  db.query(sql, [date, id], (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "Error with deleteObject",
+        error: err,
+      });
+    }
+
+    res.json({ success: true, message: "Object deleted successfully" });
+  });
+};
+
+const editAlarmy = async (req, res) => {
+  const {
+    id,
+    model,
+    ilosc_czujek,
+    podzial_uprawnien,
+    ilosc_klawiatur,
+    ilosc_modulow,
+    system_rozproszony,
+    uwagi,
+    notatki,
+    dataOD,
+    dataDO,
+  } = req.body;
+
+  // Sprawdzamy, czy id jest przekazane
+  if (!id) {
+    return res.status(400).json({ message: "Brak ID alarmu do aktualizacji" });
+  }
+
+  try {
+    // Zaktualizowane zapytanie SQL do tabeli alarmy
+    const sql = `
+      UPDATE alarmy
+      SET 
+          model = ?,
+          ilosc_czujek = ?,
+          podzial_uprawnien = ?,
+          ilosc_klawiatur = ?,
+          ilosc_modulow = ?,
+          system_rozproszony = ?,
+          uwagi = ?,
+          notatki = ?,
+          dataOD = ?,
+          dataDO = ?
+      WHERE id = ?
+    `;
+
+    // Przekazywane wartości do zapytania
+    const values = [
+      model,
+      ilosc_czujek,
+      podzial_uprawnien,
+      ilosc_klawiatur,
+      ilosc_modulow,
+      system_rozproszony,
+      uwagi,
+      notatki,
+      dataOD,
+      dataDO,
+      id,
+    ];
+
+    // Wykonanie zapytania do bazy
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+
+      if (result.affectedRows > 0) {
+        return res.status(200).json({
+          message: "Alarm zaktualizowany pomyślnie",
+        });
+      } else {
+        return res.status(404).json({
+          message: "Nie znaleziono alarmu o podanym ID",
+        });
+      }
+    });
+  } catch (error) {
+    console.error("Błąd podczas aktualizacji alarmu:", error);
+    res.status(500).json({ message: "Błąd serwera" });
+  }
+};
+
+module.exports = {
+  addAlarm,
+  getColumns,
+  getTableRecords,
+  getAlarmById,
+  deleteAlarmy,
+  editAlarmy,
+};
