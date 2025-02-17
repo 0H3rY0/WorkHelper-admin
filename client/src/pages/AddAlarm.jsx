@@ -23,7 +23,7 @@ const AddLaptopPage = () => {
 
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialAlarmState,
-    `${BACKEND_URL}/api/alarm/add`
+    `${BACKEND_URL}/api/alarmy/add`
   );
 
   return (

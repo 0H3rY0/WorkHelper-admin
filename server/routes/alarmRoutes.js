@@ -2,13 +2,15 @@ const express = require("express");
 const {
   addAlarm,
   getColumns,
-  getAlarm,
+  getTableRecords,
+  getAlarmById,
 } = require("../controllers/alarmController");
 
 const router = express.Router();
 
-router.post("/alarm/add", addAlarm);
-router.get("/alarm/columns", getColumns);
-router.post("/alarm/get-alarm", getAlarm);
+router.post("/alarmy/add", addAlarm);
+router.get("/alarmy/columns", getColumns);
+router.post("/alarmy/table-records", getTableRecords);
+router.get("/alarmy/:id", getAlarmById);
 
 module.exports = router;

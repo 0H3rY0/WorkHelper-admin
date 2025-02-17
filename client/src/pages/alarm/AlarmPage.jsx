@@ -27,13 +27,15 @@ const AlarmPage = () => {
     setCurrentPage,
     totalPages,
     searchTableRecord,
-  } = useFilters(`${BACKEND_URL}/api/alarm/get-alarm`);
+  } = useFilters(`${BACKEND_URL}/api/${tableName}/table-records`);
 
   const [objectColumns, setObjectColumns] = useState([]);
 
   useEffect(() => {
     const getColumns = async () => {
-      const response = await axios.get(`${BACKEND_URL}/api/alarm/columns`);
+      const response = await axios.get(
+        `${BACKEND_URL}/api/${tableName}/columns`
+      );
       setObjectColumns(response.data);
     };
 
@@ -97,6 +99,7 @@ const AlarmPage = () => {
         <ObjectDataTable
           filteredData={paginatedData}
           setFilteredData={setFilteredData}
+          tableName={tableName}
         />
       </ColumnsProvider>
 

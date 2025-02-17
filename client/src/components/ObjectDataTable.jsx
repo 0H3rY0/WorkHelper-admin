@@ -4,7 +4,7 @@ import TableHeader from "./ui/TableHeader";
 import TableRow from "./ui/TableRow";
 import { useColumnsContext } from "../context/ColumnsContext";
 
-const ObjectDataTable = ({ setFilteredData, filteredData }) => {
+const ObjectDataTable = ({ setFilteredData, filteredData, tableName }) => {
   const navigate = useNavigate();
   const [sortConfig, setSortConfig] = useState({
     column: null,
@@ -57,6 +57,7 @@ const ObjectDataTable = ({ setFilteredData, filteredData }) => {
               key={item.id}
               item={item}
               objectColumns={columns}
+              // onRowClick={(id) => navigate(`object/${id}`)}
               onRowClick={(id) => navigate(`object/${id}`)}
             />
           ))

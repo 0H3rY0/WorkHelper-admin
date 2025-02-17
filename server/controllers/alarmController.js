@@ -61,7 +61,7 @@ const getColumns = (req, res) => {
   });
 };
 
-const getAlarm = (req, res) => {
+const getTableRecords = (req, res) => {
   const { filters } = req.body;
   let sql = "SELECT * FROM alarmy";
   let params = [];
@@ -94,4 +94,17 @@ const getAlarm = (req, res) => {
   });
 };
 
-module.exports = { addAlarm, getColumns, getAlarm };
+const getAlarmById = (req, res) => {
+  const { id } = req.params;
+
+  const sql = "SELECT * FROM alarmy WHERE id = ?";
+
+  db.query(sql, id, (err, result) => {
+    if (err) {
+      console.error("error: " + err);
+    }
+    res.json(result);
+  });
+};
+
+module.exports = { addAlarm, getColumns, getTableRecords, getAlarmById };

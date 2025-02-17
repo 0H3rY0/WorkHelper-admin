@@ -33,7 +33,7 @@ function App() {
 
             <Route path="alarmy/add" element={<AddAlarm />} />
 
-            {/* <Route path=":tableName/:id" element={<SingleItemPage />} /> */}
+            <Route path=":tableName/:id" element={<SingleItemPage />} />
 
             <Route path=":tableName" element={<AlarmPage />} />
 
