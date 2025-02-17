@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useFilters = (BACKEND_URL) => {
+const useFilters = (get_url) => {
   const [objectFilters, setObjectFilters] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [paginatedData, setPaginatedData] = useState([]);
@@ -17,7 +17,13 @@ const useFilters = (BACKEND_URL) => {
         ? objectFilters.reduce((acc, item) => ({ ...acc, ...item.name }), {})
         : {};
 
-      const response = await axios.post(`${BACKEND_URL}/api/objects`, {
+      // const response = await axios.post(`${BACKEND_URL}/api/objects`, {
+      //   filters,
+      // });
+
+      console.log(filters);
+
+      const response = await axios.post(`${get_url}`, {
         filters,
       });
 

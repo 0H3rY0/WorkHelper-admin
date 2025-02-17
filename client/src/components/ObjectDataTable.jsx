@@ -12,7 +12,6 @@ const ObjectDataTable = ({ setFilteredData, filteredData }) => {
   });
 
   const { columns } = useColumnsContext();
-  console.log("kolumny: ", columns);
 
   const sortDataByChoosenRecord = (chosenColumn) => {
     setSortConfig((prevSortConfig) => {

@@ -22,7 +22,7 @@ const AlarmPage = () => {
     setCurrentPage,
     totalPages,
     searchTableRecord,
-  } = useFilters(BACKEND_URL);
+  } = useFilters(`${BACKEND_URL}/api/alarm/get-alarm`);
 
   const [objectColumns, setObjectColumns] = useState([]);
 

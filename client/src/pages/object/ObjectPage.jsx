@@ -22,7 +22,7 @@ const ObjectPage = () => {
     setCurrentPage,
     totalPages,
     searchTableRecord,
-  } = useFilters(BACKEND_URL);
+  } = useFilters(`${BACKEND_URL}/api/objects`);
 
   const [objectColumns, setObjectColumns] = useState([]);
 
