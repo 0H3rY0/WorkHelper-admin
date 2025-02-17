@@ -2,12 +2,12 @@
 export const fieldConfigs = {
   object: [
     { label: "Id", type: "number", name: "id", checked: true },
-    { label: "Nazwa", type: "text", name: "nazwa" },
+    { label: "Nazwa", type: "text", name: "nazwa", checked: true },
     { label: "Kod Pocztowy", type: "text", name: "kod_pocztowy" },
-    { label: "Miejscowość", type: "text", name: "miejscowosc" },
-    { label: "Ulica", type: "text", name: "ul" },
-    { label: "Numer Budynku", type: "text", name: "nr_budynku" },
-    { label: "Numer Lokalu", type: "text", name: "nr_lokalu" },
+    { label: "Miejscowość", type: "text", name: "miejscowosc", checked: true },
+    { label: "Ulica", type: "text", name: "ul", checked: true },
+    { label: "Numer Budynku", type: "text", name: "nr_budynku", checked: true },
+    { label: "Numer Lokalu", type: "text", name: "nr_lokalu", checked: true },
     { label: "Piętro", type: "text", name: "pietro" },
     { label: "Kod Domofonu", type: "text", name: "kod_domofonu" },
     { label: "Szerokość Geograficzna", type: "number", name: "szerokosc_g" },
