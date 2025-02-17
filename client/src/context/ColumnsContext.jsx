@@ -3,8 +3,8 @@ import { getFieldConfig } from "../utils/fieldConfig";
 
 const ColumnsContext = createContext();
 
-export const ColumnsProvider = ({ children }) => {
-  const allFields = getFieldConfig("object");
+export const ColumnsProvider = ({ children, tableName }) => {
+  const allFields = getFieldConfig(tableName);
 
   const [columns, setColumns] = useState(
     allFields.filter((field) => field.checked).map((field) => field.name)
@@ -21,7 +21,9 @@ export const ColumnsProvider = ({ children }) => {
   };
 
   return (
-    <ColumnsContext.Provider value={{ columns, handleChangeColumnsState }}>
+    <ColumnsContext.Provider
+      value={{ columns, handleChangeColumnsState, allFields }}
+    >
       {children}
     </ColumnsContext.Provider>
   );

@@ -68,7 +68,7 @@ const AlarmPage = () => {
         tableName={"alarm"}
       />
 
-      <ColumnsProvider>
+      <ColumnsProvider tableName="alarmy">
         <SelectColumns />
 
         <Filters

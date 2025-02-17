@@ -68,7 +68,7 @@ const ObjectPage = () => {
         tableName={"obiekt"}
       />
 
-      <ColumnsProvider>
+      <ColumnsProvider tableName="object">
         <SelectColumns />
 
         <Filters

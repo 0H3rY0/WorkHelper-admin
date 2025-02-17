@@ -19,6 +19,39 @@ export const fieldConfigs = {
     { label: "Uwagi", type: "text", name: "uwagi" },
   ],
 
+  alarmy: [
+    { label: "ID", type: "number", name: "id", checked: true },
+    { label: "Model", type: "text", name: "model", checked: true },
+    {
+      label: "Ilość Czujek",
+      type: "number",
+      name: "ilosc_czujek",
+      checked: true,
+    },
+    { label: "Podział Uprawnień", type: "checkbox", name: "podzial_uprawnien" },
+    {
+      label: "Ilość Klawiatur",
+      type: "number",
+      name: "ilosc_klawiatur",
+      checked: true,
+    },
+    {
+      label: "Ilość Modułów",
+      type: "number",
+      name: "ilosc_modulow",
+      checked: true,
+    },
+    {
+      label: "System Rozproszony",
+      type: "checkbox",
+      name: "system_rozproszony",
+    },
+    { label: "Uwagi", type: "text", name: "uwagi" },
+    { label: "Notatki", type: "text", name: "notatki" },
+    { label: "Data OD", type: "date", name: "dataOD" },
+    { label: "Data DO", type: "date", name: "dataDO" },
+  ],
+
   laptop: [
     { label: "Id", type: "number", name: "id" },
     { label: "Producent", type: "text", name: "producent" },

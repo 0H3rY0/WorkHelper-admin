@@ -3,8 +3,8 @@ import { getFieldConfig } from "../utils/fieldConfig";
 import { AiOutlineSelect } from "react-icons/ai";
 
 const SelectColumns = () => {
-  const { columns, handleChangeColumnsState } = useColumnsContext();
-  const allFields = getFieldConfig("object");
+  const { columns, handleChangeColumnsState, allFields } = useColumnsContext();
+  // const allFields = getFieldConfig("object");
 
   return (
     <div className="w-full font-semibold text-2xl text-slate-700 flex flex-col mt-20 gap-10 md:items-start items-center">
