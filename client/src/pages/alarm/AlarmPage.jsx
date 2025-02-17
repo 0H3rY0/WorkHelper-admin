@@ -7,9 +7,14 @@ import Pagination from "../../components/Pagination";
 import axios from "axios";
 import SelectColumns from "../../components/SelectColumns";
 import { ColumnsProvider } from "../../context/ColumnsContext";
+import { Link, useParams } from "react-router";
+import { MdAddToPhotos } from "react-icons/md";
 
 const AlarmPage = () => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+  const { tableName } = useParams();
+
   const {
     objectFilters,
     setObjectFilters,
@@ -61,14 +66,23 @@ const AlarmPage = () => {
 
   return (
     <div className="w-full flex flex-col items-start md:p-14 p-3">
+      <div className="w-full flex justify-between items-center mb-14">
+        <h2 className="text-2xl font-bold text-custom-blue">{tableName}</h2>
+        <Link to={`/${tableName}/add`}>
+          <button className="button bg-custom-blue text-white flex items-center gap-2 hover:bg-custom-blue-light">
+            Add {tableName} <MdAddToPhotos />
+          </button>
+        </Link>
+      </div>
+
       <ObjectsFilterSection
         objectFilters={objectFilters}
         setObjectFilters={setObjectFilters}
         objectColumns={objectColumns}
-        tableName={"alarm"}
+        tableName={tableName}
       />
 
-      <ColumnsProvider tableName="alarmy">
+      <ColumnsProvider tableName={tableName}>
         <SelectColumns />
 
         <Filters

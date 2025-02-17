@@ -27,11 +27,15 @@ function App() {
           <Header />
           <Navbar />
           <Routes>
-            <Route path="/" element={<ObjectPage />} />
+            {/* <Route path="/" element={<ObjectPage />} /> */}
             {/* <Route path="object/:id" element={<SingleObjectPage />} /> */}
             <Route path="object/add" element={<AddObject />} />
 
-            <Route path=":tableName/:id" element={<SingleItemPage />} />
+            <Route path="alarmy/add" element={<AddAlarm />} />
+
+            {/* <Route path=":tableName/:id" element={<SingleItemPage />} /> */}
+
+            <Route path=":tableName" element={<AlarmPage />} />
 
             <Route path="laptop/add" element={<AddLaptopPage />} />
             <Route path="PC/add" element={<AddPCPage />} />
@@ -39,8 +43,8 @@ function App() {
             <Route path="router/add" element={<AddRouter />} />
             <Route path="NVR/add" element={<AddNVR />} />
 
-            <Route path="/alarm" element={<AlarmPage />} />
-            <Route path="alarm/add" element={<AddAlarm />} />
+            {/* <Route path="/alarm" element={<AlarmPage />} /> */}
+            {/* <Route path="alarmy/add" element={<AddAlarm />} /> */}
 
             <Route path="antenna/add" element={<AddAntenna />} />
             <Route path="software/add" element={<AddSoftware />} />

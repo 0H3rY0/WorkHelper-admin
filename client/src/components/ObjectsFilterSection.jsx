@@ -22,11 +22,11 @@ const ObjectsFilterSection = ({
         <h2 className="font-semibold text-2xl text-slate-700 flex gap-2 ">
           Filtry <FaFilter size={32} />
         </h2>
-        <Link to="object/add">
+        {/* <Link to="object/add">
           <button className="button bg-custom-blue text-white flex items-center gap-2 hover:bg-custom-blue-light">
             Add {tableName} <MdAddToPhotos />
           </button>
-        </Link>
+        </Link> */}
       </div>
 
       <div className="w-full flex flex-col  justify-center mt-5">

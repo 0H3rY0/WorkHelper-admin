@@ -7,9 +7,13 @@ import Pagination from "../../components/Pagination";
 import axios from "axios";
 import SelectColumns from "../../components/SelectColumns";
 import { ColumnsProvider } from "../../context/ColumnsContext";
+import { MdAddToPhotos } from "react-icons/md";
+import { Link, useParams } from "react-router";
 
 const ObjectPage = () => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+  const { tableName } = useParams();
   const {
     objectFilters,
     setObjectFilters,
@@ -61,14 +65,22 @@ const ObjectPage = () => {
 
   return (
     <div className="w-full flex flex-col items-start md:p-14 p-3">
+      <div className="w-full flex justify-between items-center mb-14">
+        <h2 className="text-2xl font-bold text-custom-blue">Alarm</h2>
+        <Link to="alarm/add">
+          <button className="button bg-custom-blue text-white flex items-center gap-2 hover:bg-custom-blue-light">
+            Add alarm <MdAddToPhotos />
+          </button>
+        </Link>
+      </div>
       <ObjectsFilterSection
         objectFilters={objectFilters}
         setObjectFilters={setObjectFilters}
         objectColumns={objectColumns}
-        tableName={"obiekt"}
+        tableName={tableName}
       />
 
-      <ColumnsProvider tableName="object">
+      <ColumnsProvider tableName={tableName}>
         <SelectColumns />
 
         <Filters

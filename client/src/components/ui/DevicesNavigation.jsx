@@ -74,7 +74,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="alarm/add"
+          to="/alarmy"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
