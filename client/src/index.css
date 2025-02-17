@@ -220,6 +220,8 @@ input {
 }
 
 input[type="checkbox"] {
+  padding: 0;
+  margin-top: 5px;
   border: none;
   background: transparent;
   width: 1.2rem;

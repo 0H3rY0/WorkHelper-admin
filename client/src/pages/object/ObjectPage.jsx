@@ -5,6 +5,7 @@ import ObjectDataTable from "../../components/ObjectDataTable";
 import Filters from "../../components/Filters";
 import Pagination from "../../components/Pagination";
 import axios from "axios";
+import SelectColumns from "../../components/SelectColumns";
 
 const ObjectPage = () => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -64,6 +65,8 @@ const ObjectPage = () => {
         setObjectFilters={setObjectFilters}
         objectColumns={objectColumns}
       />
+
+      <SelectColumns />
 
       <Filters
         getAllFilters={getAllFilters}

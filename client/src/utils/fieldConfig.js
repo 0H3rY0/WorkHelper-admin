@@ -1,7 +1,7 @@
 // Konfiguracja pól dla różnych typów tabel
 export const fieldConfigs = {
   object: [
-    { label: "Id", type: "number", name: "id" },
+    { label: "Id", type: "number", name: "id", checked: true },
     { label: "Nazwa", type: "text", name: "nazwa" },
     { label: "Kod Pocztowy", type: "text", name: "kod_pocztowy" },
     { label: "Miejscowość", type: "text", name: "miejscowosc" },
