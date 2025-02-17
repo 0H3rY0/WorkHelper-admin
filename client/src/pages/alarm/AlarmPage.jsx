@@ -40,7 +40,7 @@ const AlarmPage = () => {
     };
 
     getColumns();
-  }, []);
+  }, [tableName]);
 
   const renderPageNumbers = () => {
     if (totalPages <= 1) return null;
