@@ -4,6 +4,8 @@ import { IoMdAdd } from "react-icons/io";
 import AddDeviceForm from "../components/AddDeviceForm";
 import useAddDeviceForm from "../hooks/useAddDeviceForm";
 import { laptopFields } from "../utils/deviceFormFilds/laptopFields";
+import { useNavigate } from "react-router";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const AddLaptopPage = () => {
   const initialLaptopState = {
@@ -25,6 +27,8 @@ const AddLaptopPage = () => {
     data_do: "",
   };
 
+  const navigate = useNavigate();
+
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
@@ -35,9 +39,17 @@ const AddLaptopPage = () => {
   return (
     <div className="w-full p-7 flex flex-col items-start justify-start">
       <div className="w-full">
-        <h2 className="h2 flex items-center gap-2 mb-10 text-xl md:text-2xl">
-          Add Laptop <IoMdAdd size={32} />
-        </h2>
+        <div className="flex justify-between items-center">
+          <h2 className="h2 flex items-center gap-2 mb-10 text-xl md:text-2xl">
+            Add Uzytkownik <IoMdAdd size={32} />
+          </h2>
+          <button
+            className="button bg-custom-blue hover:bg-custom-blue-light text-white flex gap-2 items-center justify-center"
+            onClick={() => navigate("/laptopy")}
+          >
+            <IoMdArrowRoundBack /> Wroc
+          </button>
+        </div>
         <AddDeviceForm
           handleSubmitForm={handleSubmit}
           fields={laptopFields}

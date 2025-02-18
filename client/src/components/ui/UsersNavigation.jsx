@@ -16,7 +16,7 @@ const UsersNavigation = () => {
         className="flex items-center gap-2 cursor-pointer hover:text-slate-400"
         onClick={() => setOpenList((prev) => !prev)}
       >
-        <FaRegUser size={32} /> Urzytkownicy
+        <FaRegUser size={32} /> Uzytkownicy
         {openList ? <FaArrowRight size={16} /> : <FaArrowDown size={16} />}
       </p>
       <ul
