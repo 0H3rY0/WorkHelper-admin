@@ -17,19 +17,30 @@ const getColumns = (req, res) => {
 };
 
 const getTableRecords = (req, res) => {
-  const { tableName } = req.params;
   const { filters } = req.body;
+  const { tableName } = req.params;
 
   let sql = `SELECT * FROM ${tableName}`;
   let params = [];
 
   if (filters && Object.keys(filters).length > 0) {
     const conditions = Object.keys(filters)
-      .map((key) => `${key} LIKE ?`)
+      .map((key) => {
+        const filter = filters[key];
+        if (typeof filter === "object" && filter.text !== undefined) {
+          return filter.zawiera ? `${key} LIKE ?` : `${key} NOT LIKE ?`;
+        }
+        return `${key} LIKE ?`;
+      })
       .join(" AND ");
 
     sql += ` WHERE ${conditions}`;
-    params = Object.values(filters).map((val) => `%${val}%`);
+
+    params = Object.values(filters).map((filter) =>
+      typeof filter === "object" && filter.text !== undefined
+        ? `%${filter.text}%`
+        : `%${filter}%`
+    );
   }
 
   db.query(sql, params, (err, results) => {
