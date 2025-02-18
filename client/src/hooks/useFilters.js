@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useFilters = (get_url) => {
+const useFilters = (get_url, tableName) => {
   const [objectFilters, setObjectFilters] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [paginatedData, setPaginatedData] = useState([]);
@@ -35,6 +35,13 @@ const useFilters = (get_url) => {
       console.error("Błąd podczas pobierania danych:", error);
     }
   };
+
+  useEffect(() => {
+    setOriginalData([]);
+    setFilteredData([]);
+    setIsSearching(false);
+    setCurrentPage(1);
+  }, [tableName]);
 
   const changeFilteredDataRowsLimit = (e) => {
     const limit = Number(e.target.value);
@@ -76,7 +83,7 @@ const useFilters = (get_url) => {
 
     const paginatedData = dataSource.slice(startIndex, endIndex);
     setPaginatedData(paginatedData);
-  }, [filteredData, rowLimit, currentPage]);
+  }, [filteredData, rowLimit, currentPage, tableName]);
 
   return {
     objectFilters,

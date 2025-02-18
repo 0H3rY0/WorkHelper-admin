@@ -27,7 +27,7 @@ const AlarmPage = () => {
     setCurrentPage,
     totalPages,
     searchTableRecord,
-  } = useFilters(`${BACKEND_URL}/api/${tableName}/table-records`);
+  } = useFilters(`${BACKEND_URL}/api/${tableName}/table-records`, tableName);
 
   const [objectColumns, setObjectColumns] = useState([]);
 
