@@ -31,16 +31,15 @@ function App() {
             <Route path="object/add" element={<AddObject />} />
 
             <Route path="alarmy/add" element={<AddAlarm />} />
-
-            <Route path=":tableName/:id" element={<SingleItemPage />} />
-
-            <Route path=":tableName" element={<ItemPage />} />
-
-            <Route path="laptop/add" element={<AddLaptopPage />} />
+            <Route path="laptopy/add" element={<AddLaptopPage />} />
             <Route path="PC/add" element={<AddPCPage />} />
             <Route path="camera/add" element={<AddCameraPage />} />
             <Route path="router/add" element={<AddRouter />} />
             <Route path="NVR/add" element={<AddNVR />} />
+
+            <Route path=":tableName/:id" element={<SingleItemPage />} />
+
+            <Route path=":tableName" element={<ItemPage />} />
 
             {/* <Route path="/alarm" element={<AlarmPage />} /> */}
             {/* <Route path="alarmy/add" element={<AddAlarm />} /> */}

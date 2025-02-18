@@ -15,15 +15,15 @@ const addPC = (req, res) => {
     id_programu,
     uwagi,
     notatki,
-    data_od,
-    data_do,
+    dataOD,
+    dataDO,
   } = req.body;
 
   const sql = `
       INSERT INTO PC (
         nr_seryjny, podzial_uprawnien, system_operacyjny, rodzaj_dysku, 
         data_wymiany_dysku, ram, karta_graficzna, plyta_glowna, zasilacz, 
-        program_zdalny, id_programu, uwagi, notatki, data_od, data_do
+        program_zdalny, id_programu, uwagi, notatki, dataOD, dataDO
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
@@ -41,8 +41,8 @@ const addPC = (req, res) => {
     id_programu || null,
     uwagi || null,
     notatki || null,
-    data_od || null,
-    data_do || null,
+    dataOD || null,
+    dataOD || null,
   ];
 
   db.query(sql, values, (err, result) => {

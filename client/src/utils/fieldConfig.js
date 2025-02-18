@@ -50,8 +50,8 @@ export const fieldConfigs = {
     { label: "ID Programu", type: "text", name: "id_programu" },
     { label: "Uwagi", type: "text", name: "uwagi" },
     { label: "Notatki", type: "text", name: "notatki" },
-    { label: "Data OD", type: "date", name: "data_od" },
-    { label: "Data DO", type: "date", name: "data_do" },
+    { label: "Data OD", type: "date", name: "dataOD" },
+    { label: "Data DO", type: "date", name: "dataDO" },
   ],
 
   alarmy: [
@@ -86,32 +86,8 @@ export const fieldConfigs = {
     { label: "Data OD", type: "date", name: "dataOD" },
     { label: "Data DO", type: "date", name: "dataDO" },
   ],
-
-  laptop: [
-    { label: "Id", type: "number", name: "id" },
-    { label: "Producent", type: "text", name: "producent" },
-    { label: "Model", type: "text", name: "model" },
-    { label: "Numer Seryjny", type: "text", name: "numer_seryjny" },
-    { label: "Procesor", type: "text", name: "procesor" },
-    { label: "RAM", type: "text", name: "ram" },
-    { label: "Dysk", type: "text", name: "dysk" },
-    { label: "System Operacyjny", type: "text", name: "system_operacyjny" },
-    { label: "Status", type: "text", name: "status" },
-  ],
-
-  camera: [
-    { label: "Id", type: "number", name: "id" },
-    { label: "Producent", type: "text", name: "producent" },
-    { label: "Model", type: "text", name: "model" },
-    { label: "Rozdzielczość", type: "text", name: "rozdzielczosc" },
-    { label: "Typ", type: "text", name: "typ" },
-    { label: "Numer Seryjny", type: "text", name: "numer_seryjny" },
-    { label: "Data instalacji", type: "date", name: "data_instalacji" },
-    { label: "Status", type: "text", name: "status" },
-  ],
 };
 
-// Funkcja do pobrania odpowiedniej konfiguracji na podstawie nazwy tabeli
 export const getFieldConfig = (tableName) => {
   return fieldConfigs[tableName] || [];
 };

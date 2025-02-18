@@ -53,6 +53,5 @@ export const laptopFields = [
   },
   { id: "uwagi", label: "Uwagi", type: "text", name: "uwagi" },
   { id: "notatki", label: "Notatki", type: "text", name: "notatki" },
-  { id: "dataDo", label: "Data do", type: "date", name: "data_do" },
-  { id: "dataOd", label: "Data od", type: "date", name: "data_od" },
+  { id: "dataOd", label: "Data od", type: "date", name: "dataOD" },
 ];
