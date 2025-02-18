@@ -14,6 +14,7 @@ const routerRoutes = require("./routes/routerRoutes");
 const softwareRoutes = require("./routes/softwareRoutes");
 
 const groupRoutes = require("./routes/group.route");
+const usersRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -32,5 +33,6 @@ app.use("/api", routerRoutes);
 app.use("/api", softwareRoutes);
 
 app.use("/api", groupRoutes);
+app.use("/api", usersRoutes);
 
 app.listen(3000, () => console.log("App listening on port 3000"));

@@ -250,6 +250,22 @@ export const fieldConfigs = {
     { label: "Data DO", type: "date", name: "dataDO" },
   ],
 
+  uzytkownicy: [
+    { label: "Id", type: "number", name: "id", checked: true },
+    { label: "Imię", type: "text", name: "imie", checked: true },
+    { label: "Nazwisko", type: "text", name: "nazwisko", checked: true },
+    { label: "Login/Email", type: "email", name: "email", checked: true },
+    { label: "Hasło", type: "password", name: "haslo" },
+    { label: "Klucz Szyfrujący", type: "text", name: "klucz_szyfrujacy" },
+    {
+      label: "Logowanie Dwuetapowe",
+      type: "checkbox",
+      name: "logowanie_dwuetapowe",
+    },
+    { label: "Data OD", type: "date", name: "dataOD" },
+    { label: "Data DO", type: "date", name: "dataDO" },
+  ],
+
   grupy: [
     { label: "Id", type: "number", name: "id", checked: true },
     { label: "Nazwa", type: "text", name: "nazwa", checked: true },

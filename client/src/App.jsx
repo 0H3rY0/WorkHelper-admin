@@ -18,6 +18,7 @@ import SingleItemPage from "./pages/SingleItemPage";
 import ItemPage from "./pages/ItemPage";
 
 import AddGroup from "./pages/AddGroup";
+import AddUser from "./pages/AddUser";
 
 function App() {
   return (
@@ -41,7 +42,9 @@ function App() {
             <Route path="anteny/add" element={<AddAntenna />} />
             <Route path="oprogramowania/add" element={<AddSoftware />} />
             <Route path="pozostale/add" element={<AddRemaining />} />
+
             <Route path="grupy/add" element={<AddGroup />} />
+            <Route path="uzytkownicy/add" element={<AddUser />} />
 
             <Route path=":tableName/:id" element={<SingleItemPage />} />
 
