@@ -8,6 +8,7 @@ const {
   getTableRecords,
   getRecordById,
   deleteRecord,
+  editItem,
 } = require("../controllers/itemController");
 
 const router = express.Router();
@@ -26,7 +27,7 @@ const router = express.Router();
 // router.get("/obiekty/:id", getObjectById);
 
 router.post("/obiekty/add", addObject);
-router.post("/obiekty/edit", editObject);
+// router.post("/obiekty/edit", editObject);
 // router.post("/obiekty/delete", deleteObject);
 
 const tableName = "obiekty";
@@ -42,6 +43,10 @@ router.get("/obiekty/:id", (req, res) =>
 );
 router.post("/obiekty/delete", (req, res) =>
   deleteRecord({ ...req, params: { tableName } }, res)
+);
+
+router.post("/obiekty/edit", (req, res) =>
+  editItem({ ...req, params: { tableName } }, res)
 );
 
 module.exports = router;

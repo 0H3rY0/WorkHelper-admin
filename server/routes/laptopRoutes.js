@@ -6,6 +6,7 @@ const {
   getTableRecords,
   getRecordById,
   deleteRecord,
+  editItem,
 } = require("../controllers/itemController");
 
 const router = express.Router();
@@ -25,6 +26,10 @@ router.get("/laptopy/:id", (req, res) =>
 );
 router.post("/laptopy/delete", (req, res) =>
   deleteRecord({ ...req, params: { tableName } }, res)
+);
+
+router.post("/laptopy/edit", (req, res) =>
+  editItem({ ...req, params: { tableName } }, res)
 );
 
 module.exports = router;

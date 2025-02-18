@@ -6,12 +6,13 @@ const {
   getTableRecords,
   getRecordById,
   deleteRecord,
+  editItem,
 } = require("../controllers/itemController");
 
 const router = express.Router();
 
 router.post("/alarmy/add", addAlarm);
-router.post("/alarmy/edit", editAlarmy);
+// router.post("/alarmy/edit", editAlarmy);
 
 const tableName = "alarmy";
 
@@ -26,6 +27,10 @@ router.get("/alarmy/:id", (req, res) =>
 );
 router.post("/alarmy/delete", (req, res) =>
   deleteRecord({ ...req, params: { tableName } }, res)
+);
+
+router.post("/alarmy/edit", (req, res) =>
+  editItem({ ...req, params: { tableName } }, res)
 );
 
 module.exports = router;

@@ -83,4 +83,49 @@ const deleteRecord = (req, res) => {
   });
 };
 
-module.exports = { getColumns, getTableRecords, getRecordById, deleteRecord };
+// edit endpoint
+
+const editItem = async (req, res) => {
+  const { tableName } = req.params; // Pobieramy nazwę tabeli z parametrów
+  const { id, ...fields } = req.body; // Rozdzielamy ID od reszty pól
+
+  if (!id) {
+    return res.status(400).json({ message: "Brak ID obiektu do aktualizacji" });
+  }
+
+  if (Object.keys(fields).length === 0) {
+    return res.status(400).json({ message: "Brak danych do aktualizacji" });
+  }
+
+  try {
+    // Tworzenie dynamicznej listy pól do aktualizacji
+    const updates = Object.keys(fields)
+      .map((key) => `${key} = ?`)
+      .join(", ");
+    const values = [...Object.values(fields), id];
+
+    const sql = `UPDATE ${tableName} SET ${updates} WHERE id = ?`;
+
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+
+      res.status(200).json({
+        message: "Obiekt zaktualizowany pomyślnie",
+        affectedRows: result.affectedRows,
+      });
+    });
+  } catch (error) {
+    console.error("Błąd podczas aktualizacji obiektu:", error);
+    res.status(500).json({ message: "Błąd serwera" });
+  }
+};
+
+module.exports = {
+  getColumns,
+  getTableRecords,
+  getRecordById,
+  deleteRecord,
+  editItem,
+};
