@@ -19,6 +19,7 @@ import ItemPage from "./pages/ItemPage";
 
 import AddGroup from "./pages/AddGroup";
 import AddUser from "./pages/AddUser";
+import AddClient from "./pages/AddClient";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
 
             <Route path="grupy/add" element={<AddGroup />} />
             <Route path="uzytkownicy/add" element={<AddUser />} />
+            <Route path="klienci/add" element={<AddClient />} />
 
             <Route path=":tableName/:id" element={<SingleItemPage />} />
 

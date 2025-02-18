@@ -266,6 +266,18 @@ export const fieldConfigs = {
     { label: "Data DO", type: "date", name: "dataDO" },
   ],
 
+  klienci: [
+    { label: "Id", type: "number", name: "id", checked: true },
+    { label: "Id Użytkownika", type: "number", name: "id_user", checked: true },
+    { label: "Id Grupy", type: "number", name: "id_grupy", checked: true },
+    { label: "Id Obiektu", type: "number", name: "id_obiektu", checked: true },
+    { label: "Telefon", type: "text", name: "telefon" },
+    { label: "Stanowisko", type: "text", name: "stanowisko" },
+    { label: "Pomieszczenie", type: "text", name: "pomieszczenie" },
+    { label: "Data OD", type: "date", name: "dataOD" },
+    { label: "Data DO", type: "date", name: "dataDO" },
+  ],
+
   grupy: [
     { label: "Id", type: "number", name: "id", checked: true },
     { label: "Nazwa", type: "text", name: "nazwa", checked: true },

@@ -8,8 +8,8 @@ const addClient = (req, res) => {
     telefon,
     stanowisko,
     pomieszczenie,
-    data_od,
-    data_do,
+    dataOD,
+    dataDO,
   } = req.body;
 
   const columns = [
@@ -19,8 +19,8 @@ const addClient = (req, res) => {
     "telefon",
     "stanowisko",
     "pomieszczenie",
-    "data_od",
-    "data_do",
+    "dataOD",
+    "dataDO",
   ];
   const values = [
     id_user,
@@ -29,8 +29,8 @@ const addClient = (req, res) => {
     telefon || null,
     stanowisko || null,
     pomieszczenie || null,
-    data_od || null,
-    data_do || null,
+    dataOD || null,
+    dataDO || null,
   ];
 
   // Używamy uniwersalnej funkcji
