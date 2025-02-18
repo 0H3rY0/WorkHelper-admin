@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
-import useFilters from "../../hooks/useFilters";
-import ObjectsFilterSection from "../../components/ObjectsFilterSection";
-import ObjectDataTable from "../../components/ObjectDataTable";
-import Filters from "../../components/Filters";
-import Pagination from "../../components/Pagination";
+import useFilters from "../hooks/useFilters";
+import FilterSection from "../components/FilterSection";
+import DataTable from "../components/DataTable";
+import TableInteractionFields from "../components/TableInteractionFields";
+import Pagination from "../components/Pagination";
 import axios from "axios";
-import SelectColumns from "../../components/SelectColumns";
-import { ColumnsProvider } from "../../context/ColumnsContext";
-import { MdAddToPhotos } from "react-icons/md";
+import SelectColumns from "../components/SelectColumns";
+import { ColumnsProvider } from "../context/ColumnsContext";
 import { Link, useParams } from "react-router";
+import { MdAddToPhotos } from "react-icons/md";
 
-const ObjectPage = () => {
+const AlarmPage = () => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
   const { tableName } = useParams();
+
   const {
     objectFilters,
     setObjectFilters,
@@ -26,18 +27,20 @@ const ObjectPage = () => {
     setCurrentPage,
     totalPages,
     searchTableRecord,
-  } = useFilters(`${BACKEND_URL}/api/objects`);
+  } = useFilters(`${BACKEND_URL}/api/${tableName}/table-records`, tableName);
 
   const [objectColumns, setObjectColumns] = useState([]);
 
   useEffect(() => {
     const getColumns = async () => {
-      const response = await axios.get(`${BACKEND_URL}/api/columns`);
+      const response = await axios.get(
+        `${BACKEND_URL}/api/${tableName}/columns`
+      );
       setObjectColumns(response.data);
     };
 
     getColumns();
-  }, []);
+  }, [tableName]);
 
   const renderPageNumbers = () => {
     if (totalPages <= 1) return null;
@@ -66,14 +69,15 @@ const ObjectPage = () => {
   return (
     <div className="w-full flex flex-col items-start md:p-14 p-3">
       <div className="w-full flex justify-between items-center mb-14">
-        <h2 className="text-2xl font-bold text-custom-blue">Alarm</h2>
-        <Link to="alarm/add">
+        <h2 className="text-2xl font-bold text-custom-blue">{tableName}</h2>
+        <Link to={`/${tableName}/add`}>
           <button className="button bg-custom-blue text-white flex items-center gap-2 hover:bg-custom-blue-light">
-            Add alarm <MdAddToPhotos />
+            Add {tableName} <MdAddToPhotos />
           </button>
         </Link>
       </div>
-      <ObjectsFilterSection
+
+      <FilterSection
         objectFilters={objectFilters}
         setObjectFilters={setObjectFilters}
         objectColumns={objectColumns}
@@ -83,7 +87,7 @@ const ObjectPage = () => {
       <ColumnsProvider tableName={tableName}>
         <SelectColumns />
 
-        <Filters
+        <TableInteractionFields
           getAllFilters={getAllFilters}
           objectFilters={objectFilters}
           setObjectFilters={setObjectFilters}
@@ -92,9 +96,10 @@ const ObjectPage = () => {
           searchTableRecord={searchTableRecord}
         />
 
-        <ObjectDataTable
+        <DataTable
           filteredData={paginatedData}
           setFilteredData={setFilteredData}
+          tableName={tableName}
         />
       </ColumnsProvider>
 
@@ -108,4 +113,4 @@ const ObjectPage = () => {
   );
 };
 
-export default ObjectPage;
+export default AlarmPage;

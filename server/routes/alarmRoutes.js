@@ -1,8 +1,21 @@
 const express = require("express");
-const { addAlarm } = require("../controllers/alarmController");
+const {
+  addAlarm,
+  getColumns,
+  getTableRecords,
+  getAlarmById,
+  deleteAlarmy,
+  editAlarmy,
+} = require("../controllers/alarmController");
 
 const router = express.Router();
 
-router.post("/alarm/add", addAlarm);
+router.get("/alarmy/columns", getColumns);
+router.post("/alarmy/table-records", getTableRecords);
+router.get("/alarmy/:id", getAlarmById);
+
+router.post("/alarmy/add", addAlarm);
+router.post("/alarmy/edit", editAlarmy);
+router.post("/alarmy/delete", deleteAlarmy);
 
 module.exports = router;

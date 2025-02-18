@@ -1,14 +1,23 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { getFieldConfig } from "../utils/fieldConfig";
 
 const ColumnsContext = createContext();
 
-export const ColumnsProvider = ({ children }) => {
-  const allFields = getFieldConfig("object");
+export const ColumnsProvider = ({ children, tableName }) => {
+  const [allFields, setAllFields] = useState([]);
+  const [columns, setColumns] = useState([]);
 
-  const [columns, setColumns] = useState(
-    allFields.filter((field) => field.checked).map((field) => field.name)
-  );
+  useEffect(() => {
+    if (tableName) {
+      const fetchedFields = getFieldConfig(tableName);
+      setAllFields(fetchedFields);
+      setColumns(
+        fetchedFields
+          .filter((field) => field.checked)
+          .map((field) => field.name)
+      );
+    }
+  }, [tableName]);
 
   const handleChangeColumnsState = (e) => {
     setColumns((prev) =>
@@ -21,7 +30,9 @@ export const ColumnsProvider = ({ children }) => {
   };
 
   return (
-    <ColumnsContext.Provider value={{ columns, handleChangeColumnsState }}>
+    <ColumnsContext.Provider
+      value={{ columns, handleChangeColumnsState, allFields }}
+    >
       {children}
     </ColumnsContext.Provider>
   );

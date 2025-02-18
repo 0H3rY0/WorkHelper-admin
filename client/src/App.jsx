@@ -1,6 +1,5 @@
 import Navbar from "./components/layouts/Navbar";
 import Header from "./components/layouts/Header";
-import ObjectPage from "./pages/object/ObjectPage";
 import MainTemplate from "./templates/MainTemplate";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import SingleObjectPage from "./pages/object/SingleObjectPage";
@@ -16,6 +15,7 @@ import AddNVR from "./pages/AddNVR";
 import AddRouter from "./pages/AddRouter";
 import AddObject from "./pages/object/AddObject";
 import SingleItemPage from "./pages/SingleItemPage";
+import ItemPage from "./pages/ItemPage";
 
 function App() {
   return (
@@ -26,18 +26,25 @@ function App() {
           <Header />
           <Navbar />
           <Routes>
-            <Route path="/" element={<ObjectPage />} />
+            {/* <Route path="/" element={<ObjectPage />} /> */}
             {/* <Route path="object/:id" element={<SingleObjectPage />} /> */}
             <Route path="object/add" element={<AddObject />} />
 
+            <Route path="alarmy/add" element={<AddAlarm />} />
+
             <Route path=":tableName/:id" element={<SingleItemPage />} />
+
+            <Route path=":tableName" element={<ItemPage />} />
 
             <Route path="laptop/add" element={<AddLaptopPage />} />
             <Route path="PC/add" element={<AddPCPage />} />
             <Route path="camera/add" element={<AddCameraPage />} />
             <Route path="router/add" element={<AddRouter />} />
             <Route path="NVR/add" element={<AddNVR />} />
-            <Route path="alarm/add" element={<AddAlarm />} />
+
+            {/* <Route path="/alarm" element={<AlarmPage />} /> */}
+            {/* <Route path="alarmy/add" element={<AddAlarm />} /> */}
+
             <Route path="antenna/add" element={<AddAntenna />} />
             <Route path="software/add" element={<AddSoftware />} />
             <Route path="remaining/add" element={<AddRemaining />} />
