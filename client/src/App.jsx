@@ -32,10 +32,13 @@ function App() {
 
             <Route path="alarmy/add" element={<AddAlarm />} />
             <Route path="laptopy/add" element={<AddLaptopPage />} />
-            <Route path="PC/add" element={<AddPCPage />} />
-            <Route path="camera/add" element={<AddCameraPage />} />
-            <Route path="router/add" element={<AddRouter />} />
-            <Route path="NVR/add" element={<AddNVR />} />
+            <Route path="pc/add" element={<AddPCPage />} />
+            <Route path="kamery/add" element={<AddCameraPage />} />
+            <Route path="routers/add" element={<AddRouter />} />
+            <Route path="nvr/add" element={<AddNVR />} />
+            <Route path="anteny/add" element={<AddAntenna />} />
+            <Route path="oprogramowania/add" element={<AddSoftware />} />
+            <Route path="pozostale/add" element={<AddRemaining />} />
 
             <Route path=":tableName/:id" element={<SingleItemPage />} />
 
@@ -43,10 +46,6 @@ function App() {
 
             {/* <Route path="/alarm" element={<AlarmPage />} /> */}
             {/* <Route path="alarmy/add" element={<AddAlarm />} /> */}
-
-            <Route path="antenna/add" element={<AddAntenna />} />
-            <Route path="software/add" element={<AddSoftware />} />
-            <Route path="remaining/add" element={<AddRemaining />} />
           </Routes>
         </MainTemplate>
       </BrowserRouter>
