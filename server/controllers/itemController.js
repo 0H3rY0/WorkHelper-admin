@@ -122,7 +122,26 @@ const editItem = async (req, res) => {
   }
 };
 
+const addRecord = (table, columns, values, res) => {
+  const sql = `
+    INSERT INTO ${table} (${columns.join(", ")}) 
+    VALUES (${columns.map(() => "?").join(", ")})
+  `;
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
+    res.status(201).json({
+      message: `${table} added successfully`,
+      recordId: result.insertId,
+    });
+  });
+};
+
 module.exports = {
+  addRecord,
   getColumns,
   getTableRecords,
   getRecordById,

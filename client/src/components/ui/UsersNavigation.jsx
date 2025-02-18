@@ -23,7 +23,7 @@ const UsersNavigation = () => {
         className={`${openList ? "block" : "hidden"} flex flex-col gap-1 mt-2`}
       >
         <NavLink
-          to="/uzytkownik"
+          to="/uzytkownicy"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -32,7 +32,7 @@ const UsersNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="/grupa"
+          to="/grupy"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -40,7 +40,7 @@ const UsersNavigation = () => {
           </li>
         </NavLink>
         <NavLink
-          to="/klient"
+          to="/klienci"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">

@@ -17,6 +17,8 @@ import AddObject from "./pages/object/AddObject";
 import SingleItemPage from "./pages/SingleItemPage";
 import ItemPage from "./pages/ItemPage";
 
+import AddGroup from "./pages/AddGroup";
+
 function App() {
   return (
     <>
@@ -39,6 +41,7 @@ function App() {
             <Route path="anteny/add" element={<AddAntenna />} />
             <Route path="oprogramowania/add" element={<AddSoftware />} />
             <Route path="pozostale/add" element={<AddRemaining />} />
+            <Route path="grupy/add" element={<AddGroup />} />
 
             <Route path=":tableName/:id" element={<SingleItemPage />} />
 
