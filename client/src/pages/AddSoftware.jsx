@@ -32,15 +32,15 @@ const AddSoftwarePage = () => {
   );
 
   return (
-    <div className="w-full p-7 flex flex-col items-start justify-start">
+    <div className="w-full p-14 flex flex-col items-start justify-start">
       <div className="w-full">
-        <div className="flex justify-between items-center">
-          <h2 className="h2 flex items-center gap-2 mb-10 text-xl md:text-2xl">
+        <div className="flex justify-between items-center mb-10">
+          <h2 className="h2 flex items-center gap-2 text-xl md:text-2xl">
             Add Oprogramowanie <IoMdAdd size={32} />
           </h2>
           <button
             className="button bg-custom-blue hover:bg-custom-blue-light text-white flex gap-2 items-center justify-center"
-            onClick={() => navigate("/oprogramowanie")}
+            onClick={() => navigate("/oprogramowania")}
           >
             <IoMdArrowRoundBack /> Wroc
           </button>

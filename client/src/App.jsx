@@ -32,7 +32,7 @@ function App() {
           <Routes>
             {/* <Route path="/" element={<ObjectPage />} /> */}
             {/* <Route path="object/:id" element={<SingleObjectPage />} /> */}
-            <Route path="object/add" element={<AddObject />} />
+            <Route path="obiekty/add" element={<AddObject />} />
 
             <Route path="alarmy/add" element={<AddAlarm />} />
             <Route path="laptopy/add" element={<AddLaptopPage />} />
