@@ -1,6 +1,6 @@
 import { FaDatabase } from "react-icons/fa";
 
-const Filters = ({
+const TableInteractionFields = ({
   getAllFilters,
   rowLimit,
   changeFilteredDataRowsLimit,
@@ -42,4 +42,4 @@ const Filters = ({
   );
 };
 
-export default Filters;
+export default TableInteractionFields;

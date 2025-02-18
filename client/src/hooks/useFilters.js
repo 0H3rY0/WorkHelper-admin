@@ -83,7 +83,7 @@ const useFilters = (get_url, tableName) => {
 
     const paginatedData = dataSource.slice(startIndex, endIndex);
     setPaginatedData(paginatedData);
-  }, [filteredData, rowLimit, currentPage, tableName]);
+  }, [filteredData, rowLimit, currentPage]);
 
   return {
     objectFilters,

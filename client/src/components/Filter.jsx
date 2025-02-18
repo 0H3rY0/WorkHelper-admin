@@ -4,7 +4,7 @@ import FilterSwitch from "./ui/FilterSwitch";
 import FilterInput from "./ui/FilterInput";
 import RemoveFilterButton from "./ui/RemoveFilterButton";
 
-const ObjectFilter = ({ id = 0, setObjectFilters, objectColumns }) => {
+const Filter = ({ id = 0, setObjectFilters, objectColumns }) => {
   const {
     textInputValue,
     isSwitch,
@@ -27,4 +27,4 @@ const ObjectFilter = ({ id = 0, setObjectFilters, objectColumns }) => {
   );
 };
 
-export default ObjectFilter;
+export default Filter;

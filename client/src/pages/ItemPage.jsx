@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import useFilters from "../../hooks/useFilters";
-import ObjectsFilterSection from "../../components/ObjectsFilterSection";
-import ObjectDataTable from "../../components/ObjectDataTable";
-import Filters from "../../components/Filters";
-import Pagination from "../../components/Pagination";
+import useFilters from "../hooks/useFilters";
+import FilterSection from "../components/FilterSection";
+import DataTable from "../components/DataTable";
+import TableInteractionFields from "../components/TableInteractionFields";
+import Pagination from "../components/Pagination";
 import axios from "axios";
-import SelectColumns from "../../components/SelectColumns";
-import { ColumnsProvider } from "../../context/ColumnsContext";
+import SelectColumns from "../components/SelectColumns";
+import { ColumnsProvider } from "../context/ColumnsContext";
 import { Link, useParams } from "react-router";
 import { MdAddToPhotos } from "react-icons/md";
 
@@ -77,7 +77,7 @@ const AlarmPage = () => {
         </Link>
       </div>
 
-      <ObjectsFilterSection
+      <FilterSection
         objectFilters={objectFilters}
         setObjectFilters={setObjectFilters}
         objectColumns={objectColumns}
@@ -87,7 +87,7 @@ const AlarmPage = () => {
       <ColumnsProvider tableName={tableName}>
         <SelectColumns />
 
-        <Filters
+        <TableInteractionFields
           getAllFilters={getAllFilters}
           objectFilters={objectFilters}
           setObjectFilters={setObjectFilters}
@@ -96,7 +96,7 @@ const AlarmPage = () => {
           searchTableRecord={searchTableRecord}
         />
 
-        <ObjectDataTable
+        <DataTable
           filteredData={paginatedData}
           setFilteredData={setFilteredData}
           tableName={tableName}

@@ -1,6 +1,5 @@
 import Navbar from "./components/layouts/Navbar";
 import Header from "./components/layouts/Header";
-import ObjectPage from "./pages/object/ObjectPage";
 import MainTemplate from "./templates/MainTemplate";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import SingleObjectPage from "./pages/object/SingleObjectPage";
@@ -16,7 +15,7 @@ import AddNVR from "./pages/AddNVR";
 import AddRouter from "./pages/AddRouter";
 import AddObject from "./pages/object/AddObject";
 import SingleItemPage from "./pages/SingleItemPage";
-import AlarmPage from "./pages/alarm/AlarmPage";
+import ItemPage from "./pages/ItemPage";
 
 function App() {
   return (
@@ -35,7 +34,7 @@ function App() {
 
             <Route path=":tableName/:id" element={<SingleItemPage />} />
 
-            <Route path=":tableName" element={<AlarmPage />} />
+            <Route path=":tableName" element={<ItemPage />} />
 
             <Route path="laptop/add" element={<AddLaptopPage />} />
             <Route path="PC/add" element={<AddPCPage />} />

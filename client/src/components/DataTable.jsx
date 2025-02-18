@@ -4,7 +4,7 @@ import TableHeader from "./ui/TableHeader";
 import TableRow from "./ui/TableRow";
 import { useColumnsContext } from "../context/ColumnsContext";
 
-const ObjectDataTable = ({ setFilteredData, filteredData, tableName }) => {
+const DataTable = ({ setFilteredData, filteredData, tableName }) => {
   const navigate = useNavigate();
   const [sortConfig, setSortConfig] = useState({
     column: null,
@@ -71,4 +71,4 @@ const ObjectDataTable = ({ setFilteredData, filteredData, tableName }) => {
   );
 };
 
-export default ObjectDataTable;
+export default DataTable;
