@@ -7,6 +7,7 @@ const {
   getRecordById,
   deleteRecord,
   editItem,
+  getAllItems,
 } = require("../controllers/itemController");
 
 const router = express.Router();
@@ -21,6 +22,11 @@ router.get("/klienci/columns", (req, res) =>
 router.post("/klienci/table-records", (req, res) =>
   getTableRecords({ ...req, params: { tableName } }, res)
 );
+
+router.get("/klienci/all", (req, res) =>
+  getAllItems({ ...req, params: { tableName } }, res)
+);
+
 router.get("/klienci/:id", (req, res) =>
   getRecordById({ ...req, params: { tableName, id: req.params.id } }, res)
 );

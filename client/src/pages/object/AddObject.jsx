@@ -28,7 +28,7 @@ const AddObject = () => {
 
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialObjectState,
-    `${BACKEND_URL}/api/object/add`
+    `${BACKEND_URL}/api/obiekty/add`
   );
 
   return (

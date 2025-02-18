@@ -7,6 +7,7 @@ const {
   getRecordById,
   deleteRecord,
   editItem,
+  getAllItems,
 } = require("../controllers/itemController");
 
 const router = express.Router();
@@ -21,6 +22,11 @@ router.get("/grupy/columns", (req, res) =>
 router.post("/grupy/table-records", (req, res) =>
   getTableRecords({ ...req, params: { tableName } }, res)
 );
+
+router.get("/grupy/all", (req, res) =>
+  getAllItems({ ...req, params: { tableName } }, res)
+);
+
 router.get("/grupy/:id", (req, res) =>
   getRecordById({ ...req, params: { tableName, id: req.params.id } }, res)
 );

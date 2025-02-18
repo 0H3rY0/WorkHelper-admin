@@ -140,6 +140,23 @@ const addRecord = (table, columns, values, res) => {
   });
 };
 
+const getAllItems = (req, res) => {
+  const { tableName } = req.params;
+
+  const allowedTables = ["klienci", "uzytkownicy", "grupy"];
+  if (!allowedTables.includes(tableName)) {
+    return res.status(400).json({ error: "Nieprawidłowa tabela" });
+  }
+
+  const sql = `SELECT * FROM ??`;
+  db.query(sql, [tableName], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(result);
+  });
+};
+
 module.exports = {
   addRecord,
   getColumns,
@@ -147,4 +164,5 @@ module.exports = {
   getRecordById,
   deleteRecord,
   editItem,
+  getAllItems,
 };
