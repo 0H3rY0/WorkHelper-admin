@@ -11,9 +11,19 @@ const FilterSection = ({ objectFilters, setObjectFilters, objectColumns }) => {
 
   return (
     <>
-      <h2 className="font-semibold text-2xl text-slate-700 flex gap-2 ">
-        Filtry <FaFilter size={32} />
-      </h2>
+      <div className="w-full flex justify-between md:items-center items-start md:flex-row flex-col">
+        <h2 className="font-semibold text-2xl text-slate-700 flex gap-2">
+          Filtry <FaFilter size={32} />
+        </h2>
+        <div className="flex items-center justify-end gap-4">
+          <p className="text-custom-blue font-semibold">Aktualne: </p>
+          <input type="radio" name="group1" id="radio1" />
+          <p className="text-custom-blue font-semibold">Usuniete: </p>
+          <input type="radio" name="group1" id="radio2" />
+          <p className="text-custom-blue font-semibold">Wszystkie: </p>
+          <input type="radio" name="group1" id="radio3" />
+        </div>
+      </div>
 
       <div className="w-full flex flex-col  justify-center mt-5">
         {objectFilters.map((item) => {
