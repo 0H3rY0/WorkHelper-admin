@@ -17,12 +17,6 @@ const useFilters = (get_url, tableName) => {
         ? objectFilters.reduce((acc, item) => ({ ...acc, ...item.name }), {})
         : {};
 
-      // const response = await axios.post(`${BACKEND_URL}/api/objects`, {
-      //   filters,
-      // });
-
-      console.log(filters);
-
       const response = await axios.post(`${get_url}`, {
         filters,
       });
@@ -37,6 +31,7 @@ const useFilters = (get_url, tableName) => {
   };
 
   useEffect(() => {
+    setObjectFilters([]);
     setOriginalData([]);
     setFilteredData([]);
     setIsSearching(false);

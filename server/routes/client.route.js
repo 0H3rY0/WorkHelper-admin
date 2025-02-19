@@ -1,5 +1,5 @@
 const express = require("express");
-const { addAlarm, editAlarmy } = require("../controllers/alarmController");
+const { addClient } = require("../controllers/clientController");
 
 const {
   getColumns,
@@ -7,29 +7,34 @@ const {
   getRecordById,
   deleteRecord,
   editItem,
+  getAllItems,
 } = require("../controllers/itemController");
 
 const router = express.Router();
 
-router.post("/alarmy/add", addAlarm);
-// router.post("/alarmy/edit", editAlarmy);
+router.post("/klienci/add", addClient);
 
-const tableName = "alarmy";
+const tableName = "klienci";
 
-router.get("/alarmy/columns", (req, res) =>
+router.get("/klienci/columns", (req, res) =>
   getColumns({ ...req, params: { tableName } }, res)
 );
-router.post("/alarmy/table-records", (req, res) =>
+router.post("/klienci/table-records", (req, res) =>
   getTableRecords({ ...req, params: { tableName } }, res)
 );
-router.get("/alarmy/:id", (req, res) =>
+
+router.get("/klienci/all", (req, res) =>
+  getAllItems({ ...req, params: { tableName } }, res)
+);
+
+router.get("/klienci/:id", (req, res) =>
   getRecordById({ ...req, params: { tableName, id: req.params.id } }, res)
 );
-router.post("/alarmy/delete", (req, res) =>
+router.post("/klienci/delete", (req, res) =>
   deleteRecord({ ...req, params: { tableName } }, res)
 );
 
-router.post("/alarmy/edit", (req, res) =>
+router.post("/klienci/edit", (req, res) =>
   editItem({ ...req, params: { tableName } }, res)
 );
 

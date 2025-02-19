@@ -1,7 +1,7 @@
 import { IoMdAdd } from "react-icons/io";
-import AddDeviceForm from "../../components/AddDeviceForm";
-import useAddDeviceForm from "../../hooks/useAddDeviceForm";
-import { objectFileds } from "../../utils/deviceFormFilds/objectFields";
+import AddDeviceForm from "../components/AddDeviceForm";
+import useAddDeviceForm from "../hooks/useAddDeviceForm";
+import { objectFileds } from "../utils/deviceFormFilds/objectFields";
 import { Link } from "react-router";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
@@ -28,7 +28,7 @@ const AddObject = () => {
 
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
     initialObjectState,
-    `${BACKEND_URL}/api/object/add`
+    `${BACKEND_URL}/api/obiekty/add`
   );
 
   return (
@@ -38,7 +38,7 @@ const AddObject = () => {
           <h2 className="h2 flex items-center gap-2 text-xl md:text-2xl">
             Add Obiekt <IoMdAdd size={32} />
           </h2>
-          <Link to={"/"}>
+          <Link to={"/obiekty"}>
             <button className="button bg-custom-blue text-white flex items-center gap-2 hover:bg-custom-blue-light">
               <IoMdArrowRoundBack /> Wroc
             </button>

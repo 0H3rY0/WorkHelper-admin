@@ -1,5 +1,5 @@
 const express = require("express");
-const { addAlarm, editAlarmy } = require("../controllers/alarmController");
+const { addUser } = require("../controllers/userController");
 
 const {
   getColumns,
@@ -7,29 +7,34 @@ const {
   getRecordById,
   deleteRecord,
   editItem,
+  getAllItems,
 } = require("../controllers/itemController");
 
 const router = express.Router();
 
-router.post("/alarmy/add", addAlarm);
-// router.post("/alarmy/edit", editAlarmy);
+router.post("/uzytkownicy/add", addUser);
 
-const tableName = "alarmy";
+const tableName = "uzytkownicy";
 
-router.get("/alarmy/columns", (req, res) =>
+router.get("/uzytkownicy/columns", (req, res) =>
   getColumns({ ...req, params: { tableName } }, res)
 );
-router.post("/alarmy/table-records", (req, res) =>
+router.post("/uzytkownicy/table-records", (req, res) =>
   getTableRecords({ ...req, params: { tableName } }, res)
 );
-router.get("/alarmy/:id", (req, res) =>
+
+router.get("/uzytkownicy/all", (req, res) =>
+  getAllItems({ ...req, params: { tableName } }, res)
+);
+
+router.get("/uzytkownicy/:id", (req, res) =>
   getRecordById({ ...req, params: { tableName, id: req.params.id } }, res)
 );
-router.post("/alarmy/delete", (req, res) =>
+router.post("/uzytkownicy/delete", (req, res) =>
   deleteRecord({ ...req, params: { tableName } }, res)
 );
 
-router.post("/alarmy/edit", (req, res) =>
+router.post("/uzytkownicy/edit", (req, res) =>
   editItem({ ...req, params: { tableName } }, res)
 );
 

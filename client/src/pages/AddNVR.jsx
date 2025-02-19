@@ -4,6 +4,8 @@ import { IoMdAdd } from "react-icons/io";
 import AddDeviceForm from "../components/AddDeviceForm";
 import useAddDeviceForm from "../hooks/useAddDeviceForm";
 import { nvrFields } from "../utils/deviceFormFilds/nvrFields";
+import { useNavigate } from "react-router";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const AddNVRPage = () => {
   const initialNVRState = {
@@ -26,6 +28,8 @@ const AddNVRPage = () => {
     dataDO: "",
   };
 
+  const navigate = useNavigate();
+
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
   const { formState, handleChange, handleSubmit, error } = useAddDeviceForm(
@@ -34,11 +38,19 @@ const AddNVRPage = () => {
   );
 
   return (
-    <div className="w-full p-7 flex flex-col items-start justify-start">
+    <div className="w-full p-14 flex flex-col items-start justify-start">
       <div className="w-full">
-        <h2 className="h2 flex items-center gap-2 mb-10 text-xl md:text-2xl">
-          Add NVR <IoMdAdd size={32} />
-        </h2>
+        <div className="flex justify-between items-center mb-10">
+          <h2 className="h2 flex items-center gap-2 text-xl md:text-2xl">
+            Add NVR <IoMdAdd size={32} />
+          </h2>
+          <button
+            className="button bg-custom-blue hover:bg-custom-blue-light text-white flex gap-2 items-center justify-center"
+            onClick={() => navigate("/nvr")}
+          >
+            <IoMdArrowRoundBack /> Wroc
+          </button>
+        </div>
         <AddDeviceForm
           handleSubmitForm={handleSubmit}
           fields={nvrFields}

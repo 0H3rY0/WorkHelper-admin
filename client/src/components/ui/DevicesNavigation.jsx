@@ -38,7 +38,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="PC/add"
+          to="/pc"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -47,7 +47,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="camera/add"
+          to="/kamery"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -56,7 +56,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="router/add"
+          to="/routers"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -65,7 +65,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="NVR/add"
+          to="/nvr"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -83,7 +83,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="antenna/add"
+          to="/anteny"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -92,7 +92,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="software/add"
+          to="/oprogramowania"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
@@ -101,7 +101,7 @@ const DevicesNavigation = () => {
         </NavLink>
 
         <NavLink
-          to="remaining/add"
+          to="/pozostale"
           className={({ isActive }) => (isActive ? "text-slate-500" : "")}
         >
           <li className="cursor-pointer ml-4 text-lg font-normal flex items-center gap-1 hover:text-slate-400">
