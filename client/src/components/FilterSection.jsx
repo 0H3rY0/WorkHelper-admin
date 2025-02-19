@@ -3,7 +3,13 @@ import { CiCirclePlus } from "react-icons/ci";
 import Filter from "./Filter";
 import { v4 as uuidv4 } from "uuid";
 
-const FilterSection = ({ objectFilters, setObjectFilters, objectColumns }) => {
+const FilterSection = ({
+  objectFilters,
+  setObjectFilters,
+  objectColumns,
+  handleDateFilter,
+  appropriateDate,
+}) => {
   const addObjectFilter = () => {
     const newFilter = { id: uuidv4(), name: "new object" };
     setObjectFilters((prev) => [...prev, newFilter]);
@@ -17,11 +23,32 @@ const FilterSection = ({ objectFilters, setObjectFilters, objectColumns }) => {
         </h2>
         <div className="flex items-center justify-end gap-4">
           <p className="text-custom-blue font-semibold">Aktualne: </p>
-          <input type="radio" name="group1" id="radio1" />
+          <input
+            type="radio"
+            name="group1"
+            id="radio1"
+            value={"current"}
+            checked={appropriateDate === "current"}
+            onChange={handleDateFilter}
+          />
           <p className="text-custom-blue font-semibold">Usuniete: </p>
-          <input type="radio" name="group1" id="radio2" />
+          <input
+            type="radio"
+            name="group1"
+            id="radio2"
+            value={"removed"}
+            checked={appropriateDate === "removed"}
+            onChange={handleDateFilter}
+          />
           <p className="text-custom-blue font-semibold">Wszystkie: </p>
-          <input type="radio" name="group1" id="radio3" />
+          <input
+            type="radio"
+            name="group1"
+            id="radio3"
+            value={"every"}
+            checked={appropriateDate === "every"}
+            onChange={handleDateFilter}
+          />
         </div>
       </div>
 
