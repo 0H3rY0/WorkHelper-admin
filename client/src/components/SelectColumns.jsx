@@ -5,7 +5,7 @@ const SelectColumns = () => {
   const { columns, handleChangeColumnsState, allFields } = useColumnsContext();
 
   return (
-    <div className="w-full font-semibold text-2xl text-slate-700 flex flex-col mt-20 gap-10 md:items-start items-center">
+    <div className="w-full font-semibold text-2xl text-slate-700 flex flex-col mt-20 gap-10 items-start">
       <h2 className="flex gap-2">
         Wybierz kolumny <AiOutlineSelect size={32} />
       </h2>
@@ -14,7 +14,7 @@ const SelectColumns = () => {
           {allFields.map((item) => (
             <li
               key={item.name}
-              className="flex flex-col md:items-start items-center md:mr-10 mr-5 text-nowrap"
+              className="flex flex-col md:items-start items-start md:mr-10 mr-2 text-nowrap"
             >
               <label htmlFor={item.label}>{item.label}</label>
               <input
