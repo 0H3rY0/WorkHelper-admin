@@ -11,7 +11,7 @@ const TableInteractionFields = ({
       <h2 className="flex gap-2">
         Dane <FaDatabase size={32} />
       </h2>
-      <div className="flex md:flex-row flex-col md:items-center justify-start md:gap-10 gap-3 md:mt-0 mt-6">
+      <div className="w-full flex md:flex-row flex-col md:items-center justify-end md:gap-10 gap-3 md:mt-0 mt-6">
         <div className="flex items-center md:justify-center justify-start gap-2 text-[1rem]">
           <select
             className="bg-white hover:bg-slate-400 shadow-xl rounded-lg p-2 hover:scale-110 scale-transition"
