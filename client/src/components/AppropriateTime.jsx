@@ -9,6 +9,7 @@ const AppropriateTime = ({ appropriateDate, handleDateFilter }) => {
         value={"current"}
         checked={appropriateDate === "current"}
         onChange={handleDateFilter}
+        className="accent-custom-blue"
       />
       <p className="text-custom-blue font-semibold">Usuniete: </p>
       <input
@@ -18,6 +19,7 @@ const AppropriateTime = ({ appropriateDate, handleDateFilter }) => {
         value={"removed"}
         checked={appropriateDate === "removed"}
         onChange={handleDateFilter}
+        className="accent-custom-blue"
       />
       <p className="text-custom-blue font-semibold">Wszystkie: </p>
       <input
@@ -27,6 +29,7 @@ const AppropriateTime = ({ appropriateDate, handleDateFilter }) => {
         value={"every"}
         checked={appropriateDate === "every"}
         onChange={handleDateFilter}
+        className="accent-custom-blue"
       />
     </div>
   );
