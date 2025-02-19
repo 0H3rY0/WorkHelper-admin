@@ -2,6 +2,7 @@ import { FaFilter } from "react-icons/fa6";
 import { CiCirclePlus } from "react-icons/ci";
 import Filter from "./Filter";
 import { v4 as uuidv4 } from "uuid";
+import AppropriateTime from "./AppropriateTime";
 
 const FilterSection = ({
   objectFilters,
@@ -21,35 +22,10 @@ const FilterSection = ({
         <h2 className="font-semibold text-2xl text-slate-700 flex gap-2">
           Filtry <FaFilter size={32} />
         </h2>
-        <div className="flex items-center justify-end gap-4">
-          <p className="text-custom-blue font-semibold">Aktualne: </p>
-          <input
-            type="radio"
-            name="group1"
-            id="radio1"
-            value={"current"}
-            checked={appropriateDate === "current"}
-            onChange={handleDateFilter}
-          />
-          <p className="text-custom-blue font-semibold">Usuniete: </p>
-          <input
-            type="radio"
-            name="group1"
-            id="radio2"
-            value={"removed"}
-            checked={appropriateDate === "removed"}
-            onChange={handleDateFilter}
-          />
-          <p className="text-custom-blue font-semibold">Wszystkie: </p>
-          <input
-            type="radio"
-            name="group1"
-            id="radio3"
-            value={"every"}
-            checked={appropriateDate === "every"}
-            onChange={handleDateFilter}
-          />
-        </div>
+        <AppropriateTime
+          handleDateFilter={handleDateFilter}
+          appropriateDate={appropriateDate}
+        />
       </div>
 
       <div className="w-full flex flex-col  justify-center mt-5">
