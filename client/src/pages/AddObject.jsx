@@ -1,7 +1,7 @@
 import { IoMdAdd } from "react-icons/io";
-import AddDeviceForm from "../../components/AddDeviceForm";
-import useAddDeviceForm from "../../hooks/useAddDeviceForm";
-import { objectFileds } from "../../utils/deviceFormFilds/objectFields";
+import AddDeviceForm from "../components/AddDeviceForm";
+import useAddDeviceForm from "../hooks/useAddDeviceForm";
+import { objectFileds } from "../utils/deviceFormFilds/objectFields";
 import { Link } from "react-router";
 import { IoMdArrowRoundBack } from "react-icons/io";
 

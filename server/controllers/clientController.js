@@ -33,7 +33,6 @@ const addClient = (req, res) => {
     dataDO || null,
   ];
 
-  // Używamy uniwersalnej funkcji
   addRecord("klienci", columns, values, res);
 };
 

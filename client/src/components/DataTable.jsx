@@ -57,7 +57,6 @@ const DataTable = ({ setFilteredData, filteredData, tableName }) => {
               key={item.id}
               item={item}
               objectColumns={columns}
-              // onRowClick={(id) => navigate(`object/${id}`)}
               onRowClick={(id) => navigate(`/${tableName}/${id}`)}
             />
           ))

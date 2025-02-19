@@ -13,7 +13,7 @@ import AddAntenna from "./pages/AddAntenna";
 import AddCameraPage from "./pages/AddCameraPage";
 import AddNVR from "./pages/AddNVR";
 import AddRouter from "./pages/AddRouter";
-import AddObject from "./pages/object/AddObject";
+import AddObject from "./pages/AddObject";
 import SingleItemPage from "./pages/SingleItemPage";
 import ItemPage from "./pages/ItemPage";
 

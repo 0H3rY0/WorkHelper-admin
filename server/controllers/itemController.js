@@ -1,4 +1,4 @@
-const db = require("../config/db"); // Importuj konfigurację bazy danych
+const db = require("../config/db");
 require("dotenv").config();
 
 const DATABASE_NAME = process.env.DB_NAME;
@@ -86,8 +86,8 @@ const deleteRecord = (req, res) => {
 // edit endpoint
 
 const editItem = async (req, res) => {
-  const { tableName } = req.params; // Pobieramy nazwę tabeli z parametrów
-  const { id, ...fields } = req.body; // Rozdzielamy ID od reszty pól
+  const { tableName } = req.params;
+  const { id, ...fields } = req.body;
 
   if (!id) {
     return res.status(400).json({ message: "Brak ID obiektu do aktualizacji" });
@@ -98,7 +98,6 @@ const editItem = async (req, res) => {
   }
 
   try {
-    // Tworzenie dynamicznej listy pól do aktualizacji
     const updates = Object.keys(fields)
       .map((key) => `${key} = ?`)
       .join(", ");
