@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const ObjectsNavigation = () => {
   return (
     <NavLink
-      to="/"
+      to="/obiekty"
       className={({ isActive }) => (isActive ? "text-slate-400" : "")}
     >
       <p className="flex items-center gap-2 cursor-pointer hover:text-slate-400">

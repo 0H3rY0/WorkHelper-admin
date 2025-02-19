@@ -6,9 +6,9 @@ const addSoftware = (req, res) => {
     opis,
     klucz,
     administrator,
-    przypisany_do, // zmiana na 'przypisany_do'
-    data_aktywacji, // zmiana na 'data_aktywacji'
-    data_waznosci, // zmiana na 'data_waznosci'
+    przypisany_do,
+    data_aktywacji,
+    data_waznosci,
     uwagi,
     notatki,
     dataOD,
@@ -27,9 +27,9 @@ const addSoftware = (req, res) => {
     opis || null,
     klucz || null,
     administrator || 0,
-    przypisany_do || null, // zmiana na 'przypisany_do'
-    data_aktywacji || null, // zmiana na 'data_aktywacji'
-    data_waznosci || null, // zmiana na 'data_waznosci'
+    przypisany_do || null,
+    data_aktywacji || null,
+    data_waznosci || null,
     uwagi || null,
     notatki || null,
     dataOD || null,

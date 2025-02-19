@@ -47,6 +47,5 @@ export const PCFields = [
   { id: "idProgramu", label: "ID Programu", type: "text", name: "id_programu" },
   { id: "uwagi", label: "Uwagi", type: "text", name: "uwagi" },
   { id: "notatki", label: "Notatki", type: "text", name: "notatki" },
-  { id: "dataOd", label: "Data Od", type: "date", name: "data_od" },
-  { id: "dataDo", label: "Data Do", type: "date", name: "data_do" },
+  { id: "dataOd", label: "Data Od", type: "date", name: "dataOD" },
 ];
