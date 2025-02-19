@@ -24,7 +24,7 @@ const AddNVRPage = () => {
     p2p: 0,
     uwagi: "",
     notatki: "",
-    dataOD: "",
+    dataOD: new Date().toISOString().split("T")[0],
     dataDO: "",
   };
 

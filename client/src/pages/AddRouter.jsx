@@ -21,7 +21,7 @@ const AddRouterPage = () => {
     VPNzazadzanie: 0,
     uwagi: "",
     notatki: "",
-    dataOD: "",
+    dataOD: new Date().toISOString().split("T")[0],
     dataDO: "",
   };
 

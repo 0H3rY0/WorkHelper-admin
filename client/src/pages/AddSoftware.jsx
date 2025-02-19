@@ -18,7 +18,7 @@ const AddSoftwarePage = () => {
     data_waznosci: "",
     uwagi: "",
     notatki: "",
-    dataOD: "",
+    dataOD: new Date().toISOString().split("T")[0],
     dataDO: "",
   };
 
