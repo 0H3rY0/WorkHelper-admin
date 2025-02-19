@@ -11,18 +11,31 @@ const useFilters = (get_url, tableName) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isSearching, setIsSearching] = useState(false);
 
+  const [appropriateDate, setApproprieteDate] = useState("current");
+
+  const handleDateFilter = (e) => {
+    setApproprieteDate(e.target.value);
+  };
+
   const getAllFilters = async () => {
     try {
       const filters = objectFilters.length
         ? objectFilters.reduce((acc, item) => ({ ...acc, ...item.name }), {})
         : {};
 
-      const response = await axios.post(`${get_url}`, {
-        filters,
+      const response = await axios.post(`${get_url}`, { filters });
+
+      const responseWithAppropriateDate = response.data.filter((item) => {
+        if (appropriateDate === "current") {
+          return !item.dataDO;
+        } else if (appropriateDate === "removed") {
+          return item.dataDO;
+        }
+        return true;
       });
 
-      setOriginalData(response.data);
-      setFilteredData(response.data);
+      setOriginalData(responseWithAppropriateDate);
+      setFilteredData(responseWithAppropriateDate);
       setIsSearching(false);
       setCurrentPage(1);
     } catch (error) {
@@ -94,6 +107,8 @@ const useFilters = (get_url, tableName) => {
     setCurrentPage,
     totalPages,
     searchTableRecord,
+    handleDateFilter,
+    appropriateDate,
   };
 };
 

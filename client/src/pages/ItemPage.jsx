@@ -27,6 +27,8 @@ const AlarmPage = () => {
     setCurrentPage,
     totalPages,
     searchTableRecord,
+    handleDateFilter,
+    appropriateDate,
   } = useFilters(`${BACKEND_URL}/api/${tableName}/table-records`, tableName);
 
   const [objectColumns, setObjectColumns] = useState([]);
@@ -82,6 +84,8 @@ const AlarmPage = () => {
         setObjectFilters={setObjectFilters}
         objectColumns={objectColumns}
         tableName={tableName}
+        handleDateFilter={handleDateFilter}
+        appropriateDate={appropriateDate}
       />
 
       <ColumnsProvider tableName={tableName}>
