@@ -18,8 +18,8 @@ const Navbar = () => {
         <div className="flex flex-col justify-start gap-8 sticky top-24">
           {/* navigation links */}
           <ObjectsNavigation />
-          <UsersNavigation />
           <hr className="rounded-lg border-2 border-slate-500" />
+          <UsersNavigation />
           <DevicesNavigation />
         </div>
       </div>

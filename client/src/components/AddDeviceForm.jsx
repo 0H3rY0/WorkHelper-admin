@@ -1,38 +1,45 @@
+import { useState } from "react";
+import useFetchOptions from "../hooks/useFetchOptions";
+import FormField from "../components/FormField";
+
 const AddDeviceForm = ({
   fields,
   handleSubmitForm,
   onInputChange,
   DeviceState,
 }) => {
+  const options = useFetchOptions(fields);
+
+  const [inputModes, setInputModes] = useState(
+    fields.reduce((acc, field) => {
+      if (field.type === "select") acc[field.name] = "select";
+      return acc;
+    }, {})
+  );
+
+  const handleModeChange = (fieldName, mode) => {
+    setInputModes((prevModes) => ({ ...prevModes, [fieldName]: mode }));
+  };
+
   return (
-    <form
-      onSubmit={(e) => handleSubmitForm(e)}
-      className="w-full flex flex-col"
-    >
+    <form onSubmit={handleSubmitForm} className="w-full flex flex-col">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
         {fields.map((field) => (
-          <div key={field.id} className="flex flex-col gap-1">
-            <label
-              htmlFor={field.id}
-              className="text-sm font-medium text-custom-blue"
-            >
-              {field.label}
-            </label>
-            <input
-              value={DeviceState[field.name]}
-              id={field.id}
-              type={field.type}
-              name={field.name}
-              onChange={onInputChange}
-              className="p-2 border border-custom-blue rounded-md bg-dark-gray text-white focus:outline-none focus:ring-2 focus:ring-custom-blue"
-            />
-          </div>
+          <FormField
+            key={field.id}
+            field={field}
+            onInputChange={onInputChange}
+            DeviceState={DeviceState}
+            inputModes={inputModes}
+            handleModeChange={handleModeChange}
+            options={options}
+          />
         ))}
       </div>
 
       <button
         type="submit"
-        className="button bg-custom-blue text-white mt-10 w-1/6 min-w-32"
+        className="button bg-custom-blue text-white mt-10 w-1/6 min-w-32 hover:bg-custom-blue-light"
       >
         Add
       </button>

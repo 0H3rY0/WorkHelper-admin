@@ -1,4 +1,7 @@
 const db = require("../config/db");
+require("dotenv").config();
+
+const DATABASE_NAME = process.env.DB_NAME;
 
 const addAlarm = (req, res) => {
   const {
@@ -7,7 +10,7 @@ const addAlarm = (req, res) => {
     podzial_uprawnien,
     ilosc_klawiatur,
     ilosc_modulow,
-    system_rozproszony, // Zmiana na 'system_rozproszony'
+    system_rozproszony,
     uwagi,
     notatki,
     dataOD,
@@ -23,11 +26,11 @@ const addAlarm = (req, res) => {
 
   const values = [
     model,
-    ilosc_czujek, // Wartość dla 'ilosc_czujek'
-    podzial_uprawnien || 0, // Domyślna wartość 0
-    ilosc_klawiatur, // Wartość dla 'ilosc_klawiatur'
-    ilosc_modulow, // Wartość dla 'ilosc_modulow'
-    system_rozproszony || 0, // Domyślna wartość 0
+    ilosc_czujek,
+    podzial_uprawnien || 0,
+    ilosc_klawiatur,
+    ilosc_modulow,
+    system_rozproszony || 0,
     uwagi || null,
     notatki || null,
     dataOD || null,
@@ -46,4 +49,78 @@ const addAlarm = (req, res) => {
   });
 };
 
-module.exports = { addAlarm };
+const editAlarmy = async (req, res) => {
+  const {
+    id,
+    model,
+    ilosc_czujek,
+    podzial_uprawnien,
+    ilosc_klawiatur,
+    ilosc_modulow,
+    system_rozproszony,
+    uwagi,
+    notatki,
+    dataOD,
+    dataDO,
+  } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ message: "Brak ID alarmu do aktualizacji" });
+  }
+
+  try {
+    const sql = `
+      UPDATE alarmy
+      SET 
+          model = ?,
+          ilosc_czujek = ?,
+          podzial_uprawnien = ?,
+          ilosc_klawiatur = ?,
+          ilosc_modulow = ?,
+          system_rozproszony = ?,
+          uwagi = ?,
+          notatki = ?,
+          dataOD = ?,
+          dataDO = ?
+      WHERE id = ?
+    `;
+
+    const values = [
+      model,
+      ilosc_czujek,
+      podzial_uprawnien,
+      ilosc_klawiatur,
+      ilosc_modulow,
+      system_rozproszony,
+      uwagi,
+      notatki,
+      dataOD,
+      dataDO,
+      id,
+    ];
+
+    db.query(sql, values, (err, result) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+
+      if (result.affectedRows > 0) {
+        return res.status(200).json({
+          message: "Alarm zaktualizowany pomyślnie",
+        });
+      } else {
+        return res.status(404).json({
+          message: "Nie znaleziono alarmu o podanym ID",
+        });
+      }
+    });
+  } catch (error) {
+    console.error("Błąd podczas aktualizacji alarmu:", error);
+    res.status(500).json({ message: "Błąd serwera" });
+  }
+};
+
+module.exports = {
+  addAlarm,
+  editAlarmy,
+};

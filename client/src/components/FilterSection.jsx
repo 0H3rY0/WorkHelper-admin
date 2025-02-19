@@ -1,13 +1,9 @@
 import { FaFilter } from "react-icons/fa6";
 import { CiCirclePlus } from "react-icons/ci";
-import ObjectFilter from "../components/ObjectFilter";
+import Filter from "./Filter";
 import { v4 as uuidv4 } from "uuid";
 
-const ObjectsFilterSection = ({
-  objectFilters,
-  setObjectFilters,
-  objectColumns,
-}) => {
+const FilterSection = ({ objectFilters, setObjectFilters, objectColumns }) => {
   const addObjectFilter = () => {
     const newFilter = { id: uuidv4(), name: "new object" };
     setObjectFilters((prev) => [...prev, newFilter]);
@@ -15,13 +11,14 @@ const ObjectsFilterSection = ({
 
   return (
     <>
-      <h2 className="font-semibold text-2xl text-slate-700 flex gap-2 p-7">
+      <h2 className="font-semibold text-2xl text-slate-700 flex gap-2 ">
         Filtry <FaFilter size={32} />
       </h2>
+
       <div className="w-full flex flex-col  justify-center mt-5">
         {objectFilters.map((item) => {
           return (
-            <ObjectFilter
+            <Filter
               key={item.id}
               id={item.id}
               setObjectFilters={setObjectFilters}
@@ -42,4 +39,4 @@ const ObjectsFilterSection = ({
   );
 };
 
-export default ObjectsFilterSection;
+export default FilterSection;
