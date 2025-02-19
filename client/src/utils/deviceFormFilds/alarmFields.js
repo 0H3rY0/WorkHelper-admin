@@ -32,6 +32,11 @@ export const alarmFields = [
   },
   { id: "uwagi", label: "Uwagi", type: "text", name: "uwagi" },
   { id: "notatki", label: "Notatki", type: "text", name: "notatki" },
-  { id: "dataOD", label: "Data OD", type: "date", name: "dataOD" },
-  { id: "dataDO", label: "Data DO", type: "date", name: "dataDO" },
+  {
+    id: "dataOD",
+    label: "Data OD",
+    type: "date",
+    name: "dataOD",
+    value: new Date().toISOString().split("T")[0],
+  },
 ];

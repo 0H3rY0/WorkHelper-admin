@@ -15,7 +15,7 @@ const AddLaptopPage = () => {
     telefon: "",
     stanowisko: "",
     pomieszczenie: "",
-    dataOD: "",
+    dataOD: new Date().toISOString().split("T")[0],
     dataDO: "",
   };
 

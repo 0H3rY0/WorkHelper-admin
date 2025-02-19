@@ -15,7 +15,7 @@ const AddLaptopPage = () => {
     haslo: "",
     klucz_szyfrujacy: "",
     logowanie_dwuetapowe: 0,
-    dataOD: "",
+    dataOD: new Date().toISOString().split("T")[0],
     dataDO: "",
   };
   const navigate = useNavigate();

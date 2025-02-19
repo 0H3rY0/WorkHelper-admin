@@ -22,8 +22,8 @@ const AddLaptopPage = () => {
     id_programu: "",
     uwagi: "",
     notatki: "",
-    data_od: "",
-    data_do: "",
+    dataOD: new Date().toISOString().split("T")[0],
+    dataDO: "",
   };
 
   const navigate = useNavigate();

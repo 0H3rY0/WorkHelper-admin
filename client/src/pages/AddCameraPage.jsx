@@ -16,7 +16,7 @@ const AddLaptopPage = () => {
     ipWewnetrzne: "",
     uwagi: "",
     notatki: "",
-    dataOD: "",
+    dataOD: new Date().toISOString().split("T")[0],
     dataDO: "",
   };
 

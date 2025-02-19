@@ -16,7 +16,7 @@ const AddLaptopPage = () => {
     ilosc_rozgaleznikow: 0,
     uwagi: "",
     notatki: "",
-    dataOD: "",
+    dataOD: new Date().toISOString().split("T")[0],
     dataDO: "",
   };
 
