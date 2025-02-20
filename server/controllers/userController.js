@@ -1,6 +1,7 @@
 const { addRecord } = require("../controllers/itemController");
+const bcrypt = require("bcrypt");
 
-const addUser = (req, res) => {
+const addUser = async (req, res) => {
   const {
     imie,
     nazwisko,
@@ -11,6 +12,8 @@ const addUser = (req, res) => {
     dataOD,
     dataDO,
   } = req.body;
+
+  const hashedPassword = await bcrypt.hash(haslo, 10);
 
   const columns = [
     "imie",
@@ -27,7 +30,7 @@ const addUser = (req, res) => {
     imie,
     nazwisko,
     email,
-    haslo,
+    hashedPassword,
     klucz_szyfrujacy || null,
     logowanie_dwuetapowe || 0,
     dataOD || null,

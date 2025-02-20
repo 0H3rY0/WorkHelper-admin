@@ -18,7 +18,13 @@ export const clientFields = [
   },
 
   // { id: "idObiektu", label: "ID Obiektu", type: "number", name: "id_obiektu" },
-  { id: "idObiektu", label: "ID Obiektu", type: "select", name: "id_obiektu" },
+  {
+    id: "idObiektu",
+    label: "ID Obiektu",
+    type: "select",
+    name: "id_obiektu",
+    endpoint: "api/obiekty/all",
+  },
 
   { id: "telefon", label: "Telefon", type: "text", name: "telefon" },
   { id: "stanowisko", label: "Stanowisko", type: "text", name: "stanowisko" },
