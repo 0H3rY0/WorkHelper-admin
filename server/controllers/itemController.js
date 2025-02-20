@@ -142,7 +142,7 @@ const addRecord = (table, columns, values, res) => {
 const getAllItems = (req, res) => {
   const { tableName } = req.params;
 
-  const allowedTables = ["klienci", "uzytkownicy", "grupy"];
+  const allowedTables = ["klienci", "uzytkownicy", "grupy", "obiekty"];
   if (!allowedTables.includes(tableName)) {
     return res.status(400).json({ error: "Nieprawidłowa tabela" });
   }
