@@ -2,6 +2,7 @@ const db = require("../config/db");
 
 const addAntenna = (req, res) => {
   const {
+    id_obiektu,
     czasza,
     antena_dvbt,
     antena_radiowa,
@@ -15,12 +16,13 @@ const addAntenna = (req, res) => {
 
   const sql = `
     INSERT INTO anteny (
-      czasza, antena_dvbt, antena_radiowa, zwrotnica, ilosc_rozgaleznikow,
+      id_obiektu, czasza, antena_dvbt, antena_radiowa, zwrotnica, ilosc_rozgaleznikow,
       uwagi, notatki, dataOD, dataDO
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
   const values = [
+    id_obiektu,
     czasza,
     antena_dvbt || 0,
     antena_radiowa || 0,

@@ -1,4 +1,11 @@
 export const alarmFields = [
+  {
+    id: "idObiekt",
+    label: "ID Obiektu",
+    type: "select",
+    name: "id_obiektu",
+    endpoint: "api/obiekty/all",
+  },
   { id: "model", label: "Model", type: "text", name: "model" },
   {
     id: "iloscCzujek",
