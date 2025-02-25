@@ -140,9 +140,73 @@ const sendMessage = (req, res) => {
   );
 };
 
+const getUserByTicketId = (req, res) => {
+  const { ticketId } = req.params;
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = (today.getMonth() + 1).toString().padStart(2, "0");
+
+  const tableName = `message${month}${year}`;
+
+  const sql1 = "SELECT id_klienta FROM ?? WHERE id_ticket = ?";
+
+  db.query(sql1, [tableName, ticketId], (err, result) => {
+    if (err) {
+      console.error("Błąd w getUserByTicketId:", err);
+      return res
+        .status(500)
+        .json({ success: false, message: `Błąd bazy danych: ${err}` });
+    }
+
+    if (result.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Nie znaleziono klienta dla podanego ticketId.",
+      });
+    }
+
+    const idKlienta = result[0].id_klienta;
+
+    const sql2 = `
+      SELECT 
+        k.*, 
+        u.imie, 
+        u.nazwisko, 
+        u.email 
+      FROM klienci k
+      JOIN uzytkownicy u ON k.id_user = u.id
+      WHERE k.id = ?;
+    `;
+
+    db.query(sql2, [idKlienta], (err, userResult) => {
+      if (err) {
+        console.error("Błąd w pobieraniu użytkownika:", err);
+        return res
+          .status(500)
+          .json({ success: false, message: `Błąd bazy danych: ${err}` });
+      }
+
+      if (userResult.length === 0) {
+        return res.status(404).json({
+          success: false,
+          message: "Nie znaleziono użytkownika dla podanego id_klienta.",
+        });
+      }
+
+      res.status(200).json({
+        success: true,
+        message: "Pobrano użytkownika na podstawie ticketId!",
+        user: userResult[0],
+      });
+    });
+  });
+};
+
 module.exports = {
   // addRaport,
   getAllTickets,
   getAllMessageByTicketId,
   sendMessage,
+  getUserByTicketId,
 };
