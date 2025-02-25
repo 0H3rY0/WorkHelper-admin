@@ -2,6 +2,7 @@ import DevicesNavigation from "../ui/DevicesNavigation";
 import { useNavbarStore } from "../../store/useNavbarStore";
 import ObjectsNavigation from "../ui/ObjectsNavigation";
 import UsersNavigation from "../ui/UsersNavigation";
+import RaportNavigation from "../ui/RaportNavigation";
 
 const Navbar = () => {
   const { isNavbarActive, closeNavbar } = useNavbarStore();
@@ -18,6 +19,7 @@ const Navbar = () => {
         <div className="flex flex-col justify-start gap-8 sticky top-24">
           {/* navigation links */}
           <ObjectsNavigation />
+          <RaportNavigation />
           <hr className="rounded-lg border-2 border-slate-500" />
           <UsersNavigation />
           <DevicesNavigation />

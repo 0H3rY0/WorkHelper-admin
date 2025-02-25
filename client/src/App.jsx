@@ -21,6 +21,8 @@ import AddGroup from "./pages/AddGroup";
 import AddUser from "./pages/AddUser";
 import AddClient from "./pages/AddClient";
 
+import MyRaportsPage from "./pages/MyRaportsPage";
+
 function App() {
   return (
     <>
@@ -32,6 +34,8 @@ function App() {
           <Routes>
             {/* <Route path="/" element={<ObjectPage />} /> */}
             {/* <Route path="object/:id" element={<SingleObjectPage />} /> */}
+            <Route path="raports" element={<MyRaportsPage />} />
+
             <Route path="obiekty/add" element={<AddObject />} />
 
             <Route path="alarmy/add" element={<AddAlarm />} />
