@@ -203,10 +203,38 @@ const getUserByTicketId = (req, res) => {
   });
 };
 
+const editRaport = (req, res) => {
+  const { status, priority, ticketId } = req.body;
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = (today.getMonth() + 1).toString().padStart(2, "0");
+
+  const tableName = `ticket${month}${year}`;
+
+  const sql = `UPDATE ?? SET status = ?, priorytet = ? WHERE id = ?`;
+
+  db.query(sql, [tableName, status, priority, ticketId], (err, result) => {
+    if (err) {
+      console.error("Error with editRaport:", err);
+      return res
+        .status(500)
+        .json({ success: false, message: `DB error: ${err}` });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Raport edited successfully",
+      affectedRows: result.affectedRows,
+    });
+  });
+};
+
 module.exports = {
   // addRaport,
   getAllTickets,
   getAllMessageByTicketId,
   sendMessage,
   getUserByTicketId,
+  editRaport,
 };

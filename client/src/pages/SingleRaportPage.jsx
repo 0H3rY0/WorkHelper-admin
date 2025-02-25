@@ -27,7 +27,7 @@ const SingleRaportPage = () => {
         </h2>
         <div className="flex md:items-center items-start gap-3 md:flex-row flex-col">
           <BackButton path="/raports" />
-          <EditRaportModal>
+          <EditRaportModal ticketId={ticketId}>
             <button className="button bg-custom-blue hover:bg-custom-blue-light text-white">
               Edytuj zgłoszenie
             </button>

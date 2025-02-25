@@ -6,10 +6,11 @@ import useInputChange from "../../hooks/useInputChange";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const ChangePasswordModal = ({ children }) => {
+const ChangePasswordModal = ({ children, ticketId }) => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
   const initialEditState = {
+    ticketId,
     status: 1,
     priority: 1,
   };
