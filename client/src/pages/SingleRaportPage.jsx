@@ -21,14 +21,17 @@ const SingleRaportPage = () => {
 
   return (
     <div className="w-full flex flex-col items-start md:p-14 p-3">
-      <div className="w-full flex justify-between md:items-center items-start mb-14 md:flex-row flex-col">
-        <h2 className="text-2xl font-bold text-custom-blue">
-          Zgloszenie &nbsp; #{`${ticketId}/${tableName}`}
-        </h2>
-        <div className="flex md:items-center items-start gap-3 md:flex-row flex-col">
+      <div className="w-full flex justify-between md:items-center items-start mb-14 md:flex-row flex-col gap-3">
+        <div className="w-full flex justify-between items-center">
+          <h2 className=" items-center md:text-2xl text-xl font-bold text-custom-blue">
+            Zgloszenie &nbsp; #{`${ticketId}/${tableName}`}
+          </h2>
           <BackButton path="/raports" />
+        </div>
+
+        <div className="flex md:items-center items-start gap-3 md:flex-row flex-col text-nowrap">
           <EditRaportModal ticketId={ticketId}>
-            <button className="button bg-custom-blue hover:bg-custom-blue-light text-white">
+            <button className="w-full button bg-custom-blue hover:bg-custom-blue-light text-white">
               Edytuj zgłoszenie
             </button>
           </EditRaportModal>
