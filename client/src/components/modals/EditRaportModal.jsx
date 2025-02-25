@@ -9,38 +9,32 @@ import { toast } from "react-toastify";
 const ChangePasswordModal = ({ children }) => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-  const initialPasswordState = {
-    currentPassword: "",
-    newPassword: "",
-    repeatedNewPassword: "",
+  const initialEditState = {
+    status: 1,
+    priority: 1,
   };
 
-  //   const { user } = useUserStore();
   const [isOpen, setIsOpen] = useState(false);
-  const [password, setPassword] = useState(initialPasswordState);
+
+  const [editState, setEditState] = useState(initialEditState);
   const [error, setError] = useState(null);
-  const { InputChange } = useInputChange(setPassword);
+
+  const { InputChange } = useInputChange(setEditState);
 
   const handleChangePassword = async () => {
-    if (password.newPassword !== password.repeatedNewPassword) {
-      setError("Nowe hasła nie są identyczne!");
-      return;
-    }
-
     try {
-      await axios.post(`${BACKEND_URL}/api/uzytkownicy/change-password`, {
-        currentPassword: password.currentPassword,
-        newPassword: password.newPassword,
-      });
+      await axios.post(`${BACKEND_URL}/api/raport/edit`, editState);
 
-      toast.success("Hasło zostało zmienione!");
-      setPassword(initialPasswordState);
+      toast.success("Edytowano zgłoszenie poprawnie!");
+      setEditState(initialEditState);
       setError(null);
-      setIsOpen(false); // Teraz modal zamyka się poprawnie
+      setIsOpen(false);
     } catch (error) {
       setError(error?.response?.data?.message || "Błąd serwera!");
     }
   };
+
+  console.log(editState);
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
@@ -48,6 +42,8 @@ const ChangePasswordModal = ({ children }) => {
       <Dialog.Portal>
         <Dialog.Overlay className="modal-overlay">
           <Dialog.Content className="modal-content">
+            <Dialog.Title className="sr-only">Edytuj zgłoszenie</Dialog.Title>
+
             <div className="modal-header">
               <p>Edytuj zgłoszenie</p>
               <Dialog.Close className="modal-close">
@@ -70,7 +66,7 @@ const ChangePasswordModal = ({ children }) => {
               </select>
 
               <select
-                name="priorytet"
+                name="priority"
                 className="modal-input"
                 onChange={InputChange}
               >
