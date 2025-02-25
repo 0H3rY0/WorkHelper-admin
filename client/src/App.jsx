@@ -22,6 +22,7 @@ import AddUser from "./pages/AddUser";
 import AddClient from "./pages/AddClient";
 
 import MyRaportsPage from "./pages/MyRaportsPage";
+import SingleRaportPage from "./pages/SingleRaportPage";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             {/* <Route path="/" element={<ObjectPage />} /> */}
             {/* <Route path="object/:id" element={<SingleObjectPage />} /> */}
             <Route path="raports" element={<MyRaportsPage />} />
+            <Route path="raports/:ticketId" element={<SingleRaportPage />} />
 
             <Route path="obiekty/add" element={<AddObject />} />
 

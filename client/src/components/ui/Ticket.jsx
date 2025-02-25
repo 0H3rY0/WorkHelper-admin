@@ -10,7 +10,7 @@ const Ticket = ({ item, tableName }) => {
       grid grid-cols-6 md:grid-cols-8 gap-2 md:gap-5 
       hover:scale-105 scale-transition cursor-pointer 
       text-center rounded-sm"
-      onClick={() => navigate(`/selected/my-raports/${item.id}`)}
+      onClick={() => navigate(`/raports/${item.id}`)}
     >
       <h2 className="text-sm md:text-base font-semibold col-span-2 text-start truncate">
         {item.tytul}
