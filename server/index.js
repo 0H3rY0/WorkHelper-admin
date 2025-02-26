@@ -1,5 +1,5 @@
 const express = require("express");
-const path = require("path"); // 🟢 Importuj path do obsługi plików statycznych
+const path = require("path");
 const cors = require("cors");
 
 const obiektyRoutes = require("./routes/objectsRoutes");
@@ -24,7 +24,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 🟢 API ROUTES
 app.use("/api", obiektyRoutes);
 app.use("/api", laptopRoutes);
 app.use("/api", PCRoutes);
