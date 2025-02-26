@@ -1,4 +1,11 @@
 export const antennaFields = [
+  {
+    id: "idObiekt",
+    label: "ID Obiektu",
+    type: "select",
+    name: "id_obiektu",
+    endpoint: "api/obiekty/all",
+  },
   { id: "czasza", label: "Czasza", type: "checkbox", name: "czasza" },
   {
     id: "antenaDvbt",

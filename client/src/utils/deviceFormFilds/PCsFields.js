@@ -1,4 +1,11 @@
 export const PCFields = [
+  {
+    id: "idObiekt",
+    label: "ID Obiektu",
+    type: "select",
+    name: "id_obiektu",
+    endpoint: "api/obiekty/all",
+  },
   { id: "nrSeryjny", label: "Nr Seryjny", type: "text", name: "nr_seryjny" },
   {
     id: "podzialUprawnien",

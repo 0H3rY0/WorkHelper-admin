@@ -1,4 +1,11 @@
 export const softwareFields = [
+  {
+    id: "idObiekt",
+    label: "ID Obiektu",
+    type: "select",
+    name: "id_obiektu",
+    endpoint: "api/obiekty/all",
+  },
   { id: "nazwa", label: "Nazwa", type: "text", name: "nazwa" },
   { id: "opis", label: "Opis", type: "text", name: "opis" },
   { id: "klucz", label: "Klucz", type: "text", name: "klucz" },

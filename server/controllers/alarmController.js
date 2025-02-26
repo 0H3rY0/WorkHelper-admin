@@ -5,6 +5,7 @@ const DATABASE_NAME = process.env.DB_NAME;
 
 const addAlarm = (req, res) => {
   const {
+    id_obiektu,
     model,
     ilosc_czujek,
     podzial_uprawnien,
@@ -19,12 +20,13 @@ const addAlarm = (req, res) => {
 
   const sql = `
     INSERT INTO alarmy (
-      model, ilosc_czujek, podzial_uprawnien, ilosc_klawiatur, ilosc_modulow,
+      id_obiektu, model, ilosc_czujek, podzial_uprawnien, ilosc_klawiatur, ilosc_modulow,
       system_rozproszony, uwagi, notatki, dataOD, dataDO
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
   const values = [
+    id_obiektu,
     model,
     ilosc_czujek,
     podzial_uprawnien || 0,

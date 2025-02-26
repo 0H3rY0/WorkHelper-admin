@@ -17,6 +17,7 @@ const groupRoutes = require("./routes/group.route");
 const usersRoutes = require("./routes/userRoutes");
 const clientRoutes = require("./routes/client.route");
 
+const raportRoutes = require("./routes/raport.route");
 const app = express();
 
 app.use(cors());
@@ -36,5 +37,7 @@ app.use("/api", softwareRoutes);
 app.use("/api", groupRoutes);
 app.use("/api", usersRoutes);
 app.use("/api", clientRoutes);
+
+app.use("/api/raport", raportRoutes);
 
 app.listen(3000, () => console.log("App listening on port 3000"));

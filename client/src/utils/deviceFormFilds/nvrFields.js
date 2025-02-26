@@ -1,4 +1,11 @@
 export const nvrFields = [
+  {
+    id: "idObiekt",
+    label: "ID Obiektu",
+    type: "select",
+    name: "id_obiektu",
+    endpoint: "api/obiekty/all",
+  },
   { id: "nrSeryjny", label: "Nr Seryjny", type: "text", name: "nr_seryjny" },
   { id: "model", label: "Model", type: "text", name: "model" },
   { id: "mac", label: "MAC", type: "text", name: "mac" },
