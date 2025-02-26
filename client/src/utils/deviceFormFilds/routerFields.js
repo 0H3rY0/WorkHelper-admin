@@ -1,4 +1,11 @@
 export const routerFields = [
+  {
+    id: "idObiekt",
+    label: "ID Obiektu",
+    type: "select",
+    name: "id_obiektu",
+    endpoint: "api/obiekty/all",
+  },
   { id: "nrSeryjny", label: "Nr Seryjny", type: "text", name: "nr_seryjny" },
   { id: "model", label: "Model", type: "text", name: "model" },
   { id: "macWAN", label: "MAC WAN", type: "text", name: "macWAN" },

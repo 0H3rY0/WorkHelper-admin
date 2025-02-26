@@ -1,4 +1,11 @@
 export const cameraFields = [
+  {
+    id: "idObiekt",
+    label: "ID Obiektu",
+    type: "select",
+    name: "id_obiektu",
+    endpoint: "api/obiekty/all",
+  },
   { id: "nrSeryjny", label: "Nr Seryjny", type: "text", name: "nr_seryjny" },
   { id: "mac", label: "MAC", type: "text", name: "mac" },
   { id: "model", label: "Model", type: "text", name: "model" },
