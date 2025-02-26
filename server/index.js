@@ -1,7 +1,7 @@
-// app.js
-
 const express = require("express");
+const path = require("path"); // 🟢 Importuj path do obsługi plików statycznych
 const cors = require("cors");
+
 const obiektyRoutes = require("./routes/objectsRoutes");
 const laptopRoutes = require("./routes/laptopRoutes");
 const PCRoutes = require("./routes/PCRoutes");
@@ -18,11 +18,13 @@ const usersRoutes = require("./routes/userRoutes");
 const clientRoutes = require("./routes/client.route");
 
 const raportRoutes = require("./routes/raport.route");
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
+// 🟢 API ROUTES
 app.use("/api", obiektyRoutes);
 app.use("/api", laptopRoutes);
 app.use("/api", PCRoutes);
@@ -33,11 +35,16 @@ app.use("/api", NVRRoutes);
 app.use("/api", remainingRoutes);
 app.use("/api", routerRoutes);
 app.use("/api", softwareRoutes);
-
 app.use("/api", groupRoutes);
 app.use("/api", usersRoutes);
 app.use("/api", clientRoutes);
-
 app.use("/api/raport", raportRoutes);
 
-app.listen(3000, () => console.log("App listening on port 3000"));
+app.use(express.static(path.join(__dirname, "client", "build"))); // Zmiana na pliki Reacta
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
