@@ -39,10 +39,9 @@ app.use("/api", usersRoutes);
 app.use("/api", clientRoutes);
 app.use("/api/raport", raportRoutes);
 
-app.use(express.static(path.join(__dirname, "client", "dist"))); // Zmiana na Vite
-
+app.use(express.static(path.join(__dirname, "../client/dist"))); // Cofnij się o jeden katalog
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
 });
 
 const PORT = process.env.PORT || 3000;
