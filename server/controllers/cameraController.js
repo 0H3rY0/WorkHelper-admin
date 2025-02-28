@@ -2,6 +2,7 @@ const db = require("../config/db");
 
 const addCamera = (req, res) => {
   const {
+    id_obiektu,
     nr_seryjny,
     mac,
     model,
@@ -17,12 +18,13 @@ const addCamera = (req, res) => {
 
   const sql = `
     INSERT INTO kamery (
-      nr_seryjny, mac, model, podzial_uprawnien, portHTTP, portDANE,
+      id_obiektu, nr_seryjny, mac, model, podzial_uprawnien, portHTTP, portDANE,
       ipWewnetrzne, uwagi, notatki, dataOD, dataDO
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
   const values = [
+    id_obiektu,
     nr_seryjny,
     mac,
     model,

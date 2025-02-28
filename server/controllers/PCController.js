@@ -2,6 +2,7 @@ const db = require("../config/db");
 
 const addPC = (req, res) => {
   const {
+    id_obiektu,
     nr_seryjny,
     podzial_uprawnien,
     system_operacyjny,
@@ -21,13 +22,14 @@ const addPC = (req, res) => {
 
   const sql = `
       INSERT INTO PC (
-        nr_seryjny, podzial_uprawnien, system_operacyjny, rodzaj_dysku, 
+        id_obiektu, nr_seryjny, podzial_uprawnien, system_operacyjny, rodzaj_dysku, 
         data_wymiany_dysku, ram, karta_graficzna, plyta_glowna, zasilacz, 
         program_zdalny, id_programu, uwagi, notatki, dataOD, dataDO
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
   const values = [
+    id_obiektu,
     nr_seryjny,
     podzial_uprawnien,
     system_operacyjny,
@@ -42,7 +44,7 @@ const addPC = (req, res) => {
     uwagi || null,
     notatki || null,
     dataOD || null,
-    dataOD || null,
+    dataDO || null,
   ];
 
   db.query(sql, values, (err, result) => {

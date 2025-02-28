@@ -2,6 +2,7 @@ const db = require("../config/db");
 
 const addLaptop = (req, res) => {
   const {
+    id_obiektu,
     nr_seryjny,
     model,
     podzial_uprawnien,
@@ -22,13 +23,14 @@ const addLaptop = (req, res) => {
 
   const sql = `
       INSERT INTO laptopy (
-        nr_seryjny, model, podzial_uprawnien, system_operacyjny, rodzaj_dysku, 
+        id_obiektu, nr_seryjny, model, podzial_uprawnien, system_operacyjny, rodzaj_dysku, 
         data_wymiany_dysku, ram, karta_graficzna, plyta_glowna, zasilacz, 
         program_zdalny, id_programu, uwagi, notatki, dataOD, dataDO
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
   const values = [
+    id_obiektu,
     nr_seryjny,
     model,
     podzial_uprawnien,
