@@ -2,6 +2,7 @@ const db = require("../config/db");
 
 const addNvr = (req, res) => {
   const {
+    id_obiektu,
     nr_seryjny,
     model,
     mac,
@@ -23,13 +24,14 @@ const addNvr = (req, res) => {
 
   const sql = `
       INSERT INTO nvr (
-        nr_seryjny, model, mac, podzial_uprawnien, model_dysku, 
+        id_obiektu, nr_seryjny, model, mac, podzial_uprawnien, model_dysku, 
         wielkoscDysku, dataWymianyDysku, portHTTP, portDANE, iloscKamer,
         ipWewnetrzne, ipZewnetrzne, p2p, uwagi, notatki, dataOD, dataDO
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
   const values = [
+    id_obiektu,
     nr_seryjny,
     model,
     mac,

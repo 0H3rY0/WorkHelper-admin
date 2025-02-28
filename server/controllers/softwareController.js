@@ -2,6 +2,7 @@ const db = require("../config/db");
 
 const addSoftware = (req, res) => {
   const {
+    id_obiektu,
     nazwa,
     opis,
     klucz,
@@ -17,12 +18,13 @@ const addSoftware = (req, res) => {
 
   const sql = `
     INSERT INTO oprogramowania (
-      nazwa, opis, klucz, administrator, przypisany_do, data_aktywacji, 
+      id_obiektu, nazwa, opis, klucz, administrator, przypisany_do, data_aktywacji, 
       data_waznosci, uwagi, notatki, dataOD, dataDO
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
   const values = [
+    id_obiektu,
     nazwa,
     opis || null,
     klucz || null,

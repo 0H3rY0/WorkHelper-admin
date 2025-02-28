@@ -2,6 +2,7 @@ const db = require("../config/db");
 
 const addRouter = (req, res) => {
   const {
+    id_obiektu,
     nr_seryjny,
     model,
     macWAN,
@@ -20,13 +21,14 @@ const addRouter = (req, res) => {
 
   const sql = `
     INSERT INTO routers (
-      nr_seryjny, model, macWAN, ipwew, ipzew, podzial_uprawnien,
+      id_obiektu, nr_seryjny, model, macWAN, ipwew, ipzew, podzial_uprawnien,
       portHTTP, portDANE, VPNklien, VPNzazadzanie, uwagi, notatki,
       dataOD, dataDO
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
   const values = [
+    id_obiektu,
     nr_seryjny,
     model,
     macWAN,

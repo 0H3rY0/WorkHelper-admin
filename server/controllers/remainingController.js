@@ -1,16 +1,25 @@
 const db = require("../config/db");
 
 const addRemaining = (req, res) => {
-  const { nazwa, opis, zasadaDzialania, uwagi, notatki, dataOD, dataDO } =
-    req.body;
+  const {
+    id_obiektu,
+    nazwa,
+    opis,
+    zasadaDzialania,
+    uwagi,
+    notatki,
+    dataOD,
+    dataDO,
+  } = req.body;
 
   const sql = `
     INSERT INTO pozostale (
-      nazwa, opis, zasadaDzialania, uwagi, notatki, dataOD, dataDO
-    ) VALUES (?, ?, ?, ?, ?, ?, ?)
+      id_obiektu, nazwa, opis, zasadaDzialania, uwagi, notatki, dataOD, dataDO
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
   const values = [
+    id_obiektu,
     nazwa,
     opis,
     zasadaDzialania,
