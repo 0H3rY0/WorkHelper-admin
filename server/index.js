@@ -21,11 +21,13 @@ const raportRoutes = require("./routes/raport.route");
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://workhelper-front.onrender.com",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://workhelper-front.onrender.com",
+//   })
+// );
+
+app.use(cors({}));
 
 app.use(express.json());
 
@@ -44,10 +46,10 @@ app.use("/api", usersRoutes);
 app.use("/api", clientRoutes);
 app.use("/api/raport", raportRoutes);
 
-app.use(express.static(path.join(__dirname, "../client/dist"))); // Cofnij się o jeden katalog
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
-});
+// app.use(express.static(path.join(__dirname, "../client/dist")));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
+// });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
