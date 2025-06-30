@@ -1,5 +1,3 @@
-// routes/obiektyRoutes.js
-
 const express = require("express");
 const { addObject, editObject } = require("../controllers/objectsController");
 

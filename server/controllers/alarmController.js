@@ -67,7 +67,7 @@ const editAlarmy = async (req, res) => {
   } = req.body;
 
   if (!id) {
-    return res.status(400).json({ message: "Brak ID alarmu do aktualizacji" });
+    return res.status(400).json({ message: "No ID to update" });
   }
 
   try {
@@ -108,17 +108,17 @@ const editAlarmy = async (req, res) => {
 
       if (result.affectedRows > 0) {
         return res.status(200).json({
-          message: "Alarm zaktualizowany pomyślnie",
+          message: "Alarm upadted successfully",
         });
       } else {
         return res.status(404).json({
-          message: "Nie znaleziono alarmu o podanym ID",
+          message: "Not found alarm with provided id ",
         });
       }
     });
   } catch (error) {
-    console.error("Błąd podczas aktualizacji alarmu:", error);
-    res.status(500).json({ message: "Błąd serwera" });
+    console.error("Error during update alarm:", error);
+    res.status(500).json({ message: "Server Error" });
   }
 };
 

@@ -95,7 +95,7 @@ const editObject = async (req, res) => {
   } = req.body;
 
   if (!id) {
-    return res.status(400).json({ message: "Brak ID obiektu do aktualizacji" });
+    return res.status(400).json({ message: "Not found id" });
   }
 
   try {
@@ -150,8 +150,8 @@ const editObject = async (req, res) => {
       });
     });
   } catch (error) {
-    console.error("Błąd podczas aktualizacji obiektu:", error);
-    res.status(500).json({ message: "Błąd serwera" });
+    console.error("Error during updating object:", error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 

@@ -107,16 +107,16 @@ const getUserByTicketId = (req, res) => {
 
   db.query(sql1, [tableName, ticketId], (err, result) => {
     if (err) {
-      console.error("Błąd w getUserByTicketId:", err);
+      console.error("Error in getUserByTicketId:", err);
       return res
         .status(500)
-        .json({ success: false, message: `Błąd bazy danych: ${err}` });
+        .json({ success: false, message: `Database error: ${err}` });
     }
 
     if (result.length === 0) {
       return res.status(404).json({
         success: false,
-        message: "Nie znaleziono klienta dla podanego ticketId.",
+        message: "Not found client for provided ticketId",
       });
     }
 
@@ -135,22 +135,22 @@ const getUserByTicketId = (req, res) => {
 
     db.query(sql2, [idKlienta], (err, userResult) => {
       if (err) {
-        console.error("Błąd w pobieraniu użytkownika:", err);
+        console.error("Error with downloading user:", err);
         return res
           .status(500)
-          .json({ success: false, message: `Błąd bazy danych: ${err}` });
+          .json({ success: false, message: `Database error: ${err}` });
       }
 
       if (userResult.length === 0) {
         return res.status(404).json({
           success: false,
-          message: "Nie znaleziono użytkownika dla podanego id_klienta.",
+          message: "Not found user for id_klienta.",
         });
       }
 
       res.status(200).json({
         success: true,
-        message: "Pobrano użytkownika na podstawie ticketId!",
+        message: "Get user for provided ticketId!",
         user: userResult[0],
       });
     });

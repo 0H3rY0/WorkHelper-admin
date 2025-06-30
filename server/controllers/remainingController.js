@@ -35,7 +35,7 @@ const addRemaining = (req, res) => {
     }
 
     res.status(201).json({
-      message: "Record added successfully to 'pozostale'",
+      message: "Record added successfully ",
       pozostaleId: result.insertId,
     });
   });

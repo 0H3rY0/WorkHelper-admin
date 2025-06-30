@@ -53,7 +53,7 @@ const addNvr = (req, res) => {
 
   if (values.length !== 17) {
     return res.status(400).json({
-      error: "Liczba wartości nie zgadza się z liczbą kolumn w tabeli.",
+      error: "Number of values is not the same as in the table",
     });
   }
 
@@ -63,7 +63,7 @@ const addNvr = (req, res) => {
     }
 
     res.status(201).json({
-      message: "NVR dodany pomyślnie",
+      message: "NVR added successfully",
       nvrId: result.insertId,
     });
   });

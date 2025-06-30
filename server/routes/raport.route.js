@@ -10,7 +10,6 @@ const {
 
 const router = express.Router();
 
-// router.post("/add", addRaport);
 router.post("/message/add", sendMessage);
 router.post("/edit", editRaport);
 
