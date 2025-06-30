@@ -1,30 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import { usePermission } from "../store/usePermission";
 import Ticket from "./ui/Ticket";
 
 const RaportsList = () => {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-  // const { permission } = usePermission();
   const [tickets, setTickets] = useState([]);
   const [tableName, setTableName] = useState(null);
-  // const [clientId, setClientId] = useState(null);
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(null);
-
-  // useEffect(() => {
-  //   if (permission && permission.clientId) {
-  //     setClientId(permission.clientId);
-  //   }
-  // }, [permission]);
 
   useEffect(() => {
     const getTickets = async () => {
-      // if (!clientId) return;
-      // setLoading(true);
-      // setError(null);
-
       try {
         const response = await axios.get(
           `${BACKEND_URL}/api/raport/ticket/all`
@@ -32,7 +17,6 @@ const RaportsList = () => {
         setTickets(response.data.tickets);
         setTableName(response.data.tableName);
       } catch (err) {
-        // setError("Błąd podczas ładowania zgłoszeń");
         console.log("Error fetching tickets:", err);
       } finally {
         // setLoading(false);
@@ -44,15 +28,6 @@ const RaportsList = () => {
 
   return (
     <div className="w-full flex flex-col gap-5">
-      {/* {loading && <p>Ładowanie zgłoszeń...</p>} */}
-      {/* {error && <p className="text-red-500">{error}</p>} */}
-
-      {/* {!loading && !error && tickets.length === 0 && (
-        <p className="text-center text-gray-500">
-          Brak zgłoszeń do wyświetlenia.
-        </p>
-      )} */}
-
       <ul className="w-full flex flex-col gap-3">
         <li
           key={0}

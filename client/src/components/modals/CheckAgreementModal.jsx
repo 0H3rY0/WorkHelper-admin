@@ -12,9 +12,7 @@ const CheckAgreementModal = ({ children, text, btnText, func }) => {
             </Dialog.Title>
 
             <div className="w-full flex justify-end items-center gap-4">
-              <Dialog.Description>
-                {/* Opis modalnego okna (jeśli potrzebny) */}
-              </Dialog.Description>
+              <Dialog.Description></Dialog.Description>
 
               <button
                 className="button bg-red-500 hover:bg-red-400 text-white hover:border-red-400"

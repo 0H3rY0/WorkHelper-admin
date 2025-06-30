@@ -12,7 +12,7 @@ const useDeleteItem = (tableName, id) => {
 
       toast.success("Usuniento prawidłowo!");
     } catch (error) {
-      console.error("Błąd usuwania:", error);
+      console.error("Deleting error:", error);
     }
   };
 

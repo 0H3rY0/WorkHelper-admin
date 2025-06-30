@@ -1,6 +1,5 @@
 import { useState } from "react";
 import FormTextarea from "./ui/FormTextarea";
-// import { usePermission } from "../store/usePermission";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -9,7 +8,6 @@ const SendMessage = ({
   setIsMessageSend,
   setIsSendMessageFormOpen,
 }) => {
-  // const { permission } = usePermission();
   const initialMessageState = {
     id_ticket: Number(ticketId),
     id_klienta: null,
@@ -19,13 +17,6 @@ const SendMessage = ({
   };
   const [messageState, setMessageState] = useState(initialMessageState);
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-
-  // useEffect(() => {
-  //   setMessageState((prev) => ({
-  //     ...prev,
-  //     id_klienta: permission.clientId,
-  //   }));
-  // }, [permission]);
 
   const messageContentChange = (e) => {
     setMessageState((prev) => ({

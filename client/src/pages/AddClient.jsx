@@ -1,6 +1,4 @@
-// import { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
-// import axios from "axios";
 import AddDeviceForm from "../components/AddDeviceForm";
 import useAddDeviceForm from "../hooks/useAddDeviceForm";
 import { clientFields } from "../utils/deviceFormFilds/clientFields";

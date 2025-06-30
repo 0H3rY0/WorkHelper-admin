@@ -2,7 +2,6 @@ import Navbar from "./components/layouts/Navbar";
 import Header from "./components/layouts/Header";
 import MainTemplate from "./templates/MainTemplate";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import SingleObjectPage from "./pages/object/SingleObjectPage";
 import AddLaptopPage from "./pages/AddLaptopPage";
 import { ToastContainer } from "react-toastify";
 import AddPCPage from "./pages/AddPCPage";
@@ -33,8 +32,6 @@ function App() {
           <Header />
           <Navbar />
           <Routes>
-            {/* <Route path="/" element={<ObjectPage />} /> */}
-            {/* <Route path="object/:id" element={<SingleObjectPage />} /> */}
             <Route path="raports" element={<MyRaportsPage />} />
             <Route path="raports/:ticketId" element={<SingleRaportPage />} />
 
@@ -57,9 +54,6 @@ function App() {
             <Route path=":tableName/:id" element={<SingleItemPage />} />
 
             <Route path=":tableName" element={<ItemPage />} />
-
-            {/* <Route path="/alarm" element={<AlarmPage />} /> */}
-            {/* <Route path="alarmy/add" element={<AddAlarm />} /> */}
           </Routes>
         </MainTemplate>
       </BrowserRouter>

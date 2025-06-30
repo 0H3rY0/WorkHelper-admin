@@ -53,7 +53,7 @@ body {
   box-shadow: 0 0 5px rgba(75, 158, 175, 0.5);
 }
 
-/* style do tabeli */
+/* table styling */
 
 .table {
   width: 100%;
@@ -171,7 +171,7 @@ body {
 }
 
 label {
-  color: #3b4e63; /* custom-blue */
+  color: #3b4e63;
   font-size: 16px;
   font-weight: 600;
   display: block;
@@ -253,7 +253,7 @@ input[type="checkbox"]:checked::before {
 
 input:focus {
   /* border-color: #ffffff; */
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.6); /* Zmień na jaśniejszy cień */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
   transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
@@ -269,40 +269,39 @@ input::placeholder {
 
 /* modal styling */
 .modal-overlay {
-  position: fixed; /* fixed */
-  top: 0; /* inset-0: top 0 */
-  right: 0; /* inset-0: right 0 */
-  bottom: 0; /* inset-0: bottom 0 */
-  left: 0; /* inset-0: left 0 */
-  background-color: rgba(0, 0, 0, 0.5); /* bg-black/50 */
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-  position: fixed; /* fixed */
-  left: 50%; /* left-1/2 */
-  top: 50%; /* top-1/2 */
-  transform: translate(-50%, -50%); /* -translate-x-1/2 -translate-y-1/2 */
-  width: 100%; /* w-full */
-  max-width: 32rem; /* max-w-md (28rem = 448px) */
-  border-radius: 0.375rem; /* rounded-md (6px) */
-  background-color: white; /* bg-white */
-  padding: 2rem; /* p-8 (8 units = 32px) */
-  color: #1f2937; /* text-gray-900 */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* shadow */
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 32rem;
+  border-radius: 0.375rem;
+  background-color: white;
+  padding: 2rem;
+  color: #1f2937;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .modal-content {
   width: 100%;
-  max-width: 32rem; /* max-w-md */
-  background-color: #575757; /* custom-gray */
+  max-width: 32rem;
+  background-color: #575757;
   color: white;
   padding: 2rem;
-  border-radius: 10px; /* rounded-lg */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* shadow-xl */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   position: relative;
 }
 
-/* === Nagłówek modala (tytuł + przycisk zamykania) === */
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -312,22 +311,21 @@ input::placeholder {
   color: white;
 }
 
-/* === Przycisk zamykania === */
 .modal-close {
   cursor: pointer;
   transition: color 0.3s;
 }
 
 .modal-close:hover {
-  color: #e76f51; /* custom-red */
+  color: #e76f51;
 }
 
-/* === Inputy w modalu === */
+/* modal inputs */
 .modal-input {
   width: 100%;
   padding: 0.75rem;
   border-radius: 6px;
-  background-color: #2d2d2d; /* dark-gray */
+  background-color: #2d2d2d;
   color: white;
   border: 2px solid transparent;
   outline: none;
@@ -335,10 +333,9 @@ input::placeholder {
 }
 
 .modal-input:focus {
-  border-color: #f4a261; /* custom-orange */
+  border-color: #f4a261;
 }
 
-/* === Kontener na przyciski === */
 .modal-actions {
   display: flex;
   justify-content: flex-end;

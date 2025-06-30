@@ -1,5 +1,4 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { useState } from "react";
 
 const CheckAgreementModal = ({ text, func, func2, date }) => {
   return (
@@ -25,9 +24,7 @@ const CheckAgreementModal = ({ text, func, func2, date }) => {
             />
 
             <div className="w-full flex justify-end items-center gap-4">
-              <Dialog.Description>
-                {/* Opcjonalny opis modalnego okna */}
-              </Dialog.Description>
+              <Dialog.Description></Dialog.Description>
 
               <Dialog.Close asChild>
                 <button
